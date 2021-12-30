@@ -1,0 +1,18 @@
+/**
+ * ENTRYPOINT: SHARED
+ *
+ * This file contains all re-usable stuff like variables, mixins, functions, etc.
+ * It can be included at modules for accessing globally defined styles.
+ */
+
+// libraries
+@import '~modularscale-sass/stylesheets/modularscale';
+
+// internals
+@import 'variables/colors';
+@import 'variables/text';
+@import 'variables/layout';
+@import 'mixins/utils';
+@import 'mixins/layout';
+@import 'mixins/text';
+@import 'mixins/component';

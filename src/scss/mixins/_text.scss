@@ -1,0 +1,33 @@
+/**
+ * Mixin for injecting font specific styles.
+ *
+ * @param {string} $name
+ */
+@mixin use-font($name) {
+    @if (not map-has-key($font-settings, $name)) {
+        @error 'use-font: invalid font setting #{$name}';
+    }
+
+    @include map-as-properties(map-get($font-settings, $name));
+}
+
+/**
+ * Mixin for injecting text specific styles.
+ *
+ * @param {string} $name
+ */
+
+@mixin use-text($name) {
+    @if (not map-has-key($text-settings, $name)) {
+        @error 'use-text : invalid text setting #{$name}';
+    }
+
+    $settings: map-get($text-settings, $name);
+    $all-settings: map-get($settings, all);
+
+    @if (map-has-key($all-settings, font-settings)) {
+        @include use-font(map-get($all-settings, font-settings));
+    }
+
+    @include map-as-properties($all-settings, '', font-settings spacing-settings);
+}

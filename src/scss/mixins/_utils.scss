@@ -1,0 +1,127 @@
+/**
+ * Joins all items in a list to a string.
+ */
+@function to-string($list, $glue: '', $is-nested: false) {
+    $result: null;
+
+    @for $i from 1 through length($list) {
+        $e: nth($list, $i);
+
+        @if type-of($e) == list {
+            $result: $result#{to-string($e, $glue, true)};
+        } @else {
+            $result: if($i != length($list) or $is-nested, $result#{$e}#{$glue}, $result#{$e});
+        }
+    }
+
+    @return $result;
+}
+
+/**
+ * Update a deeply nested key
+ *
+ * @param {Map} $map - Map to update
+ * @param {Arglist} $keys - Keys to access to value to update
+ * @param {*} $value - New value (last member of `$keys`)
+ * @return {Map} - Updated map
+ */
+@function map-deep-set($map, $keys...) {
+    $map-list: ($map);
+    $result: null;
+
+    @if length($keys) == 2 {
+        @return map-merge(
+            $map,
+            (
+                nth($keys, 1): nth($keys, -1),
+            )
+        );
+    }
+
+    @for $i from 1 through length($keys) - 2 {
+        $map-list: append($map-list, map-get(nth($map-list, -1), nth($keys, $i)));
+    }
+
+    @for $i from length($map-list) through 1 {
+        $result: map-merge(
+            nth($map-list, $i),
+            (
+                nth($keys, $i): if($i == length($map-list), nth($keys, -1), $result),
+            )
+        );
+    }
+
+    @return $result;
+}
+
+/**
+ * Returns the item named $key from $map.
+ * If $key is not found $default is returned.
+ *
+ * @param {Map} $map
+ * @param {String} $key
+ * @param {*} $default
+ * @returns {*}
+ */
+@function map-get-default($map, $key, $default) {
+    @if ($map) {
+        @if (map-has-key($map, $key)) {
+            @return map-get($map, $key);
+        }
+    }
+    @return $default;
+}
+
+/**
+ * Creates a property list based of $map.
+ * Each property name is prefixed with $prefix.
+ * When $ignore is given every property found in the list will be ignored.
+ *
+ * @param {Map} $map
+ * @param {String} $prefix
+ * @param {List} $ignore
+ * @returns {void}
+ */
+@mixin map-as-properties($map, $prefix: '', $ignore: none, $include: all) {
+    @if ($map) {
+        @each $property, $value in $map {
+            @if (
+                ($ignore == none or not index($ignore, $property)) and
+                    ($include == all or index($include, $property))
+            ) {
+                #{$prefix}#{$property}: $value;
+            }
+        }
+    }
+}
+
+/**
+ * Adds a before element that will guarantee the defined aspect ration on a block element
+ *
+ * @param $width
+ * @param $height
+ * @param $where
+ */
+@mixin maintain-aspect-ratio($width, $height, $where: after) {
+    $padding: padding-bottom;
+    @if ($where == before) {
+        $padding: padding-top;
+    }
+
+    position: relative;
+
+    &::#{$where} {
+        width: 100%;
+        #{$padding}: ($height / $width) * 100%;
+        display: block;
+        content: '';
+    }
+
+    > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}

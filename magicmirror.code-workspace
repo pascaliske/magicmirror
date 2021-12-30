@@ -1,0 +1,33 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "files.associations": {
+            "*.yml.example": "yaml"
+        },
+        "npm.packageManager": "yarn",
+        "prettier.ignorePath": ".prettierignore",
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "[html]": {
+            "editor.formatOnSave": true,
+            "editor.formatOnType": true
+        },
+        "[yaml]": {
+            "editor.formatOnSave": true,
+            "editor.formatOnType": true
+        },
+        "[json]": {
+            "editor.formatOnSave": true,
+            "editor.formatOnType": true
+        },
+        "[jsonc]": {
+            "editor.formatOnSave": true,
+            "editor.formatOnType": true
+        }
+    }
+}

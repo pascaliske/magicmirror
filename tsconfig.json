@@ -1,0 +1,44 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "target": "es2017",
+    "module": "es2020",
+    "typeRoots": ["node_modules/@types", "src/typings.d.ts"],
+    "lib": ["es2020", "dom"],
+    "paths": {
+      "environments": ["src/environments"],
+      "environments/*": ["src/environments/*"],
+      "core": ["src/app/core"],
+      "core/*": ["src/app/core/*"],
+      "shared": ["src/app/shared"],
+      "shared/*": ["src/app/shared/*"],
+      "store": ["src/app/store"],
+      "store/*": ["src/app/store/*"],
+      "pages": ["src/app/pages"],
+      "pages/*": ["src/app/pages/*"],
+      "components": ["src/app/components"],
+      "components/*": ["src/app/components/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

@@ -1,0 +1,7 @@
+<!-- misc -->
+<ng-progress></ng-progress>
+
+<!-- root -->
+<div class="cmp-root" [@fade]="settings.loaded" *ngIf="settings$ | async as settings">
+    <router-outlet></router-outlet>
+</div>

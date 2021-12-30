@@ -1,0 +1,16 @@
+/**
+ * ENTRYPOINT: STYLES
+ *
+ * This file contains all styles for the application itself
+ */
+
+// variables, mixins, functions
+@import 'shared';
+
+// external libraries
+@import '~normalize-scss/sass/normalize';
+
+// app related stuff
+@import 'base/base';
+@import 'base/progressbar';
+@import 'base/fonts';

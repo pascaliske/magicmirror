@@ -1,0 +1,158 @@
+/**
+ * Base font settings
+ */
+$base-font-size: 16px;
+$base-font-ratio: 1.25;
+$modularscale: (
+    base: $base-font-size,
+    ratio: $base-font-ratio,
+);
+
+/**
+ * Text styles.
+ *
+ * Available types are:
+ * - regular
+ * - bold
+ * - light
+ * - italic
+ */
+$font-settings: (
+    bold: (
+        font-family: (
+            'Lato',
+            Arial,
+            sans-serif,
+        ),
+        font-weight: 700,
+    ),
+    regular: (
+        font-family: (
+            'Lato',
+            Arial,
+            sans-serif,
+        ),
+        font-weight: 400,
+    ),
+    light: (
+        font-family: (
+            'Lato',
+            Arial,
+            sans-serif,
+        ),
+        font-weight: 300,
+    ),
+    thin: (
+        font-family: (
+            'Lato',
+            Arial,
+            sans-serif,
+        ),
+        font-weight: 100,
+    ),
+);
+
+/**
+ * Text styles
+ *
+ * Available types are:
+ * - title
+ * - subtitle
+ * - headline-h1
+ * - headline-h2
+ * - headline-h3
+ * - headline-h4
+ * - headline-h5
+ * - headline-h6
+ * - copy
+ * - copy-bold
+ */
+$text-settings: (
+    title: (
+        all: (
+            font-settings: bold,
+            font-size: 52px,
+            line-height: 54px,
+        ),
+        mini-tablet: (
+            font-size: 80px,
+            line-height: 86px,
+        ),
+    ),
+    subtitle: (
+        all: (
+            font-settings: light,
+            font-size: 19px,
+            line-height: 23px,
+        ),
+        mini-tablet: (
+            font-size: 29px,
+            line-height: 33px,
+        ),
+    ),
+    headline-h1: (
+        all: (
+            font-settings: bold,
+            font-size: ms(5),
+            line-height: 1.25,
+            color: $color-primary,
+        ),
+    ),
+    headline-h2: (
+        all: (
+            font-settings: bold,
+            font-size: ms(4),
+            line-height: 1.25,
+            color: $color-primary,
+        ),
+    ),
+    headline-h3: (
+        all: (
+            font-settings: bold,
+            font-size: ms(3),
+            line-height: 1.5,
+            color: $color-primary,
+        ),
+    ),
+    headline-h4: (
+        all: (
+            font-settings: bold,
+            font-size: ms(2),
+            line-height: 1.5,
+            color: $color-primary,
+        ),
+    ),
+    headline-h5: (
+        all: (
+            font-settings: bold,
+            font-size: ms(1),
+            line-height: 1.6,
+            color: $color-primary,
+        ),
+    ),
+    headline-h6: (
+        all: (
+            font-settings: bold,
+            font-size: ms(0),
+            line-height: 2,
+            color: $color-primary,
+            text-transform: uppercase,
+        ),
+    ),
+    copy: (
+        all: (
+            font-settings: regular,
+            font-size: ms(0),
+            line-height: 1.6,
+            color: rgba($color-primary, 0.8),
+        ),
+    ),
+    copy-bold: (
+        all: (
+            font-settings: bold,
+            font-size: ms(0),
+            line-height: 1.6,
+            color: $color-primary,
+        ),
+    ),
+);

@@ -1,0 +1,21 @@
+@mixin grid-container() {
+    width: 100%;
+    height: 100%;
+    padding: $grid-gap;
+    display: grid;
+    grid-template-areas: '#{to-string(map-keys($grid-areas))}';
+    grid-template-columns: to-string(map-values($grid-areas));
+    grid-template-rows: auto;
+    gap: $grid-gap;
+}
+
+@mixin grid-column($area: left, $align-self: start) {
+    @if not index(map-keys($grid-areas), $area) {
+        @error 'Invalid grid area given!';
+    }
+
+    display: grid;
+    grid-area: $area;
+    align-self: $align-self;
+    gap: $grid-gap;
+}

@@ -1,0 +1,17 @@
+@mixin cmp-host() {
+    :host {
+        @content;
+    }
+}
+
+@mixin cmp-base($component) {
+    .#{$component} {
+        @content;
+    }
+}
+
+@mixin cmp-modifier($component, $modifier) {
+    .#{$component}--#{$modifier} .#{$component} {
+        @content;
+    }
+}
