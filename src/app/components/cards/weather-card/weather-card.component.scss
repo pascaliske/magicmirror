@@ -1,0 +1,69 @@
+@import 'shared';
+
+$component: 'cmp-weather-card';
+
+@include cmp-host() {
+    display: block;
+}
+
+@include cmp-base($component) {
+    padding-top: 35px;
+
+    &__current {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: 'temperature feels-like' 'description description';
+        margin-bottom: 20px;
+    }
+
+    &__temperature {
+        @include use-font(bold);
+        grid-area: temperature;
+        align-self: baseline;
+        justify-self: start;
+        margin-right: 20px;
+        font-size: 95px;
+        font-variant: tabular-nums;
+    }
+
+    &__feels-like {
+        @include use-font(light);
+        grid-area: feels-like;
+        align-self: baseline;
+        justify-self: end;
+        font-size: 40px;
+        font-variant: tabular-nums;
+    }
+
+    &__description {
+        @include use-font(regular);
+        grid-area: description;
+        margin-top: 5px;
+        font-size: 24px;
+        font-variant: tabular-nums;
+    }
+
+    &__icon {
+        grid-area: icon;
+    }
+
+    &__forecast {
+        @include linear-fade-out();
+    }
+
+    &__forecast-day {
+        @include use-font(light);
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        grid-template-areas: 'day min max';
+
+        &:not(:last-of-type) {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__forecast-temperature {
+        min-width: 80px;
+        text-align: right;
+    }
+}
