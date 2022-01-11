@@ -7,9 +7,8 @@ import (
 )
 
 type SocketMessage struct {
-	UUID    string `json:"uuid,omitempty"`
-	Action  string `json:"action"`
-	Payload string `json:"payload,omitempty"`
+	Action  string      `json:"action"`
+	Payload interface{} `json:"payload,omitempty"`
 }
 
 var upgrader = websocket.Upgrader{}

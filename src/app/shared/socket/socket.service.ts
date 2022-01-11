@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 import { Observable, EMPTY } from 'rxjs'
-import { filter, map, catchError } from 'rxjs/operators'
+import { filter, catchError } from 'rxjs/operators'
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket'
 
 export const enum SocketAction {
@@ -28,10 +28,7 @@ export class SocketService {
 
     public subscribe<T = string>(action: SocketAction): Observable<SocketMessage<T>> {
         return this.socket$.pipe(
-            filter((message: SocketMessage<string>) => message.action === action),
-            map<SocketMessage<string>, SocketMessage<T>>(({ payload, ...message }) => {
-                return { ...message, payload: JSON.parse(payload) }
-            }),
+            filter((message: SocketMessage<T>) => message.action === action),
             catchError((error: Error) => {
                 // eslint-disable-next-line no-console
                 console.log('==> error', error)
@@ -41,6 +38,6 @@ export class SocketService {
     }
 
     public next<A extends SocketAction, P>(action: A, payload?: P): void {
-        this.socket$.next({ action, payload: JSON.stringify(payload) })
+        this.socket$.next({ action, payload })
     }
 }

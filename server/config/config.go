@@ -24,6 +24,11 @@ type Config struct {
 		Latitude  float64
 		Longitude float64
 	}
+
+	// api keys
+	ApiKeys struct {
+		OpenWeather string
+	}
 }
 
 func init() {
@@ -37,6 +42,9 @@ func init() {
 	viper.SetDefault("Language", "")
 	viper.SetDefault("Location.Latitude", "")
 	viper.SetDefault("Location.Longitude", "")
+
+	// api keys
+	viper.SetDefault("ApiKeys.OpenWeather", "")
 }
 
 func Parse() (config Config, err error) {

@@ -1,6 +1,11 @@
 export interface Settings {
     language: string
     units: 'metric' | 'imperial'
-    latitude: number
-    longitude: number
+    location: {
+        latitude: number
+        longitude: number
+    }
+    apiKeys: {
+        openWeather: string
+    }
 }
