@@ -6,7 +6,7 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/gorilla/websocket v1.4.2
 	github.com/hellofresh/health-go/v4 v4.5.0
-	github.com/labstack/echo/v4 v4.6.1
+	github.com/labstack/echo/v4 v4.6.3
 	github.com/prometheus/client_golang v1.11.0
 	github.com/spf13/viper v1.10.1
 )
