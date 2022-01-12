@@ -31,6 +31,23 @@ RUN yarn install --frozen-lockfile --ignore-scripts
 COPY . /build
 RUN yarn run build
 
+# tini
+FROM --platform=${BUILDPLATFORM} alpine as tini
+LABEL maintainer="info@pascaliske.dev"
+
+# environment
+ENV TINI_VERSION=v0.19.0
+ARG TARGETPLATFORM
+
+# install tini
+RUN case ${TARGETPLATFORM} in \
+    "linux/amd64")  TINI_ARCH=amd64  ;; \
+    "linux/arm64")  TINI_ARCH=arm64  ;; \
+    "linux/arm/v7") TINI_ARCH=armhf  ;; \
+    esac \
+    && wget -q https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-${TINI_ARCH} -O /tini \
+    && chmod +x /tini
+
 # final image
 FROM alpine
 LABEL maintainer="info@pascaliske.dev"
@@ -38,10 +55,11 @@ LABEL maintainer="info@pascaliske.dev"
 # environment
 ENV MM_PORT=9000
 
-# install tini
-RUN apk add --no-cache curl tini
+# install curl
+RUN apk add --no-cache curl
 
 # inject built files
+COPY --from=tini /tini /sbin/tini
 COPY --from=server /go/src/app/magicmirror /magicmirror
 COPY --from=app /build/dist/magicmirror /public
 
