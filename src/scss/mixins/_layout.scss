@@ -9,13 +9,17 @@
     gap: $grid-gap;
 }
 
-@mixin grid-column($area: left, $align-self: start) {
+@mixin grid-column($area: left, $align-self: '') {
     @if not index(map-keys($grid-areas), $area) {
         @error 'Invalid grid area given!';
     }
 
     display: grid;
     grid-area: $area;
-    align-self: $align-self;
+
+    @if $align-self != '' {
+        align-self: $align-self;
+    }
+
     gap: $grid-gap;
 }

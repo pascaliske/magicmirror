@@ -5,6 +5,7 @@ export interface Settings {
         latitude: number
         longitude: number
     }
+    feeds: string[]
     apiKeys: {
         openWeather: string
     }
