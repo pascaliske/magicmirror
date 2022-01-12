@@ -1,11 +1,13 @@
-<div class="cmp-home">
-    <div class="cmp-home__left">
-        <cmp-weather-card></cmp-weather-card>
+<ng-container *ngIf="settings$ | async as settings">
+    <div class="cmp-home" [@fade]="settings.loaded" *ngIf="settings.loaded">
+        <div class="cmp-home__left">
+            <cmp-weather-card></cmp-weather-card>
+        </div>
+        <div class="cmp-home__center">
+            <cmp-news-card></cmp-news-card>
+        </div>
+        <div class="cmp-home__right">
+            <cmp-time-card></cmp-time-card>
+        </div>
     </div>
-    <div class="cmp-home__center">
-        <cmp-news-card></cmp-news-card>
-    </div>
-    <div class="cmp-home__right">
-        <cmp-time-card></cmp-time-card>
-    </div>
-</div>
+</ng-container>
