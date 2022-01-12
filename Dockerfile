@@ -15,7 +15,7 @@ RUN go mod download
 
 # build binary
 COPY server /go/src/app
-RUN go build -v -ldflags="-w -s" -o ./magicmirror main.go
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -ldflags="-w -s" -o ./magicmirror main.go
 
 # app
 FROM --platform=${BUILDPLATFORM} node:16-alpine AS app
