@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core'
+import { Component, ChangeDetectionStrategy, Inject, LOCALE_ID } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
@@ -18,5 +18,9 @@ export class BaseCardComponent {
         filter(({ loaded }) => loaded),
     )
 
-    public constructor(protected http: HttpClient, private readonly store: Store<AppState>) {}
+    public constructor(
+        @Inject(LOCALE_ID) protected readonly locale: string,
+        protected http: HttpClient,
+        private readonly store: Store<AppState>,
+    ) {}
 }

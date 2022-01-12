@@ -18,8 +18,6 @@ type ApiKeys struct {
 }
 
 type Settings struct {
-	Language string   `json:"language"`
-	Units    string   `json:"units"`
 	Location Location `json:"location"`
 	Feeds    []string `json:"feeds"`
 	ApiKeys  ApiKeys  `json:"apiKeys"`
@@ -27,8 +25,6 @@ type Settings struct {
 
 func BuildSettings(cfg config.Config) Settings {
 	return Settings{
-		Language: cfg.Language,
-		Units:    cfg.Units,
 		Location: Location{
 			Latitude:  cfg.Location.Latitude,
 			Longitude: cfg.Location.Longitude,

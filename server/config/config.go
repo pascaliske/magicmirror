@@ -18,8 +18,6 @@ type Config struct {
 	}
 
 	// settings
-	Units    string
-	Language string
 	Location struct {
 		Latitude  float64
 		Longitude float64
@@ -39,8 +37,6 @@ func init() {
 	viper.SetDefault("Metrics.Path", "/metrics")
 
 	// settings
-	viper.SetDefault("Units", "")
-	viper.SetDefault("Language", "")
 	viper.SetDefault("Location.Latitude", "")
 	viper.SetDefault("Location.Longitude", "")
 	viper.SetDefault("Feeds", []string{})

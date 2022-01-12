@@ -41,8 +41,8 @@ export class WeatherCardComponent extends BaseCardComponent {
             .set('exclude', 'minutely')
             .set('lat', settings?.location?.latitude ?? '')
             .set('lon', settings?.location?.longitude ?? '')
-            .set('units', settings?.units ?? 'metric')
-            .set('lang', settings?.language ?? 'en')
+            .set('units', 'metric')
+            .set('lang', this.locale)
 
         return this.http.get<WeatherData>(url, { params })
     }
