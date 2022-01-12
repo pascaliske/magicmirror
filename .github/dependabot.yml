@@ -1,0 +1,49 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: chore
+      include: scope
+    assignees:
+      - pascaliske
+    labels:
+      - dependencies
+  - package-ecosystem: gomod
+    directory: /server
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: chore
+      include: scope
+    assignees:
+      - pascaliske
+    labels:
+      - dependencies
+  - package-ecosystem: npm
+    directory: /
+    versioning-strategy: increase
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: chore
+      include: scope
+    assignees:
+      - pascaliske
+    labels:
+      - dependencies
+    ignore:
+      - dependency-name: '@angular/*'
+        update-types:
+          - version-update:semver-major
+      - dependency-name: '@angular-builders/*'
+        update-types:
+          - version-update:semver-major
+      - dependency-name: '@angular-devkit/*'
+        update-types:
+          - version-update:semver-major
+      - dependency-name: '@angular-eslint/*'
+        update-types:
+          - version-update:semver-major

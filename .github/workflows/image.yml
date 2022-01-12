@@ -1,0 +1,83 @@
+name: Image
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      PLATFORMS: linux/amd64,linux/arm/v7,linux/arm64
+    steps:
+      # build image name
+      - name: Build image name
+        id: image-name
+        run: echo "::set-output name=image::${REPOSITORY//docker-/}"
+        env:
+          REPOSITORY: ${{ github.repository }}
+
+      # checkout
+      - uses: actions/checkout@v2.4.0
+
+      # setup qemu
+      - uses: docker/setup-qemu-action@v1
+        with:
+          platforms: all
+
+      # setup docker metadata
+      - uses: docker/metadata-action@v3
+        id: metadata
+        with:
+          images: |
+            ghcr.io/${{ steps.image-name.outputs.image }}
+            ${{ steps.image-name.outputs.image }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.0.') }}
+            type=semver,pattern={{major}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.') }}
+
+      # setup docker buildx
+      - uses: docker/setup-buildx-action@v1
+        id: buildx
+        with:
+          version: latest
+          install: true
+
+      # login to docker hub
+      - uses: docker/login-action@v1
+        if: github.event_name != 'pull_request'
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      # login to github container registry
+      - uses: docker/login-action@v1
+        if: github.event_name != 'pull_request'
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # build & push image
+      - uses: docker/build-push-action@v2
+        id: build
+        with:
+          builder: ${{ steps.buildx.outputs.name }}
+          platforms: ${{ env.PLATFORMS }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
+
+      # output image digest
+      - name: Output image digest
+        run: |
+          echo ${{ steps.build.outputs.digest }}
