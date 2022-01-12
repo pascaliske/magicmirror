@@ -125,3 +125,7 @@
         bottom: 0;
     }
 }
+
+@mixin linear-fade-out($direction: to bottom) {
+    mask-image: linear-gradient(#{$direction}, black 0%, transparent 100%);
+}

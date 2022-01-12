@@ -9,6 +9,7 @@ import { ToWeekPipe } from './datetime/to-week.pipe'
 import { ToMonthPipe } from './datetime/to-month.pipe'
 import { ToMonthNamePipe } from './datetime/to-month-name.pipe'
 import { ToYearPipe } from './datetime/to-year.pipe'
+import { ToHumanNumberPipe } from './numbers/to-human.pipe'
 
 @NgModule({
     imports: [CommonModule],
@@ -22,6 +23,7 @@ import { ToYearPipe } from './datetime/to-year.pipe'
         ToMonthPipe,
         ToMonthNamePipe,
         ToYearPipe,
+        ToHumanNumberPipe,
     ],
     exports: [
         CommonModule,
@@ -34,6 +36,7 @@ import { ToYearPipe } from './datetime/to-year.pipe'
         ToMonthPipe,
         ToMonthNamePipe,
         ToYearPipe,
+        ToHumanNumberPipe,
     ],
 })
 export class SharedModule {}

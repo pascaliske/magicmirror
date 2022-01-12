@@ -6,14 +6,14 @@ $component: 'cmp-home';
     @include grid-container();
 
     &__left {
-        @include grid-column(left, start);
+        @include grid-column(left);
     }
 
     &__center {
-        @include grid-column(center, center);
+        @include grid-column(center);
     }
 
     &__right {
-        @include grid-column(right, start);
+        @include grid-column(right);
     }
 }

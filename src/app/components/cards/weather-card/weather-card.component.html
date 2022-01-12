@@ -1,0 +1,29 @@
+<div class="cmp-weather-card">
+    <div class="cmp-weather-card__current" *ngIf="current$ | async as current">
+        <div class="cmp-weather-card__temperature">
+            <span>{{ current.temp | toHumanNumber }} °</span>
+        </div>
+        <div class="cmp-weather-card__feels-like">
+            <span>{{ current.feels_like | toHumanNumber }} °</span>
+        </div>
+        <div class="cmp-weather-card__description">
+            <span>{{ current.weather[0].description }}</span>
+            <span *ngIf="current.visibility < 1">
+                , Sichtweite ca. {{ current.visibility | toHumanNumber: '1.0-1' }} km
+            </span>
+        </div>
+    </div>
+    <div class="cmp-weather-card__forecast" *ngIf="daily$ | async as daily">
+        <div class="cmp-weather-card__forecast-day" *ngFor="let day of daily">
+            <span class="cmp-weather-card__forecast-weekday">
+                {{ day.dt | fromTimestamp | toDayName }}
+            </span>
+            <span class="cmp-weather-card__forecast-temperature">
+                {{ day.temp.min | toHumanNumber: '1.1-1' }} °
+            </span>
+            <span class="cmp-weather-card__forecast-temperature">
+                {{ day.temp.max | toHumanNumber: '1.1-1' }} °
+            </span>
+        </div>
+    </div>
+</div>

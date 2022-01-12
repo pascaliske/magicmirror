@@ -1,0 +1,5 @@
+<div class="cmp-news-card" *ngIf="data$ | async as data">
+    <div class="cmp-news-card__headline" *ngFor="let headline of data">
+        {{ headline }}
+    </div>
+</div>

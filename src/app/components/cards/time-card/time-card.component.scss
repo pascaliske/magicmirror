@@ -1,0 +1,32 @@
+@import 'shared';
+
+$component: 'cmp-time-card';
+
+@include cmp-host() {
+    display: block;
+}
+
+@include cmp-base($component) {
+    &__date {
+        @include use-font(thin);
+        height: 35px;
+        font-size: 30px;
+        font-variant: tabular-nums;
+        text-align: right;
+    }
+
+    &__time {
+        @include use-font(bold);
+        font-size: 95px;
+        font-variant: tabular-nums;
+        text-align: right;
+    }
+
+    &__week {
+        @include use-font(regular);
+        margin-top: 5px;
+        font-size: 24px;
+        font-variant: tabular-nums;
+        text-align: right;
+    }
+}

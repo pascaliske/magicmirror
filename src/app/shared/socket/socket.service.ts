@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 import { Observable, EMPTY } from 'rxjs'
-import { filter, catchError } from 'rxjs/operators'
+import { filter, delay, catchError } from 'rxjs/operators'
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket'
 
 export const enum SocketAction {
@@ -29,6 +29,7 @@ export class SocketService {
     public subscribe<T = string>(action: SocketAction): Observable<SocketMessage<T>> {
         return this.socket$.pipe(
             filter((message: SocketMessage<T>) => message.action === action),
+            delay(500),
             catchError((error: Error) => {
                 // eslint-disable-next-line no-console
                 console.log('==> error', error)

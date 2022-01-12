@@ -18,12 +18,11 @@ type Config struct {
 	}
 
 	// settings
-	Units    string
-	Language string
 	Location struct {
 		Latitude  float64
 		Longitude float64
 	}
+	Feeds []string
 
 	// api keys
 	ApiKeys struct {
@@ -38,10 +37,9 @@ func init() {
 	viper.SetDefault("Metrics.Path", "/metrics")
 
 	// settings
-	viper.SetDefault("Units", "")
-	viper.SetDefault("Language", "")
 	viper.SetDefault("Location.Latitude", "")
 	viper.SetDefault("Location.Longitude", "")
+	viper.SetDefault("Feeds", []string{})
 
 	// api keys
 	viper.SetDefault("ApiKeys.OpenWeather", "")
@@ -62,6 +60,7 @@ func Parse() (config Config, err error) {
 	// read environment variables
 	viper.SetEnvPrefix("MM")
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+	viper.SetTypeByDefaultValue(true)
 	viper.AutomaticEnv()
 
 	// parse config

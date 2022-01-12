@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core'
+import { Component, ChangeDetectionStrategy, Inject, LOCALE_ID } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Store } from '@ngrx/store'
+import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
+import { filter } from 'rxjs/operators'
 import { AppState } from 'store'
 import { SettingsState } from 'store/settings'
 
@@ -12,7 +13,14 @@ import { SettingsState } from 'store/settings'
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BaseCardComponent {
-    protected settings$: Observable<SettingsState> = this.store.select('settings')
+    protected settings$: Observable<SettingsState> = this.store.pipe(
+        select('settings'),
+        filter(({ loaded }) => loaded),
+    )
 
-    public constructor(protected http: HttpClient, private readonly store: Store<AppState>) {}
+    public constructor(
+        @Inject(LOCALE_ID) protected readonly locale: string,
+        protected http: HttpClient,
+        private readonly store: Store<AppState>,
+    ) {}
 }

@@ -1,0 +1,22 @@
+@import 'shared';
+
+$component: 'cmp-news-card';
+
+@include cmp-host() {
+    display: block;
+    align-self: start;
+}
+
+@include cmp-base($component) {
+    @include linear-fade-out();
+    margin-top: 10px;
+
+    &__headline {
+        @include use-font(light);
+        text-align: center;
+
+        &:not(:last-of-type) {
+            margin-bottom: 10px;
+        }
+    }
+}

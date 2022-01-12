@@ -1,0 +1,5 @@
+<div class="cmp-time-card" *ngIf="interval$ | async as interval">
+    <div class="cmp-time-card__date">{{ interval | toLocalDate: 'long' }}</div>
+    <div class="cmp-time-card__time">{{ interval | toLocalTime }}</div>
+    <div class="cmp-time-card__week">Week {{ interval | toWeek }}</div>
+</div>
