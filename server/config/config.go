@@ -53,6 +53,7 @@ func Parse() (config Config, err error) {
 	flag.Parse()
 
 	// read config file
+	viper.AddConfigPath("/config")
 	viper.AddConfigPath(filepath.Dir(*input))
 	viper.SetConfigName(strings.TrimSuffix(filepath.Base(*input), filepath.Ext(filepath.Base(*input))))
 	viper.SetConfigType(strings.Replace(filepath.Ext(filepath.Base(*input)), ".", "", -1))
