@@ -1,27 +1,32 @@
-# Magicmirror
+# `pascaliske/magicmirror`
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+> Go + Angular based smart mirror platform - packaged as single docker image.
 
-## Development server
+[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/pascaliske/magicmirror/latest?style=flat-square)](https://hub.docker.com/r/pascaliske/magicmirror) [![Docker Image Size (tag)](https://img.shields.io/docker/image-size/pascaliske/magicmirror/latest?style=flat-square)](https://hub.docker.com/r/pascaliske/magicmirror) [![Docker Pulls](https://img.shields.io/docker/pulls/pascaliske/magicmirror?style=flat-square)](https://hub.docker.com/r/pascaliske/magicmirror) [![GitHub Tag](https://img.shields.io/github/v/tag/pascaliske/magicmirror?style=flat-square)](https://github.com/pascaliske/magicmirror) [![Build Status](https://img.shields.io/github/workflow/status/pascaliske/magicmirror/Image/master?label=build&style=flat-square)](https://github.com/pascaliske/magicmirror/actions) [![GitHub Last Commit](https://img.shields.io/github/last-commit/pascaliske/magicmirror?style=flat-square)](https://github.com/pascaliske/magicmirror) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT) [![Awesome Badges](https://img.shields.io/badge/badges-awesome-green.svg?style=flat-square)](https://github.com/Naereen/badges)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Usage
 
-## Code scaffolding
+To use this image pull it from one of the following registries:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+# docker hub
+docker pull pascaliske/magicmirror
 
-## Build
+# github container registry
+docker pull ghcr.io/pascaliske/magicmirror
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To run the server use the following command:
 
-## Running unit tests
+```bash
+docker run \
+    --detach \
+    --name magicmirror
+    --publish 9000:9000 \
+    --volume $(pwd)/config.yml:/config.yml \
+    ghcr.io/pascaliske/magicmirror
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## License
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[MIT](LICENSE.md) – © 2022 [Pascal Iske](https://pascaliske.dev)
