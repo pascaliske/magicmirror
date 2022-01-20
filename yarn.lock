@@ -5338,10 +5338,10 @@ neo-async@^2.6.0, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngx-progressbar@^6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-6.1.1.tgz#77156c0fbbbd163e26c9501d74bc55b7cb6d70bc"
-  integrity sha512-6FbCxbhy+lwX0hzfrr+pp4wAf0tX85664j1tnEdRd6LIfSTlUtXARiyUbGAEMyDS9MCbXhQhJyIylsJrB3gYOg==
+ngx-progressbar@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-7.0.0.tgz#c9ca11f67c0dd143789936008a2a0c9df15d38f4"
+  integrity sha512-bMijVbRLgVHkX+iQZzDyMi3ZZ2ClZKgDaZZQ6RF3f5o6iw7LvH1sM2SKnWk1IFzf+U3iOA59elvG7lDs1Wn9vQ==
   dependencies:
     tslib "^2.0.0"
 
