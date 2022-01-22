@@ -12,22 +12,20 @@ import { BaseCardComponent } from '../base-card/base-card.component'
 })
 export class NewsCardComponent extends BaseCardComponent {
     public readonly data$: Observable<string[]> = this.settings$.pipe(
-        concatMap(({ data }) => {
-            const feeds = data?.feeds?.map(url => {
-                return this.fetchNewsData(url).pipe(this.extractHeadlines(4))
-            })
-
-            return forkJoin(feeds).pipe(map(responses => responses.flat()))
-        }),
+        concatMap(({ data }) => this.fetchNewsData(data?.feeds ?? [])),
     )
 
     @Cacheable({ maxAge: 600000 })
-    private fetchNewsData(url: string): Observable<string> {
-        return this.http.get(url, { responseType: 'text' })
+    private fetchNewsData(urls: string[]): Observable<string[]> {
+        const feeds: Observable<string[]>[] = urls.map((url: string) => {
+            return this.http.get(url, { responseType: 'text' }).pipe(this.extractHeadlines(4))
+        })
+
+        return forkJoin(feeds).pipe(map(responses => responses.flat()))
     }
 
     private extractHeadlines(count: number): OperatorFunction<string, string[]> {
-        return map<string, string[]>(response => {
+        return map<string, string[]>((response: string) => {
             const parser: DOMParser = new window.DOMParser()
             const feed: Document = parser.parseFromString(response, 'text/xml')
 
