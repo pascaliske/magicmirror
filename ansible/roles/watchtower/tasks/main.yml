@@ -1,0 +1,32 @@
+# ensure directory exists
+- name: Ensure directory exists
+  file:
+    path: '{{ paths.root }}/{{ role_name }}'
+    state: directory
+
+# prepare docker config for watchtower
+- name: Create symlink to docker config
+  file:
+    src: '{{ paths.home }}/.docker/config.json'
+    dest: '{{ paths.root }}/{{ role_name }}/docker-config.json'
+    state: link
+
+# create container
+- name: Create container
+  community.docker.docker_container:
+    name: watchtower
+    image: containrrr/watchtower:latest
+    restart_policy: always
+    pull: yes
+    env:
+      TZ: '{{ timezone }}'
+      WATCHTOWER_SCHEDULE: '0 */10 * * * *' # every 10 minutes
+      # WATCHTOWER_NOTIFICATIONS: shoutrrr
+      # WATCHTOWER_NOTIFICATIONS_LEVEL: '{{ watchtower.slack_level }}'
+      # WATCHTOWER_NOTIFICATION_URL: '{{ watchtower.slack_url }}'
+      # WATCHTOWER_NOTIFICATION_TEMPLATE: '{{ watchtower.slack_template }}'
+      WATCHTOWER_CLEANUP: 'true'
+      WATCHTOWER_DEBUG: 'false'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - '{{ paths.root }}/{{ role_name }}/docker-config.json:/config.json'

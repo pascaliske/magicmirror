@@ -1,0 +1,13 @@
+---
+- name: provision
+  hosts: all
+  roles:
+    - role: common
+      tags:
+        - common
+    - role: magicmirror
+      tags:
+        - magicmirror
+    - role: watchtower
+      tags:
+        - watchtower

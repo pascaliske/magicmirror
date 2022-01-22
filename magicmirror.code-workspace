@@ -8,6 +8,8 @@
         "editor.formatOnSave": true,
         "editor.formatOnType": true,
         "files.associations": {
+            "*.j2": "nunjucks",
+            "*.yml.j2": "helm",
             "*.yml.example": "yaml"
         },
         "npm.packageManager": "yarn",

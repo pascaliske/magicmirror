@@ -1,0 +1,47 @@
+# setup bash aliases
+- name: Create aliases
+  lineinfile:
+    path: '{{ paths.home }}/.bashrc'
+    line: 'alias {{ item.alias }}="{{ item.command }}"'
+    regexp: 'alias {{ item.alias }}="{{ item.command }}"$'
+    insertafter: ^alias
+    create: yes
+  loop:
+    - { alias: 'll', command: 'ls -lisahG' }
+    - { alias: 'd', command: 'docker' }
+
+# update
+- name: Update apt packages
+  become: yes
+  apt:
+    upgrade: safe
+    update_cache: yes
+    autoremove: yes
+
+# install common apt packages
+- name: Install common apt packages
+  become: yes
+  apt:
+    name: '{{ item }}'
+    update_cache: yes
+    state: latest
+  loop:
+    - vim
+    - htop
+    - curl
+    - python3
+    - python3-pip
+
+# install common pip packages
+- name: Install python packages
+  pip:
+    name: '{{ item }}'
+    state: latest
+  loop:
+    - docker
+
+# prepare directory
+- name: Ensure directory exists
+  file:
+    path: '{{ paths.root }}'
+    state: directory
