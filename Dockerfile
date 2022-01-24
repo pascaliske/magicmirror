@@ -52,18 +52,26 @@ RUN case ${TARGETPLATFORM} in \
 FROM alpine
 LABEL maintainer="info@pascaliske.dev"
 
+# create non-root user
+RUN addgroup -S -g 911 unknown && adduser -S -u 911 -G unknown -s /bin/false unknown
+
 # environment
 ENV MM_PORT=9000
 
 # install curl
-RUN apk add --no-cache curl
+RUN apk add --no-cache curl shadow su-exec
 
 # inject built files
 COPY --from=tini /tini /sbin/tini
 COPY --from=server /go/src/app/magicmirror /magicmirror
 COPY --from=app /build/dist/magicmirror /public
 
+# inject entrypoint
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+# health check
 HEALTHCHECK CMD curl -f http://localhost:${MM_PORT}/health || exit 1
 
-ENTRYPOINT [ "/sbin/tini", "--" ]
+# let's go!
+ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh" ]
 CMD [ "/magicmirror" ]
