@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { HttpParams } from '@angular/common/http'
-import { Observable } from 'rxjs'
+import { Observable, EMPTY } from 'rxjs'
 import { concatMap, map } from 'rxjs/operators'
 import { Cacheable } from 'ts-cacheable'
 import { environment } from 'environments/environment'
@@ -33,6 +33,10 @@ export class WeatherCardComponent extends BaseCardComponent {
 
     @Cacheable({ maxAge: 600000 })
     private fetchWeatherData(settings: Settings): Observable<WeatherData> {
+        if (!settings?.apiKeys?.openWeather) {
+            return EMPTY
+        }
+
         const url: string = environment.production
             ? 'https://api.openweathermap.org/data/2.5/onecall'
             : '/assets/mockups/weather.json'
