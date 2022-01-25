@@ -1,0 +1,29 @@
+# ensure directory exists
+- name: Ensure directory exists
+  file:
+    path: '{{ paths.root }}/{{ role_name }}'
+    state: directory
+
+# configure magicmirror
+- name: Create configuration
+  template:
+    src: '{{ role_name }}/config.yml.j2'
+    dest: '{{ paths.root }}/{{ role_name }}/config.yml'
+
+# create container
+- name: Create container
+  community.docker.docker_container:
+    name: '{{ role_name }}'
+    image: 'ghcr.io/pascaliske/{{ role_name }}:master'
+    restart_policy: unless-stopped
+    pull: yes
+    ports:
+      - '9000:9000'
+    env:
+      TZ: '{{ timezone }}'
+      PUID: '{{ ansible_user_uid | string }}'
+      PGID: '{{ ansible_user_gid | string }}'
+    mounts:
+      - type: bind
+        source: '{{ paths.root }}/{{ role_name }}/config.yml'
+        target: /config.yml

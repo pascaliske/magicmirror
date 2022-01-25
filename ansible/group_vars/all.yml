@@ -1,0 +1,5 @@
+---
+timezone: Europe/Berlin
+paths:
+  home: '{{ ansible_env.HOME }}'
+  root: '{{ ansible_env.HOME }}/{{ inventory_hostname }}'
