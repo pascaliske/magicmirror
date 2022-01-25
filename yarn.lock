@@ -1729,6 +1729,14 @@
   resolved "https://registry.yarnpkg.com/@pascaliske/prettier-config/-/prettier-config-1.1.3.tgz#06b84f7561006741c20e381b9c68d94d4cb4e964"
   integrity sha512-zJ6zsxxxwnDsB0PJCrrOwHoOZ8EcPBsRhb01tmflG2Io1FHjgSQ1fZouTGCHkMP/soJZxIHWCo9u6IlzNgwhQA==
 
+"@rstacruz/bump-cli@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@rstacruz/bump-cli/-/bump-cli-2.0.1.tgz#e10cc113cd9a9429b1851927907bad5ed90775b4"
+  integrity sha512-SYc0KkIrlkORuL8dcRwPZZRsnGUVRfUwrACvH7nrrMVOQZ7pwuCaFkhry+4notIsdry9U8Qq8yBx4ERxLMnTjg==
+  dependencies:
+    minimist "^1.2.5"
+    semver "^7.3.5"
+
 "@schematics/angular@13.1.4":
   version "13.1.4"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-13.1.4.tgz#8b8c9ad40403c485bae9adeb51649711651189d2"
