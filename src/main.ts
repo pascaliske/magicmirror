@@ -7,6 +7,7 @@ import { AppModule } from './app/app.module'
 // set global cache storage strategy
 GlobalCacheConfig.globalCacheKey = 'MM_LOCAL_CACHE'
 GlobalCacheConfig.storageStrategy = LocalStorageStrategy
+GlobalCacheConfig.maxAge = 600000
 
 // enable prod mode
 if (environment.production) {

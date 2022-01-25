@@ -15,7 +15,7 @@ export class NewsCardComponent extends BaseCardComponent {
         concatMap(({ data }) => this.fetchNewsData(data?.feeds ?? [])),
     )
 
-    @Cacheable({ maxAge: 600000 })
+    @Cacheable()
     private fetchNewsData(urls: string[]): Observable<string[]> {
         const feeds: Observable<string[]>[] = urls.map((url: string) => {
             return this.http.get(url, { responseType: 'text' }).pipe(this.extractHeadlines(4))

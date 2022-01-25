@@ -31,7 +31,7 @@ export class WeatherCardComponent extends BaseCardComponent {
         map(({ daily }) => daily.slice(0, 8)),
     )
 
-    @Cacheable({ maxAge: 600000 })
+    @Cacheable()
     private fetchWeatherData(settings: Settings): Observable<WeatherData> {
         if (!settings?.apiKeys?.openWeather) {
             return EMPTY
