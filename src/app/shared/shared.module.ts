@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { TranslateModule } from '@ngx-translate/core'
 import { FromTimestampPipe } from './datetime/from-timestamp.pipe'
 import { ToLocalDatePipe } from './datetime/to-local-date.pipe'
 import { ToLocalTimePipe } from './datetime/to-local-time.pipe'
@@ -12,7 +13,7 @@ import { ToYearPipe } from './datetime/to-year.pipe'
 import { ToHumanNumberPipe } from './numbers/to-human.pipe'
 
 @NgModule({
-    imports: [CommonModule],
+    imports: [CommonModule, TranslateModule],
     declarations: [
         FromTimestampPipe,
         ToLocalDatePipe,
@@ -27,6 +28,7 @@ import { ToHumanNumberPipe } from './numbers/to-human.pipe'
     ],
     exports: [
         CommonModule,
+        TranslateModule,
         FromTimestampPipe,
         ToLocalDatePipe,
         ToLocalTimePipe,
