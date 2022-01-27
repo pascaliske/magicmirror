@@ -33,7 +33,10 @@ func main() {
 		DisablePrintStack: true,
 	}))
 	server.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
-		Format: "method=${method}, uri=${uri}, status=${status}, ip=${remote_ip}\n",
+		Format: "time=${time_rfc3339}, method=${method}, uri=${uri}, status=${status}, ip=${remote_ip}, latency=${latency_human}\n",
+		Skipper: func(c echo.Context) bool {
+			return c.Response().Status >= 200 && c.Response().Status <= 299
+		},
 	}))
 
 	// endpoints
