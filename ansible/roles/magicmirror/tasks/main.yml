@@ -18,7 +18,7 @@
     restart_policy: unless-stopped
     pull: yes
     ports:
-      - '9000:9000'
+      - "{{ url | urlsplit('port') }}:{{ url | urlsplit('port') }}"
     env:
       TZ: '{{ timezone }}'
       PUID: '{{ ansible_user_uid | string }}'

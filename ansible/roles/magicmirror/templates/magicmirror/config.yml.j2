@@ -1,4 +1,4 @@
-port: 9000
+port: '{{ url | urlsplit('port') }}'
 
 location:
   latitude: '{{ vault.location.latitude }}'

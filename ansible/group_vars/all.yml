@@ -1,5 +1,6 @@
 ---
 timezone: Europe/Berlin
+url: http://localhost:9000
 paths:
   home: '{{ ansible_env.HOME }}'
   root: '{{ ansible_env.HOME }}/{{ inventory_hostname }}'

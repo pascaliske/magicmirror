@@ -1,3 +1,41 @@
+# configure hostname
+- name: Configure hostname
+  become: yes
+  block:
+    - name: Set the hostname
+      command: hostnamectl set-hostname "{{ inventory_hostname }}"
+    - name: Update /etc/hosts with new hostname
+      lineinfile:
+        path: /etc/hosts
+        line: "127.0.1.1\t\\1 {{ inventory_hostname }}"
+        regexp: "^127.0.1.1\t(.*)$"
+
+# configure static ip
+- name: Configure static ip
+  become: yes
+  lineinfile:
+    path: /etc/dhcpcd.conf
+    line: '{{ item.line }}'
+    regexp: '{{ item.regex }}'
+  loop:
+    - { regex: '^interface eth[0-9]$', line: 'interface eth0' }
+    - { regex: '^static ip_address', line: 'static ip_address={{ ansible_host }}' }
+    - { regex: '^static routers', line: 'static routers={{ vault.ips.router }}' }
+    - { regex: '^static domain_name', line: 'static domain_name_servers={{ vault.ips.dns }}' }
+
+# configure locale
+- name: Configure locale
+  become: yes
+  vars:
+    locale: en_US.UTF-8
+  block:
+    - name: Ensure the locale exists
+      locale_gen:
+        name: '{{ locale }}'
+        state: present
+    - name: Set locale as default
+      command: 'localectl set-locale {{ locale }}'
+
 # setup bash aliases
 - name: Create aliases
   lineinfile:
@@ -6,11 +44,9 @@
     regexp: 'alias {{ item.alias }}="{{ item.command }}"$'
     insertafter: ^alias
     create: yes
-  loop:
-    - { alias: 'll', command: 'ls -lisahG' }
-    - { alias: 'd', command: 'docker' }
+  loop: '{{ aliases }}'
 
-# update
+# update system
 - name: Update apt packages
   become: yes
   apt:
@@ -25,23 +61,32 @@
     name: '{{ item }}'
     update_cache: yes
     state: latest
-  loop:
-    - vim
-    - htop
-    - curl
-    - python3
-    - python3-pip
+  loop: '{{ packages.apt }}'
 
 # install common pip packages
 - name: Install python packages
   pip:
     name: '{{ item }}'
     state: latest
-  loop:
-    - docker
+  loop: '{{ packages.pip }}'
 
 # prepare directory
 - name: Ensure directory exists
   file:
     path: '{{ paths.root }}'
     state: directory
+
+# configure openbox
+- name: Configure openbox
+  become: yes
+  template:
+    src: '{{ role_name }}/autostart.j2'
+    dest: /etc/xdg/openbox/autostart
+
+# enable autostart of x server
+- name: Enable autostart for x server
+  lineinfile:
+    path: '{{ paths.home }}/.bashrc'
+    line: '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx -- -nocursor'
+    regexp: '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx -- -nocursor$'
+    create: yes

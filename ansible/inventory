@@ -1,1 +1,1 @@
-ilum ansible_host=10.0.2.226 ansible_user=pi
+ilum ansible_host=10.0.2.10 ansible_user=pi

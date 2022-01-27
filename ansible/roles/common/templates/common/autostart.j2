@@ -1,0 +1,15 @@
+# set black splash color
+xsetroot -solid "#000000"
+
+# disable any form of screen saver / screen blanking / power management
+xset s off
+xset s noblank
+xset -dpms
+
+# allow quitting the x server with ctrl-alt-backspace
+setxkbmap -option terminate:ctrl_alt_bksp
+
+# start chromium in kiosk mode
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' ~/.config/chromium/'Local State'
+sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences
+chromium-browser --disable-infobars --kiosk '{{ url }}'
