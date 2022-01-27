@@ -50,6 +50,7 @@ func main() {
 
 	// metrics
 	if cfg.Metrics.Enabled {
+		server.Use(metrics.Middleware(cfg))
 		server.GET(cfg.Metrics.Path, metrics.Handler(cfg, server))
 	}
 
