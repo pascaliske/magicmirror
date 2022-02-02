@@ -5,9 +5,10 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",
-    "install": "ansible-galaxy install -r requirements.yml",
+    "install": "ansible-galaxy install -r requirements.yml && cd server && go mod tidy -compat=1.17",
     "postinstall": "ngcc --tsconfig tsconfig.json",
     "start": "ng serve",
+    "start:server": "cd server && gow run main.go",
     "build": "ng build",
     "lint": "ng lint",
     "format": "prettier --write \"**/*.{ts,scss,md,html,json,yml}\"",
