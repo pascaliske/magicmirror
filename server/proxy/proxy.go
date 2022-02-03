@@ -1,15 +1,19 @@
 package proxy
 
 import (
+	"fmt"
 	"net/url"
 	"strings"
 
+	"github.com/fatih/color"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/pascaliske/magicmirror/config"
 )
 
 func Handler(cfg config.Config, server *echo.Echo, target string) echo.MiddlewareFunc {
+	fmt.Printf("Using %s proxy for %s\n", cfg.Environment, color.CyanString(target))
+
 	url, _ := url.Parse(target)
 
 	return middleware.ProxyWithConfig(middleware.ProxyConfig{

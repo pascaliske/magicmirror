@@ -80,10 +80,6 @@ func main() {
 func listen(cfg config.Config, server *echo.Echo) {
 	fmt.Printf("Server is listening on %s\n", color.CyanString(fmt.Sprintf(":%d", cfg.Port)))
 
-	if cfg.Environment != "production" {
-		fmt.Printf("Using %s proxy for %s\n", cfg.Environment, color.CyanString("http://localhost:4200"))
-	}
-
 	// start server
 	if err := server.Start(fmt.Sprintf(":%d", cfg.Port)); err != nil && err != http.ErrServerClosed {
 		server.Logger.Fatal(err)
