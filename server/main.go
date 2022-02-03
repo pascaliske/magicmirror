@@ -8,6 +8,8 @@ import (
 	"os/signal"
 	"time"
 
+	"github.com/common-nighthawk/go-figure"
+	"github.com/fatih/color"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/pascaliske/magicmirror/config"
@@ -17,6 +19,9 @@ import (
 	"github.com/pascaliske/magicmirror/socket"
 )
 
+var Version string
+var GitCommit string
+
 func main() {
 	// parse config
 	cfg, err := config.Parse()
@@ -25,8 +30,14 @@ func main() {
 		return
 	}
 
+	// build information
+	figure.NewFigure("MagicMirror", "graffiti", true).Print()
+	fmt.Printf("\nVersion %s @ %s\n", color.CyanString(Version), color.CyanString(GitCommit))
+
 	// setup server
 	server := echo.New()
+	server.HidePort = true
+	server.HideBanner = true
 	server.Use(middleware.CORS())
 	server.Use(middleware.Secure())
 	server.Use(middleware.RecoverWithConfig(middleware.RecoverConfig{
@@ -67,10 +78,14 @@ func main() {
 }
 
 func listen(cfg config.Config, server *echo.Echo) {
-	// start server
-	err := server.Start(fmt.Sprintf(":%d", cfg.Port))
+	fmt.Printf("Server is listening on %s\n", color.CyanString(fmt.Sprintf(":%d", cfg.Port)))
 
-	if err != nil && err != http.ErrServerClosed {
+	if cfg.Environment != "production" {
+		fmt.Printf("Using %s proxy for %s\n", cfg.Environment, color.CyanString("http://localhost:4200"))
+	}
+
+	// start server
+	if err := server.Start(fmt.Sprintf(":%d", cfg.Port)); err != nil && err != http.ErrServerClosed {
 		server.Logger.Fatal(err)
 	}
 }

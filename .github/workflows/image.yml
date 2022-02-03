@@ -76,6 +76,9 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.metadata.outputs.tags }}
           labels: ${{ steps.metadata.outputs.labels }}
+          build-args: |
+            VERSION=${{ steps.metadata.outputs.version }}
+            GIT_COMMIT=${{ github.sha }}
 
       # output image digest
       - name: Output image digest

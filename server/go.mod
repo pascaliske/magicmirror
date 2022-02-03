@@ -3,6 +3,8 @@ module github.com/pascaliske/magicmirror
 go 1.17
 
 require (
+	github.com/common-nighthawk/go-figure v0.0.0-20210622060536-734e95fb86be
+	github.com/fatih/color v1.13.0
 	github.com/google/uuid v1.3.0
 	github.com/gorilla/websocket v1.4.2
 	github.com/hellofresh/health-go/v4 v4.5.0
