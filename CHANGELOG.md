@@ -1,3 +1,14 @@
+## [0.0.2](https://github.com/pascaliske/magicmirror/compare/v0.0.1...v0.0.2) (2022-02-07)
+
+
+### Features
+
+* reload app on config file changes ([60d4435](https://github.com/pascaliske/magicmirror/commit/60d4435433881d9a1adfa5120d959df383256410))
+* **server:** add initial http metrics ([eeb8f13](https://github.com/pascaliske/magicmirror/commit/eeb8f13be721975d483a1c2c1d7d44146685d2a1))
+* **server:** inject build information into server binary ([e94cfa4](https://github.com/pascaliske/magicmirror/commit/e94cfa40a410570fa9b32e66cadbc794d390013c))
+
+
+
 ## 0.0.1 (2022-01-25)
 
 
