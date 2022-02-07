@@ -1,13 +1,9 @@
 #!/bin/sh
 # -*- coding: utf-8 -*-
 
-# ensure default ids
-PUID=${PUID:-911}
-PGID=${PGID:-911}
-
-# modify container user
-groupmod -o -g "$PGID" unknown
-usermod -o -u "$PUID" unknown
+# modify container user ids
+groupmod -o -g "${PUID:-911}" unknown >/dev/null 2>&1
+usermod -o -u "${PGID:-911}" unknown >/dev/null 2>&1
 
 # exec container command
 su-exec unknown:unknown "$@"
