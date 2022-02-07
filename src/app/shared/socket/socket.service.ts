@@ -6,6 +6,7 @@ import { webSocket, WebSocketSubject } from 'rxjs/webSocket'
 
 export const enum SocketAction {
     Register = 'register',
+    Reload = 'reload',
     Message = 'message',
 }
 

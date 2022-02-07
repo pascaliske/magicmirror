@@ -11,11 +11,11 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-func Middleware(cfg config.Config) echo.MiddlewareFunc {
+func Middleware() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			// skip on metrics path
-			if c.Path() == cfg.Metrics.Path {
+			if c.Path() == config.GetString("Metrics.Path") {
 				return next(c)
 			}
 
@@ -40,7 +40,7 @@ func Middleware(cfg config.Config) echo.MiddlewareFunc {
 	}
 }
 
-func Handler(cfg config.Config, server *echo.Echo) echo.HandlerFunc {
+func Handler(server *echo.Echo) echo.HandlerFunc {
 	return echo.WrapHandler(promhttp.Handler())
 }
 

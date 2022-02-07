@@ -23,15 +23,15 @@ type Settings struct {
 	ApiKeys  ApiKeys  `json:"apiKeys"`
 }
 
-func BuildSettings(cfg config.Config) Settings {
+func BuildSettings() Settings {
 	return Settings{
 		Location: Location{
-			Latitude:  cfg.Location.Latitude,
-			Longitude: cfg.Location.Longitude,
+			Latitude:  config.GetFloat64("Location.Latitude"),
+			Longitude: config.GetFloat64("Location.Longitude"),
 		},
-		Feeds: cfg.Feeds,
+		Feeds: config.GetStringSlice("Feeds"),
 		ApiKeys: ApiKeys{
-			OpenWeather: cfg.ApiKeys.OpenWeather,
+			OpenWeather: config.GetString("ApiKeys.OpenWeather"),
 		},
 	}
 }

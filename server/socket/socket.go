@@ -3,7 +3,6 @@ package socket
 import (
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
-	"github.com/pascaliske/magicmirror/config"
 )
 
 type SocketMessage struct {
@@ -13,7 +12,7 @@ type SocketMessage struct {
 
 var upgrader = websocket.Upgrader{}
 
-func Handler(cfg config.Config, server *echo.Echo) echo.HandlerFunc {
+func Handler(server *echo.Echo) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		// upgrade connection to socket
 		socket, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
@@ -25,7 +24,7 @@ func Handler(cfg config.Config, server *echo.Echo) echo.HandlerFunc {
 		}
 
 		// create client for connection
-		client := CreateClient(cfg, socket)
+		client := CreateClient(socket)
 
 		// handle client io
 		go client.Read(c)

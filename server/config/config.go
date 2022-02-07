@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
 
@@ -45,7 +46,7 @@ func init() {
 	viper.SetDefault("ApiKeys.OpenWeather", "")
 }
 
-func Parse() (config Config, err error) {
+func Parse() error {
 	// fetch config file path
 	input := flag.String("config", "", "")
 
@@ -63,16 +64,44 @@ func Parse() (config Config, err error) {
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	viper.SetTypeByDefaultValue(true)
 	viper.AutomaticEnv()
+	viper.WatchConfig()
+	viper.OnConfigChange(func(e fsnotify.Event) {
+		fmt.Println("Config file changed:", e.Name)
+	})
 
 	// parse config
-	if err = viper.ReadInConfig(); err != nil {
+	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
 			fmt.Println("Config file found but not readable")
-			return
+			return err
 		}
 	}
 
-	// return parsed values
-	err = viper.Unmarshal(&config)
-	return
+	return nil
+}
+
+func OnChange(run func()) {
+	viper.OnConfigChange(func(e fsnotify.Event) {
+		run()
+	})
+}
+
+func GetBool(key string) bool {
+	return viper.GetBool(key)
+}
+
+func GetString(key string) string {
+	return viper.GetString(key)
+}
+
+func GetStringSlice(key string) []string {
+	return viper.GetStringSlice(key)
+}
+
+func GetInt(key string) int {
+	return viper.GetInt(key)
+}
+
+func GetFloat64(key string) float64 {
+	return viper.GetFloat64(key)
 }

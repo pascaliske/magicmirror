@@ -24,8 +24,7 @@ var GitCommit string
 
 func main() {
 	// parse config
-	cfg, err := config.Parse()
-	if err != nil {
+	if err := config.Parse(); err != nil {
 		fmt.Println("Error: Couldn't parse config")
 		return
 	}
@@ -51,8 +50,8 @@ func main() {
 	}))
 
 	// endpoints
-	server.GET("/health", health.Handler(cfg, server))
-	server.GET("/socket", socket.Handler(cfg, server))
+	server.GET("/health", health.Handler(server))
+	server.GET("/socket", socket.Handler(server))
 	server.Use(middleware.StaticWithConfig(middleware.StaticConfig{
 		Root:  "public",
 		Index: "index.html",
@@ -60,28 +59,28 @@ func main() {
 	}))
 
 	// metrics
-	if cfg.Metrics.Enabled {
-		server.Use(metrics.Middleware(cfg))
-		server.GET(cfg.Metrics.Path, metrics.Handler(cfg, server))
+	if config.GetBool("Metrics.Enabled") {
+		server.Use(metrics.Middleware())
+		server.GET(config.GetString("Metrics.Path"), metrics.Handler(server))
 	}
 
 	// development proxy
-	if cfg.Environment != "production" {
-		server.Use(proxy.Handler(cfg, server, "http://localhost:4200"))
+	if config.GetString("Environment") != "production" {
+		server.Use(proxy.Handler(server, "http://localhost:4200"))
 	}
 
 	// start server
-	go listen(cfg, server)
+	go listen(server)
 
 	// graceful shutdown
 	shutdown(server)
 }
 
-func listen(cfg config.Config, server *echo.Echo) {
-	fmt.Printf("Server is listening on %s\n", color.CyanString(fmt.Sprintf(":%d", cfg.Port)))
+func listen(server *echo.Echo) {
+	fmt.Printf("Server is listening on %s\n", color.CyanString(fmt.Sprintf(":%d", config.GetInt("Port"))))
 
 	// start server
-	if err := server.Start(fmt.Sprintf(":%d", cfg.Port)); err != nil && err != http.ErrServerClosed {
+	if err := server.Start(fmt.Sprintf(":%d", config.GetInt("Port"))); err != nil && err != http.ErrServerClosed {
 		server.Logger.Fatal(err)
 	}
 }

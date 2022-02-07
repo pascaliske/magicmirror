@@ -8,7 +8,7 @@
     "install": "ansible-galaxy install -r requirements.yml && cd server && go mod tidy -compat=1.17",
     "postinstall": "ngcc --tsconfig tsconfig.json",
     "start": "ng serve",
-    "start:server": "cd server && gow run -ldflags=\"-X main.Version=$(git symbolic-ref -q --short HEAD || git describe --tags --exact-match | tr -d v) -X main.GitCommit=$(git rev-list -1 HEAD)\" main.go",
+    "start:server": "cd server && gow run -ldflags=\"$LDFLAGS\" main.go",
     "build": "ng build",
     "lint": "ng lint",
     "format": "prettier --write \"**/*.{ts,scss,md,html,json,yml}\"",

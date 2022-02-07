@@ -1,0 +1,20 @@
+# optional: http listener port for the server
+port: 9000
+
+# optional: configuration for prometheus metrics endpoint
+metrics:
+  enabled: true
+  path: /metrics
+
+# geo location, required for various cards and apis
+location:
+  latitude: 0
+  longitude: 0
+
+# optional: rss feeds displayed inside news card
+feeds: []
+
+# api keys for the respective data apis
+apiKeys:
+  # optional: open weather api key, required if weather card is used
+  openWeather: ''

@@ -11,8 +11,8 @@ import (
 	"github.com/pascaliske/magicmirror/config"
 )
 
-func Handler(cfg config.Config, server *echo.Echo, target string) echo.MiddlewareFunc {
-	fmt.Printf("Using %s proxy for %s\n", cfg.Environment, color.CyanString(target))
+func Handler(server *echo.Echo, target string) echo.MiddlewareFunc {
+	fmt.Printf("Using %s proxy for %s\n", config.GetString("Environment"), color.CyanString(target))
 
 	url, _ := url.Parse(target)
 
@@ -29,7 +29,7 @@ func Handler(cfg config.Config, server *echo.Echo, target string) echo.Middlewar
 			if skip := strings.Contains(c.Request().RequestURI, "socket"); skip {
 				return skip
 			}
-			if skip := strings.Contains(c.Request().RequestURI, cfg.Metrics.Path); skip {
+			if skip := strings.Contains(c.Request().RequestURI, config.GetString("Metrics.Path")); skip {
 				return skip
 			}
 			return false

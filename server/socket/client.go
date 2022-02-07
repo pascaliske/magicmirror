@@ -15,7 +15,7 @@ type Client struct {
 
 var clients map[Client]bool = make(map[Client]bool)
 
-func CreateClient(cfg config.Config, socket *websocket.Conn) (client Client) {
+func CreateClient(socket *websocket.Conn) (client Client) {
 	// create client
 	client = Client{UUID: uuid.NewString(), socket: socket, send: make(chan SocketMessage)}
 
@@ -23,10 +23,16 @@ func CreateClient(cfg config.Config, socket *websocket.Conn) (client Client) {
 	clients[client] = true
 
 	// build client settings
-	settings := BuildSettings(cfg)
+	settings := BuildSettings()
 
 	// send register message
 	client.SendAction("register", settings)
+
+	// send reload message on config changes
+	config.OnChange(func() {
+		client.SendAction("reload", nil)
+	})
+
 	return
 }
 
