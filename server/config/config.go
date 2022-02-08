@@ -6,9 +6,12 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/fatih/color"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
+
+var callbacks = make(map[string]func())
 
 type Config struct {
 	Environment string
@@ -32,6 +35,7 @@ type Config struct {
 }
 
 func init() {
+	// general
 	viper.SetDefault("Environment", "production")
 	viper.SetDefault("Port", 9000)
 	viper.SetDefault("Metrics.Enabled", true)
@@ -47,27 +51,24 @@ func init() {
 }
 
 func Parse() error {
-	// fetch config file path
-	input := flag.String("config", "", "")
+	// define config file type
+	viper.SetConfigType("yaml")
 
-	// parse flags
-	flag.Parse()
-
-	// read config file
-	viper.AddConfigPath("/config")
-	viper.AddConfigPath(filepath.Dir(*input))
-	viper.SetConfigName(strings.TrimSuffix(filepath.Base(*input), filepath.Ext(filepath.Base(*input))))
-	viper.SetConfigType(strings.Replace(filepath.Ext(filepath.Base(*input)), ".", "", -1))
+	// read config file from flag or default paths
+	if found, file, dir := parseConfigFlag(); found {
+		viper.SetConfigName(file)
+		viper.AddConfigPath(dir)
+	} else {
+		viper.SetConfigName("config.yml")
+		viper.AddConfigPath("/etc/magicmirror")
+		viper.AddConfigPath(".")
+	}
 
 	// read environment variables
 	viper.SetEnvPrefix("MM")
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	viper.SetTypeByDefaultValue(true)
 	viper.AutomaticEnv()
-	viper.WatchConfig()
-	viper.OnConfigChange(func(e fsnotify.Event) {
-		fmt.Println("Config file changed:", e.Name)
-	})
 
 	// parse config
 	if err := viper.ReadInConfig(); err != nil {
@@ -77,13 +78,54 @@ func Parse() error {
 		}
 	}
 
+	// watch for config file changes
+	if file := viper.ConfigFileUsed(); len(file) > 0 {
+		fmt.Println("Watching for config file changes:", color.CyanString(file))
+		viper.WatchConfig()
+		viper.OnConfigChange(func(e fsnotify.Event) {
+			fmt.Println("Config file changed:", e.Name)
+
+			for _, callback := range callbacks {
+				callback()
+			}
+		})
+	}
+
 	return nil
 }
 
-func OnChange(run func()) {
-	viper.OnConfigChange(func(e fsnotify.Event) {
-		run()
-	})
+func parseConfigFlag() (bool, string, string) {
+	// register config flag
+	input := flag.String("config", "", "")
+
+	// parse flags
+	flag.Parse()
+
+	// config flag not set
+	if len(*input) == 0 {
+		return false, "", ""
+	}
+
+	// ensure absolute directory
+	file, _ := filepath.Abs(*input)
+
+	// return file name and directory
+	return true, filepath.Base(file), filepath.Dir(file)
+}
+
+func OnChange(id string, run func()) func() {
+	// no config file used
+	if len(viper.ConfigFileUsed()) == 0 {
+		return func() {}
+	}
+
+	// add callback to queue
+	callbacks[id] = run
+
+	// return unregister function
+	return func() {
+		delete(callbacks, id)
+	}
 }
 
 func GetBool(key string) bool {

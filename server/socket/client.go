@@ -28,16 +28,17 @@ func CreateClient(socket *websocket.Conn) (client Client) {
 	// send register message
 	client.SendAction("register", settings)
 
-	// send reload message on config changes
-	config.OnChange(func() {
-		client.SendAction("reload", nil)
-	})
-
 	return
 }
 
 func (client Client) Read(c echo.Context) {
+	// send reload message on config changes
+	cancel := config.OnChange(client.UUID, func() {
+		client.SendAction("reload", nil)
+	})
+
 	// unregister client
+	defer cancel()
 	defer delete(clients, client)
 
 	for {

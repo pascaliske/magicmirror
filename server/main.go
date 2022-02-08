@@ -23,15 +23,15 @@ var Version string
 var GitCommit string
 
 func main() {
+	// build information
+	figure.NewFigure("MagicMirror", "graffiti", true).Print()
+	fmt.Printf("\nVersion %s @ %s\n", color.CyanString(Version), color.CyanString(GitCommit))
+
 	// parse config
 	if err := config.Parse(); err != nil {
 		fmt.Println("Error: Couldn't parse config")
 		return
 	}
-
-	// build information
-	figure.NewFigure("MagicMirror", "graffiti", true).Print()
-	fmt.Printf("\nVersion %s @ %s\n", color.CyanString(Version), color.CyanString(GitCommit))
 
 	// setup server
 	server := echo.New()
