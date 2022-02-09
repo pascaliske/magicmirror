@@ -97,7 +97,7 @@ jobs:
       - uses: ncipollo/release-action@v1
         if: startsWith(github.ref, 'refs/tags/v')
         with:
-          tag: ${{ steps.metadata.outputs.version }}
+          tag: v${{ steps.metadata.outputs.version }}
           name: Release v${{ steps.metadata.outputs.version }}
           bodyFile: CHANGES.md
           prerelease: ${{ steps.changelog.outputs.status == 'prereleased' }}
