@@ -14,6 +14,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/pascaliske/magicmirror/config"
 	"github.com/pascaliske/magicmirror/health"
+	"github.com/pascaliske/magicmirror/logger"
 	"github.com/pascaliske/magicmirror/metrics"
 	"github.com/pascaliske/magicmirror/proxy"
 	"github.com/pascaliske/magicmirror/socket"
@@ -25,13 +26,19 @@ var GitCommit string
 func main() {
 	// build information
 	figure.NewFigure("MagicMirror", "graffiti", true).Print()
-	fmt.Printf("\nVersion %s @ %s\n", color.CyanString(Version), color.CyanString(GitCommit))
+	logger.Raw("\nVersion %s @ %s\n", color.CyanString(Version), color.CyanString(GitCommit))
 
 	// parse config
 	if err := config.Parse(); err != nil {
-		fmt.Println("Error: Couldn't parse config")
+		logger.Error("Couldn't parse config")
 		return
 	}
+
+	// configure logging
+	logger.SetLevel(config.GetString("Log.Level"))
+	config.OnChange(time.Now().String(), func() {
+		logger.SetLevel(config.GetString("Log.Level"))
+	})
 
 	// setup server
 	server := echo.New()
@@ -77,11 +84,11 @@ func main() {
 }
 
 func listen(server *echo.Echo) {
-	fmt.Printf("Server is listening on %s\n", color.CyanString(fmt.Sprintf(":%d", config.GetInt("Port"))))
+	logger.Info("Server is listening on %s", color.CyanString(fmt.Sprintf(":%d", config.GetInt("Port"))))
 
 	// start server
 	if err := server.Start(fmt.Sprintf(":%d", config.GetInt("Port"))); err != nil && err != http.ErrServerClosed {
-		server.Logger.Fatal(err)
+		logger.Fatal(err.Error())
 	}
 }
 
@@ -91,7 +98,7 @@ func shutdown(server *echo.Echo) {
 	signal.Notify(quit, os.Interrupt)
 	<-quit
 
-	fmt.Println("\nGracefully shutting down server...")
+	logger.Raw("\nGracefully shutting down server...")
 
 	// timeout of 10 seconds
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
@@ -99,6 +106,6 @@ func shutdown(server *echo.Echo) {
 
 	// shutdown server
 	if err := server.Shutdown(ctx); err != nil {
-		server.Logger.Fatal(err)
+		logger.Fatal(err.Error())
 	}
 }

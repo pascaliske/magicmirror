@@ -2,21 +2,25 @@ package config
 
 import (
 	"flag"
-	"fmt"
 	"path/filepath"
 	"strings"
 
 	"github.com/fatih/color"
 	"github.com/fsnotify/fsnotify"
+	"github.com/pascaliske/magicmirror/logger"
 	"github.com/spf13/viper"
 )
 
 var callbacks = make(map[string]func())
 
 type Config struct {
+	// general
 	Environment string
 	Port        int
-	Metrics     struct {
+	Log         struct {
+		Level string
+	}
+	Metrics struct {
 		Enabled bool
 		Path    string
 	}
@@ -73,17 +77,17 @@ func Parse() error {
 	// parse config
 	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
-			fmt.Println("Config file found but not readable")
+			logger.Error("Config file found but not readable")
 			return err
 		}
 	}
 
 	// watch for config file changes
 	if file := viper.ConfigFileUsed(); len(file) > 0 {
-		fmt.Println("Watching for config file changes:", color.CyanString(file))
+		logger.Debug("Watching for config file changes: %s", color.CyanString(file))
 		viper.WatchConfig()
 		viper.OnConfigChange(func(e fsnotify.Event) {
-			fmt.Println("Config file changed:", e.Name)
+			logger.Info("Config file changed")
 
 			for _, callback := range callbacks {
 				callback()

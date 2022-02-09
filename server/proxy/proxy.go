@@ -1,7 +1,6 @@
 package proxy
 
 import (
-	"fmt"
 	"net/url"
 	"strings"
 
@@ -9,10 +8,11 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/pascaliske/magicmirror/config"
+	"github.com/pascaliske/magicmirror/logger"
 )
 
 func Handler(server *echo.Echo, target string) echo.MiddlewareFunc {
-	fmt.Printf("Using %s proxy for %s\n", config.GetString("Environment"), color.CyanString(target))
+	logger.Debug("Using %s proxy for %s", config.GetString("Environment"), color.CyanString(target))
 
 	url, _ := url.Parse(target)
 

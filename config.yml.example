@@ -1,6 +1,10 @@
 # optional: http listener port for the server
 port: 9000
 
+# optional: configuration for logging, possible values: 'debug', 'info', 'warn', 'error', 'fatal'
+log:
+  level: info
+
 # optional: configuration for prometheus metrics endpoint
 metrics:
   enabled: true

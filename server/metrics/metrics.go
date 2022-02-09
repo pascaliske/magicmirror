@@ -6,12 +6,16 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/fatih/color"
 	"github.com/labstack/echo/v4"
 	"github.com/pascaliske/magicmirror/config"
+	"github.com/pascaliske/magicmirror/logger"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func Middleware() echo.MiddlewareFunc {
+	logger.Debug("Metrics endpoint enabled at %s", color.CyanString(config.GetString("Metrics.Path")))
+
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			// skip on metrics path
