@@ -1,8 +1,10 @@
 package socket
 
 import (
+	"github.com/fatih/color"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
+	"github.com/pascaliske/magicmirror/logger"
 )
 
 type SocketMessage struct {
@@ -13,6 +15,8 @@ type SocketMessage struct {
 var upgrader = websocket.Upgrader{}
 
 func Handler(server *echo.Echo) echo.HandlerFunc {
+	logger.Debug("Socket endpoint ready at %s", color.CyanString("/socket"))
+
 	return func(c echo.Context) error {
 		// upgrade connection to socket
 		socket, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
