@@ -5,7 +5,7 @@ import { concatMap, map } from 'rxjs/operators'
 import { Cacheable } from 'ts-cacheable'
 import { environment } from 'environments/environment'
 import { Settings } from 'store/settings'
-import { BaseCardComponent } from '../base-card/base-card.component'
+import { BaseCardComponent, repeatAfter } from '../base-card/base-card.component'
 import { WeatherData } from './weather-data'
 
 @Component({
@@ -16,6 +16,7 @@ import { WeatherData } from './weather-data'
 })
 export class WeatherCardComponent extends BaseCardComponent {
     private readonly data$: Observable<WeatherData> = this.settings$.pipe(
+        repeatAfter(),
         concatMap(({ data }) => this.fetchWeatherData(data)),
     )
 

@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { forkJoin, Observable, OperatorFunction } from 'rxjs'
 import { concatMap, map } from 'rxjs/operators'
 import { Cacheable } from 'ts-cacheable'
-import { BaseCardComponent } from '../base-card/base-card.component'
+import { BaseCardComponent, repeatAfter } from '../base-card/base-card.component'
 
 @Component({
     selector: 'cmp-news-card',
@@ -12,6 +12,7 @@ import { BaseCardComponent } from '../base-card/base-card.component'
 })
 export class NewsCardComponent extends BaseCardComponent {
     public readonly data$: Observable<string[]> = this.settings$.pipe(
+        repeatAfter(),
         concatMap(({ data }) => this.fetchNewsData(data?.feeds ?? [])),
     )
 
