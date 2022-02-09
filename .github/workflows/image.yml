@@ -85,7 +85,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         id: changelog
         run: |
-          standard-changelog -i /dev/null -o NOTES.md
+          yarn standard-changelog -i /dev/null -o NOTES.md
 
       # create github release
       - uses: ncipollo/release-action@v1
