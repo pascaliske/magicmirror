@@ -85,7 +85,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         id: changelog
         run: |
-          yarn standard-changelog -i /dev/null -o NOTES.md
+          yarn standard-changelog -i /dev/null -o CHANGES.md
 
       # create github release
       - uses: ncipollo/release-action@v1
@@ -93,10 +93,11 @@ jobs:
         with:
           tag: ${{ steps.metadata.outputs.version }}
           name: Release v${{ steps.metadata.outputs.version }}
-          bodyFile: NOTES.md
+          bodyFile: CHANGES.md
           prerelease: ${{ steps.changelog.outputs.status == 'prereleased' }}
           draft: ${{ steps.changelog.outputs.status == 'unreleased' }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: README.md,LICENSE.md
 
       # output image digest
       - name: Output image digest
