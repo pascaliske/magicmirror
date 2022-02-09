@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 @Component({
     selector: 'cmp-icon',
@@ -9,7 +9,7 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons'
 })
 export class IconComponent {
     @Input()
-    public icon!: IconDefinition
+    public icon!: IconProp
 
     @Input()
     public size!: 'xs' | 'sm' | 'lg' | '2x' | '3x' | '5x' | '7x' | '10x'
