@@ -1,3 +1,14 @@
+## [0.0.4](https://github.com/pascaliske/magicmirror/compare/v0.0.3...v0.0.4) (2022-02-09)
+
+
+### Features
+
+* **cards:** automatically refresh weather and news cards after 10 minutes ([c7a5c84](https://github.com/pascaliske/magicmirror/commit/c7a5c84bbd6819406402dd603e7f2cdf49036b82))
+* **server:** add log line for health endpoint ([56ed06b](https://github.com/pascaliske/magicmirror/commit/56ed06b803328b17cee9dead33e9e598302e6b11))
+* **server:** add log line for socket endpoint ([3881d59](https://github.com/pascaliske/magicmirror/commit/3881d590877b426816b3fb310b218a6176d368a4))
+
+
+
 ## [0.0.3](https://github.com/pascaliske/magicmirror/compare/v0.0.2...v0.0.3) (2022-02-09)
 
 
