@@ -1,3 +1,18 @@
+## [0.0.3](https://github.com/pascaliske/magicmirror/compare/v0.0.2...v0.0.3) (2022-02-09)
+
+
+### Bug Fixes
+
+* **icon:** use newer icon type for font awesome ([a96e313](https://github.com/pascaliske/magicmirror/commit/a96e31339ca482358d339a02cce1fd37a3e58fe4))
+* **server:** fix config reload handling for multiple clients ([82b0d4f](https://github.com/pascaliske/magicmirror/commit/82b0d4f3c6a14d6f6a84218f256304edcadf2625))
+
+
+### Features
+
+* **server:** implement logs with configurable levels ([de88b91](https://github.com/pascaliske/magicmirror/commit/de88b91ad55af517031300d6e3e70c01b3caea30))
+
+
+
 ## [0.0.2](https://github.com/pascaliske/magicmirror/compare/v0.0.1...v0.0.2) (2022-02-07)
 
 
