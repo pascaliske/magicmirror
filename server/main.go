@@ -31,7 +31,7 @@ func main() {
 	// parse config
 	if err := config.Parse(); err != nil {
 		logger.Error("Couldn't parse config")
-		return
+		os.Exit(2)
 	}
 
 	// configure logging
@@ -89,6 +89,7 @@ func listen(server *echo.Echo) {
 	// start server
 	if err := server.Start(fmt.Sprintf(":%d", config.GetInt("Port"))); err != nil && err != http.ErrServerClosed {
 		logger.Fatal(err.Error())
+		os.Exit(1)
 	}
 }
 
@@ -107,5 +108,6 @@ func shutdown(server *echo.Echo) {
 	// shutdown server
 	if err := server.Shutdown(ctx); err != nil {
 		logger.Fatal(err.Error())
+		os.Exit(1)
 	}
 }
