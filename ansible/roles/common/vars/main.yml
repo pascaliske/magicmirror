@@ -15,5 +15,6 @@ packages:
     - xinit
     - openbox
     - chromium-browser
+    - apt-transport-https
   pip:
     - docker

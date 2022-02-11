@@ -7,7 +7,7 @@
     - name: Update /etc/hosts with new hostname
       lineinfile:
         path: /etc/hosts
-        line: "127.0.1.1\t\\1 {{ inventory_hostname }}"
+        line: "127.0.1.1\t{{ inventory_hostname }}"
         regexp: "^127.0.1.1\t(.*)$"
 
 # configure static ip
