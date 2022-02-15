@@ -7,7 +7,7 @@ require (
 	github.com/fatih/color v1.13.0
 	github.com/fsnotify/fsnotify v1.5.1
 	github.com/google/uuid v1.3.0
-	github.com/gorilla/websocket v1.4.2
+	github.com/gorilla/websocket v1.5.0
 	github.com/hellofresh/health-go/v4 v4.5.0
 	github.com/labstack/echo/v4 v4.6.3
 	github.com/prometheus/client_golang v1.12.1
