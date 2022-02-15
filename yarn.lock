@@ -1849,10 +1849,10 @@
   dependencies:
     tslib "^2.2.0"
 
-"@pascaliske/prettier-config@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@pascaliske/prettier-config/-/prettier-config-1.1.4.tgz#97482fe58ef75214ce9ca69da01cde8e6e9d6f88"
-  integrity sha512-eYhtCyE0EoI76RvqGT0CzcmfV1SJw+AJtpsBDsY4JSX9/Xbuy4ef4h3VSTBsgQjjXoNoNzqesnslUUleDeI+LA==
+"@pascaliske/prettier-config@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@pascaliske/prettier-config/-/prettier-config-1.1.5.tgz#4d7df2f9c4b73de54928c1a5ea1154895f600536"
+  integrity sha512-1nr06QUbNuI2xotR+Qvu/bQhe95GgxmpaKgX8a/S7j8ESbjuC9RI/HPZOYYVh43rfG0anK7hRVgvrCsnpXJPAg==
 
 "@rstacruz/bump-cli@^2.0.1":
   version "2.0.1"
