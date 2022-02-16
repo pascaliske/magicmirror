@@ -1821,10 +1821,10 @@
   dependencies:
     eslint-config-prettier "^8.3.0"
 
-"@pascaliske/ngx-sentry@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@pascaliske/ngx-sentry/-/ngx-sentry-3.0.1.tgz#7d9e9b99c9383f2a624640eadba8a58c4b8c730b"
-  integrity sha512-KgA9DfhB102GkMfXiIKB6WnYn9agqwFlmOqLIsRYvxt5AUaFJJ6zfoqoZwChF8uB5OMhCzcY7G4MfDEFBXEKpw==
+"@pascaliske/ngx-sentry@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@pascaliske/ngx-sentry/-/ngx-sentry-4.0.1.tgz#623b8f103ccd7d8bde4f25a6999e3bb9eae85b24"
+  integrity sha512-0eea1KnNfnJnbvM1vgGV+b/h2CUSM0QGYMCyLBiD1LnCLnf8pSfKJq3TCUF+d7aNmMkLeJWKPvU1A1FlUpx0dA==
   dependencies:
     tslib "^2.2.0"
 
