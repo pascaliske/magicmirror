@@ -9,7 +9,6 @@ $component: 'cmp-news-card';
 
 @include cmp-base($component) {
     @include linear-fade-out();
-    margin-top: 10px;
 
     &__headline {
         @include use-font(light);
