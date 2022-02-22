@@ -4,11 +4,7 @@ import { Configuration, DefinePlugin } from 'webpack'
 import { name, version } from './package.json'
 
 export default (config: Configuration): Configuration => {
-    const command = process.argv?.[2]?.toLowerCase()
-
-    if (command === 'build') {
-        // config.resolve?.alias['@sentry/browser'] = '@sentry/browser/esm'
-    }
+    // const command = process.argv?.[2]?.toLowerCase()
 
     config.plugins?.push(
         new DefinePlugin({
