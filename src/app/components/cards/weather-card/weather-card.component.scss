@@ -1,12 +1,12 @@
-@import 'shared';
+@use 'shared';
 
 $component: 'cmp-weather-card';
 
-@include cmp-host() {
+@include shared.cmp-host() {
     display: block;
 }
 
-@include cmp-base($component) {
+@include shared.cmp-base($component) {
     &__current {
         display: grid;
         grid-template-columns: 1fr auto;
@@ -15,7 +15,7 @@ $component: 'cmp-weather-card';
     }
 
     &__temperature {
-        @include use-font(bold);
+        @include shared.use-font(bold);
         grid-area: temperature;
         align-self: baseline;
         justify-self: start;
@@ -26,7 +26,7 @@ $component: 'cmp-weather-card';
     }
 
     &__feels-like {
-        @include use-font(light);
+        @include shared.use-font(light);
         grid-area: feels-like;
         align-self: baseline;
         justify-self: end;
@@ -35,7 +35,7 @@ $component: 'cmp-weather-card';
     }
 
     &__description {
-        @include use-font(regular);
+        @include shared.use-font(regular);
         grid-area: description;
         margin-top: 5px;
         font-size: 24px;
@@ -47,11 +47,11 @@ $component: 'cmp-weather-card';
     }
 
     &__forecast {
-        @include linear-fade-out();
+        @include shared.linear-fade-out();
     }
 
     &__forecast-day {
-        @include use-font(light);
+        @include shared.use-font(light);
         display: grid;
         grid-template-columns: 1fr auto auto;
         grid-template-areas: 'day min max';

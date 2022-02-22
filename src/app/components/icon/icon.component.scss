@@ -1,10 +1,10 @@
-@import 'shared';
+@use 'shared';
 
 $component: 'cmp-icon';
 
-@include cmp-host() {
+@include shared.cmp-host() {
     display: inline-block;
 }
 
-@include cmp-base($component) {
+@include shared.cmp-base($component) {
 }

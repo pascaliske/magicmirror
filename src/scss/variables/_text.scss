@@ -1,12 +1,12 @@
+@use '~modularscale-sass/stylesheets/modularscale' as ms;
+@use 'colors';
+
 /**
  * Base font settings
  */
 $base-font-size: 16px;
 $base-font-ratio: 1.25;
-$modularscale: (
-    base: $base-font-size,
-    ratio: $base-font-ratio,
-);
+ms.$modularscale: (base: $base-font-size, ratio: $base-font-ratio);
 
 /**
  * Text styles.
@@ -93,66 +93,66 @@ $text-settings: (
     headline-h1: (
         all: (
             font-settings: bold,
-            font-size: ms(5),
+            font-size: ms.ms(5),
             line-height: 1.25,
-            color: $color-primary,
+            color: colors.$color-primary,
         ),
     ),
     headline-h2: (
         all: (
             font-settings: bold,
-            font-size: ms(4),
+            font-size: ms.ms(4),
             line-height: 1.25,
-            color: $color-primary,
+            color: colors.$color-primary,
         ),
     ),
     headline-h3: (
         all: (
             font-settings: bold,
-            font-size: ms(3),
+            font-size: ms.ms(3),
             line-height: 1.5,
-            color: $color-primary,
+            color: colors.$color-primary,
         ),
     ),
     headline-h4: (
         all: (
             font-settings: bold,
-            font-size: ms(2),
+            font-size: ms.ms(2),
             line-height: 1.5,
-            color: $color-primary,
+            color: colors.$color-primary,
         ),
     ),
     headline-h5: (
         all: (
             font-settings: bold,
-            font-size: ms(1),
+            font-size: ms.ms(1),
             line-height: 1.6,
-            color: $color-primary,
+            color: colors.$color-primary,
         ),
     ),
     headline-h6: (
         all: (
             font-settings: bold,
-            font-size: ms(0),
+            font-size: ms.ms(0),
             line-height: 2,
-            color: $color-primary,
+            color: colors.$color-primary,
             text-transform: uppercase,
         ),
     ),
     copy: (
         all: (
             font-settings: regular,
-            font-size: ms(0),
+            font-size: ms.ms(0),
             line-height: 1.6,
-            color: rgba($color-primary, 0.8),
+            color: rgba(colors.$color-primary, 0.8),
         ),
     ),
     copy-bold: (
         all: (
             font-settings: bold,
-            font-size: ms(0),
+            font-size: ms.ms(0),
             line-height: 1.6,
-            color: $color-primary,
+            color: colors.$color-primary,
         ),
     ),
 );

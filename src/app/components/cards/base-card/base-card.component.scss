@@ -1,10 +1,10 @@
-@import 'shared';
+@use 'shared';
 
 $component: 'cmp-base-card';
 
-@include cmp-host() {
+@include shared.cmp-host() {
     display: block;
 }
 
-@include cmp-base($component) {
+@include shared.cmp-base($component) {
 }

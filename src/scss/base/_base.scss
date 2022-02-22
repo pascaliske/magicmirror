@@ -1,4 +1,4 @@
-@include normalize();
+@use 'mixins/text';
 
 * {
     box-sizing: border-box;
@@ -7,7 +7,7 @@
 
 html,
 body {
-    @include use-font(regular);
+    @include text.use-font(regular);
     width: 100vw;
     height: 100vh;
     overflow: hidden;

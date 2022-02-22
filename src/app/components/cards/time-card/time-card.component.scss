@@ -1,14 +1,14 @@
-@import 'shared';
+@use 'shared';
 
 $component: 'cmp-time-card';
 
-@include cmp-host() {
+@include shared.cmp-host() {
     display: block;
 }
 
-@include cmp-base($component) {
+@include shared.cmp-base($component) {
     &__date {
-        @include use-font(thin);
+        @include shared.use-font(thin);
         height: 35px;
         font-size: 30px;
         font-variant: tabular-nums;
@@ -17,14 +17,14 @@ $component: 'cmp-time-card';
     }
 
     &__time {
-        @include use-font(bold);
+        @include shared.use-font(bold);
         font-size: 95px;
         font-variant: tabular-nums;
         text-align: right;
     }
 
     &__week {
-        @include use-font(regular);
+        @include shared.use-font(regular);
         margin-top: 5px;
         font-size: 24px;
         font-variant: tabular-nums;

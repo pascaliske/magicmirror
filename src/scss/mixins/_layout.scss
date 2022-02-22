@@ -1,16 +1,21 @@
+@use 'sass:list';
+@use 'sass:map';
+@use 'variables/layout';
+@use 'utils';
+
 @mixin grid-container() {
     width: 100%;
     height: 100%;
-    padding: $grid-gap;
+    padding: layout.$grid-gap;
     display: grid;
-    grid-template-areas: '#{to-string(map-keys($grid-areas))}';
-    grid-template-columns: to-string(map-values($grid-areas));
+    grid-template-areas: '#{utils.to-string(map.keys(layout.$grid-areas))}';
+    grid-template-columns: utils.to-string(map.values(layout.$grid-areas));
     grid-template-rows: auto;
-    gap: $grid-gap;
+    gap: layout.$grid-gap;
 }
 
 @mixin grid-column($area: left, $align-self: '') {
-    @if not index(map-keys($grid-areas), $area) {
+    @if not list.index(map.keys(layout.$grid-areas), $area) {
         @error 'Invalid grid area given!';
     }
 
@@ -21,5 +26,5 @@
         align-self: $align-self;
     }
 
-    gap: $grid-gap;
+    gap: layout.$grid-gap;
 }

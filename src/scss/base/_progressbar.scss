@@ -1,9 +1,11 @@
+@use 'variables/colors';
+
 .ng-progress-bar {
     .ng-spinner {
         top: 10px;
 
         &-icon {
-            border-color: $color-primary;
+            border-color: colors.$color-primary;
         }
     }
 }

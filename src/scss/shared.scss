@@ -5,14 +5,11 @@
  * It can be included at modules for accessing globally defined styles.
  */
 
-// libraries
-@import '~modularscale-sass/stylesheets/modularscale';
-
 // internals
-@import 'variables/colors';
-@import 'variables/text';
-@import 'variables/layout';
-@import 'mixins/utils';
-@import 'mixins/layout';
-@import 'mixins/text';
-@import 'mixins/component';
+@forward 'variables/colors';
+@forward 'variables/text';
+@forward 'variables/layout';
+@forward 'mixins/utils';
+@forward 'mixins/layout';
+@forward 'mixins/text';
+@forward 'mixins/component';

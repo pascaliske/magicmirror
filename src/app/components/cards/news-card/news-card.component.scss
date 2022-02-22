@@ -1,17 +1,17 @@
-@import 'shared';
+@use 'shared';
 
 $component: 'cmp-news-card';
 
-@include cmp-host() {
+@include shared.cmp-host() {
     display: block;
     align-self: start;
 }
 
-@include cmp-base($component) {
-    @include linear-fade-out();
+@include shared.cmp-base($component) {
+    @include shared.linear-fade-out();
 
     &__headline {
-        @include use-font(light);
+        @include shared.use-font(light);
         text-align: center;
 
         &:not(:last-of-type) {

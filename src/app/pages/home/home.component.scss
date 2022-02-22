@@ -1,19 +1,19 @@
-@import 'shared';
+@use 'shared';
 
 $component: 'cmp-home';
 
-@include cmp-base($component) {
-    @include grid-container();
+@include shared.cmp-base($component) {
+    @include shared.grid-container();
 
     &__left {
-        @include grid-column(left);
+        @include shared.grid-column(left);
     }
 
     &__center {
-        @include grid-column(center);
+        @include shared.grid-column(center);
     }
 
     &__right {
-        @include grid-column(right);
+        @include shared.grid-column(right);
     }
 }

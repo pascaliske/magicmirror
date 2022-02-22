@@ -4,13 +4,10 @@
  * This file contains all styles for the application itself
  */
 
-// variables, mixins, functions
-@import 'shared';
-
 // external libraries
-@import '~normalize-scss/sass/normalize';
+@use '~modern-normalize/modern-normalize';
 
 // app related stuff
-@import 'base/base';
-@import 'base/progressbar';
-@import 'base/fonts';
+@use 'base/base';
+@use 'base/progressbar';
+@use 'base/fonts';

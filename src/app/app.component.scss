@@ -1,13 +1,13 @@
-@import 'shared';
+@use 'shared';
 
 $component: 'cmp-root';
 
-@include cmp-host() {
+@include shared.cmp-host() {
     width: 100vw;
     height: 100vh;
 }
 
-@include cmp-base($component) {
+@include shared.cmp-base($component) {
     width: 100vw;
     height: 100vh;
 }
