@@ -1,3 +1,20 @@
+## [0.0.6](https://github.com/pascaliske/magicmirror/compare/v0.0.5...v0.0.6) (2022-02-25)
+
+
+### Bug Fixes
+
+* properly align top cards ([7e7b86a](https://github.com/pascaliske/magicmirror/commit/7e7b86ae046d15da19252026e21bbf6b328dfa31))
+* **server:** remove unused feed struct ([49f18a5](https://github.com/pascaliske/magicmirror/commit/49f18a527d24068d0ddb0e332f05e4f7d49b700d))
+
+
+### Features
+
+* **ansible:** add tailscale provisioning role ([f92c636](https://github.com/pascaliske/magicmirror/commit/f92c6367c6b0175c126ed52ac8f429ab6a3bdaeb))
+* re-write sass using new module system ([c0a6b1c](https://github.com/pascaliske/magicmirror/commit/c0a6b1c03e4097ae0294b1b6c7979fd29179e375))
+* **server:** exit  programm correctly on errors ([48f7ce7](https://github.com/pascaliske/magicmirror/commit/48f7ce71db4c2e3174aafc0c7dff1057fb933ae6))
+
+
+
 ## [0.0.5](https://github.com/pascaliske/magicmirror/compare/v0.0.4...v0.0.5) (2022-02-09)
 
 
