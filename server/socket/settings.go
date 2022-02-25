@@ -9,10 +9,6 @@ type Location struct {
 	Longitude float64 `json:"longitude"`
 }
 
-type Feed struct {
-	Url string `json:"url"`
-}
-
 type ApiKeys struct {
 	OpenWeather string `json:"openWeather"`
 }
