@@ -22,8 +22,10 @@ export class AppComponent implements OnInit {
     ) {}
 
     public ngOnInit(): void {
+        // fetch settings from server
         this.store.dispatch(LoadSettings())
 
+        // watch for reload actions
         this.socket
             .subscribe(SocketAction.Reload)
             .pipe(untilDestroyed(this))
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit {
                 this.reload.reload()
             })
 
+        // watch for unhealthy state
         this.health
             .watch(Status.Unavailable)
             .pipe(untilDestroyed(this))
