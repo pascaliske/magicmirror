@@ -47,7 +47,7 @@
     "modern-normalize": "^1.1.0",
     "modularscale-sass": "^3.0.10",
     "ngx-progressbar": "^8.0.0",
-    "rxjs": "~7.5.4",
+    "rxjs": "~7.5.5",
     "ts-cacheable": "^1.0.6",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.5"
