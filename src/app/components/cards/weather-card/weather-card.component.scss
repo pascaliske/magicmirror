@@ -16,6 +16,7 @@ $component: 'cmp-weather-card';
 
     &__temperature {
         @include shared.use-font(bold);
+        width: 100%; // webkit bug with baseline alignment
         grid-area: temperature;
         align-self: baseline;
         justify-self: start;
