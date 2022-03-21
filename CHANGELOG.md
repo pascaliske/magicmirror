@@ -1,3 +1,17 @@
+## [0.0.7](https://github.com/pascaliske/magicmirror/compare/v0.0.6...v0.0.7) (2022-03-21)
+
+
+### Bug Fixes
+
+* **weather-card:** ensure width of temperature works with baseline alignment in safari ([3875795](https://github.com/pascaliske/magicmirror/commit/38757952337b69fedf200d7207f9251b4b984c9a))
+
+
+### Features
+
+* **socket:** retry socket connection every 5 seconds after server close event ([ee974b2](https://github.com/pascaliske/magicmirror/commit/ee974b24258bbea4712a229ebf62ee8d6cd554e6))
+
+
+
 ## [0.0.6](https://github.com/pascaliske/magicmirror/compare/v0.0.5...v0.0.6) (2022-02-25)
 
 
