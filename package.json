@@ -73,7 +73,7 @@
     "eslint": "^8.12.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
-    "prettier": "^2.6.1",
+    "prettier": "^2.6.2",
     "standard-changelog": "^2.0.27",
     "typescript": "~4.6.3"
   }
