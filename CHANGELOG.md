@@ -1,3 +1,13 @@
+## [0.0.8](https://github.com/pascaliske/magicmirror/compare/v0.0.7...v0.0.8) (2022-04-27)
+
+
+### Features
+
+* implement build time variable ([8245d92](https://github.com/pascaliske/magicmirror/commit/8245d9276910e07c0efa8eea3fe03176ca0ba37c))
+* **server:** implement build info metric ([4deb76c](https://github.com/pascaliske/magicmirror/commit/4deb76c9d54a522fb9d4cd441526f04b9eae2a15))
+
+
+
 ## [0.0.7](https://github.com/pascaliske/magicmirror/compare/v0.0.6...v0.0.7) (2022-03-21)
 
 
