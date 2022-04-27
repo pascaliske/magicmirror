@@ -16,12 +16,12 @@ docker pull pascaliske/magicmirror
 docker pull ghcr.io/pascaliske/magicmirror
 ```
 
-To run the server use the following command:
+Now you can run the server using the following command:
 
 ```bash
 docker run \
     --detach \
-    --name magicmirror
+    --name magicmirror \
     --publish 9000:9000 \
     --volume $(pwd)/config.yml:/config.yml \
     ghcr.io/pascaliske/magicmirror
