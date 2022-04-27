@@ -70,6 +70,26 @@
     state: latest
   loop: '{{ packages.pip }}'
 
+# disable swap
+- name: Disable swap
+  become: yes
+  block:
+    - name: Clear swap
+      command: swapoff -a
+    - name: Stop swap service
+      service:
+        name: dphys-swapfile
+        state: stopped
+    - name: Disable swap service
+      systemd:
+        name: dphys-swapfile
+        enabled: no
+    - name: Uninstall swap service
+      apt:
+        name: dphys-swapfile
+        state: absent
+        purge: yes
+
 # prepare directory
 - name: Ensure directory exists
   file:
