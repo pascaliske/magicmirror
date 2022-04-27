@@ -5,6 +5,15 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promauto"
 )
 
+var BuildInfo = promauto.NewGaugeVec(
+	prometheus.GaugeOpts{
+		Subsystem: "magicmirror",
+		Name:      "build_info",
+		Help:      "Current version number and build information.",
+	},
+	[]string{"version", "git_commit", "build_time", "go_version", "platform"},
+)
+
 var RequestsTotal = promauto.NewCounterVec(
 	prometheus.CounterOpts{
 		Subsystem: "magicmirror",

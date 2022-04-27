@@ -2,7 +2,9 @@ package metrics
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
+	"runtime"
 	"strconv"
 	"time"
 
@@ -13,9 +15,15 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-func Middleware() echo.MiddlewareFunc {
-	logger.Debug("Metrics endpoint enabled at %s", color.CyanString(config.GetString("Metrics.Path")))
+func Setup(Version string, GitCommit string, BuildTime string) {
+	GoVersion := runtime.Version()
+	Platform := fmt.Sprintf("%s/%s", runtime.GOOS, runtime.GOARCH)
 
+	logger.Debug("Metrics endpoint enabled at %s", color.CyanString(config.GetString("Metrics.Path")))
+	BuildInfo.WithLabelValues(Version, GitCommit, BuildTime, GoVersion, Platform).Set(1)
+}
+
+func Middleware() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			// skip on metrics path
