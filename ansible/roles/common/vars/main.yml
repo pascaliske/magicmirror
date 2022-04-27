@@ -16,5 +16,6 @@ packages:
     - openbox
     - chromium-browser
     - apt-transport-https
+    - tmux
   pip:
     - docker
