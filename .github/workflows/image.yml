@@ -23,6 +23,11 @@ jobs:
         env:
           REPOSITORY: ${{ github.repository }}
 
+      # set build time
+      - name: Set build time
+        id: build-time
+        run: echo "::set-output name=time::$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
       # checkout
       - uses: actions/checkout@v3
 
@@ -87,6 +92,7 @@ jobs:
           build-args: |
             VERSION=${{ steps.metadata.outputs.version }}
             GIT_COMMIT=${{ github.sha }}
+            BUILD_TIME=${{ steps.build-time.outputs.time }}
 
       # generate release notes
       - name: Generate release notes

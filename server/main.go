@@ -22,11 +22,12 @@ import (
 
 var Version string
 var GitCommit string
+var BuildTime string
 
 func main() {
 	// build information
 	figure.NewFigure("MagicMirror", "graffiti", true).Print()
-	logger.Raw("\nVersion %s @ %s\n", color.CyanString(Version), color.CyanString(GitCommit))
+	logger.Raw("\nVersion %s @ %s (%s)\n", color.CyanString(Version), color.CyanString(GitCommit), color.CyanString(BuildTime))
 
 	// parse config
 	if err := config.Parse(); err != nil {

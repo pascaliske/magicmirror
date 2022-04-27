@@ -6,6 +6,7 @@ WORKDIR /go/src/app
 # environment
 ARG VERSION
 ARG GIT_COMMIT
+ARG BUILD_TIME
 ARG TARGETOS
 ARG TARGETARCH
 ENV CGO_ENABLED=0
@@ -17,7 +18,7 @@ RUN go mod download
 
 # build binary
 COPY server /go/src/app
-RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -ldflags="-w -s -X main.Version=${VERSION} -X main.GitCommit=${GIT_COMMIT}" -o ./magicmirror main.go
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -ldflags="-w -s -X main.Version=${VERSION} -X main.GitCommit=${GIT_COMMIT} -X main.BuildTime=${BUILD_TIME}" -o ./magicmirror main.go
 
 # app
 FROM --platform=${BUILDPLATFORM} node:16-alpine AS app
