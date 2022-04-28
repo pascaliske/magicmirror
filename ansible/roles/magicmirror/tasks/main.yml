@@ -14,7 +14,7 @@
 - name: Create container
   community.docker.docker_container:
     name: '{{ role_name }}'
-    image: 'ghcr.io/pascaliske/{{ role_name }}:latest'
+    image: 'ghcr.io/pascaliske/{{ role_name }}:master'
     restart_policy: unless-stopped
     pull: yes
     ports:
