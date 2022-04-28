@@ -11,7 +11,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-var callbacks = make(map[string]func())
+var callbacks = make(map[string]func(bool))
 
 type Config struct {
 	// general
@@ -89,8 +89,11 @@ func Parse() error {
 		viper.OnConfigChange(func(e fsnotify.Event) {
 			logger.Info("Config file changed")
 
+			// check if change is valid
+			valid := viper.ReadInConfig() == nil
+
 			for _, callback := range callbacks {
-				callback()
+				callback(valid)
 			}
 		})
 	}
@@ -117,17 +120,35 @@ func parseConfigFlag() (bool, string, string) {
 	return true, filepath.Base(file), filepath.Dir(file)
 }
 
-func OnChange(id string, run func()) func() {
+func OnChange(id string, run func(bool)) func() {
 	// no config file used
 	if len(viper.ConfigFileUsed()) == 0 {
 		return func() {}
 	}
 
 	// add callback to queue
-	callbacks[id] = run
+	callbacks[id] = func(success bool) {
+		run(success)
+	}
 
 	// return unregister function
 	return func() {
 		delete(callbacks, id)
 	}
+}
+
+func OnChangeSuccess(id string, run func()) func() {
+	return OnChange(id, func(success bool) {
+		if success {
+			run()
+		}
+	})
+}
+
+func OnChangeError(id string, run func()) func() {
+	return OnChange(id, func(success bool) {
+		if !success {
+			run()
+		}
+	})
 }

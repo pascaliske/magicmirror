@@ -5,6 +5,8 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promauto"
 )
 
+// general
+
 var BuildInfo = promauto.NewGaugeVec(
 	prometheus.GaugeOpts{
 		Subsystem: "magicmirror",
@@ -13,6 +15,46 @@ var BuildInfo = promauto.NewGaugeVec(
 	},
 	[]string{"version", "git_commit", "build_time", "go_version", "platform"},
 )
+
+// config reloads
+
+var ConfigReloadsTotal = promauto.NewCounterVec(
+	prometheus.CounterOpts{
+		Subsystem: "magicmirror",
+		Name:      "config_reloads_total",
+		Help:      "Counter of total successfull config file reloads.",
+	},
+	[]string{},
+)
+
+var ConfigReloadsFailureTotal = promauto.NewCounterVec(
+	prometheus.CounterOpts{
+		Subsystem: "magicmirror",
+		Name:      "config_reloads_failure_total",
+		Help:      "Counter of total failed config file reloads.",
+	},
+	[]string{},
+)
+
+var ConfigLastReloadSuccess = promauto.NewGaugeVec(
+	prometheus.GaugeOpts{
+		Subsystem: "magicmirror",
+		Name:      "config_last_reload_success",
+		Help:      "UNIX timestamp of last successfull config file reload.",
+	},
+	[]string{},
+)
+
+var ConfigLastReloadFailure = promauto.NewGaugeVec(
+	prometheus.GaugeOpts{
+		Subsystem: "magicmirror",
+		Name:      "config_last_reload_failure",
+		Help:      "UNIX timestamp of last failed config file reload.",
+	},
+	[]string{},
+)
+
+// http
 
 var RequestsTotal = promauto.NewCounterVec(
 	prometheus.CounterOpts{

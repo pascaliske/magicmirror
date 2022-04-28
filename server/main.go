@@ -37,7 +37,7 @@ func main() {
 
 	// configure logging
 	logger.SetLevel(config.GetString("Log.Level"))
-	config.OnChange(time.Now().String(), func() {
+	config.OnChangeSuccess("log-level", func() {
 		logger.SetLevel(config.GetString("Log.Level"))
 	})
 
@@ -71,6 +71,17 @@ func main() {
 		metrics.Setup(Version, GitCommit, BuildTime)
 		server.Use(metrics.Middleware())
 		server.GET(config.GetString("Metrics.Path"), metrics.Handler(server))
+
+		// update config reload metric
+		config.OnChange("config-reload", func(success bool) {
+			if success {
+				metrics.ConfigReloadsTotal.WithLabelValues().Inc()
+				metrics.ConfigLastReloadSuccess.WithLabelValues().SetToCurrentTime()
+			} else {
+				metrics.ConfigReloadsFailureTotal.WithLabelValues().Inc()
+				metrics.ConfigLastReloadFailure.WithLabelValues().SetToCurrentTime()
+			}
+		})
 	}
 
 	// development proxy

@@ -21,6 +21,8 @@ func Setup(Version string, GitCommit string, BuildTime string) {
 
 	logger.Debug("Metrics endpoint enabled at %s", color.CyanString(config.GetString("Metrics.Path")))
 	BuildInfo.WithLabelValues(Version, GitCommit, BuildTime, GoVersion, Platform).Set(1)
+	ConfigReloadsTotal.WithLabelValues().Add(0)
+	ConfigReloadsFailureTotal.WithLabelValues().Add(0)
 }
 
 func Middleware() echo.MiddlewareFunc {

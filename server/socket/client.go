@@ -33,7 +33,7 @@ func CreateClient(socket *websocket.Conn) (client Client) {
 
 func (client Client) Read(c echo.Context) {
 	// send reload message on config changes
-	cancel := config.OnChange(client.UUID, func() {
+	cancel := config.OnChangeSuccess(client.UUID, func() {
 		client.SendAction("reload", nil)
 	})
 
