@@ -75,6 +75,6 @@
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
     "standard-changelog": "^2.0.27",
-    "typescript": "~4.6.3"
+    "typescript": "~4.6.4"
   }
 }
