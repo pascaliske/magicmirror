@@ -23,6 +23,7 @@ func Setup(Version string, GitCommit string, BuildTime string) {
 	BuildInfo.WithLabelValues(Version, GitCommit, BuildTime, GoVersion, Platform).Set(1)
 	ConfigReloadsTotal.WithLabelValues().Add(0)
 	ConfigReloadsFailureTotal.WithLabelValues().Add(0)
+	SocketClients.WithLabelValues().Set(0)
 }
 
 func Middleware() echo.MiddlewareFunc {

@@ -5,6 +5,7 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/pascaliske/magicmirror/config"
+	"github.com/pascaliske/magicmirror/metrics"
 )
 
 type Client struct {
@@ -21,6 +22,11 @@ func CreateClient(socket *websocket.Conn) (client Client) {
 
 	// save client reference
 	clients[client] = true
+
+	// update metric
+	if config.GetBool("Metrics.Enabled") {
+		metrics.SocketClients.WithLabelValues().Set(float64(len(clients)))
+	}
 
 	// build client settings
 	settings := BuildSettings()
@@ -40,6 +46,11 @@ func (client Client) Read(c echo.Context) {
 	// unregister client
 	defer cancel()
 	defer delete(clients, client)
+
+	// update metric
+	if config.GetBool("Metrics.Enabled") {
+		metrics.SocketClients.WithLabelValues().Set(float64(len(clients)))
+	}
 
 	for {
 		message := SocketMessage{}

@@ -91,3 +91,14 @@ var ResponseSize = promauto.NewHistogramVec(
 	},
 	[]string{"code", "method", "url"},
 )
+
+// socket
+
+var SocketClients = promauto.NewGaugeVec(
+	prometheus.GaugeOpts{
+		Subsystem: "magicmirror",
+		Name:      "socket_clients",
+		Help:      "Number of socket clients currently connected.",
+	},
+	[]string{},
+)
