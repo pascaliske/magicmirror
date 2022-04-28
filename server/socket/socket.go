@@ -21,7 +21,7 @@ func Handler(server *echo.Echo) echo.HandlerFunc {
 
 	// update metric
 	if config.GetBool("Metrics.Enabled") {
-		metrics.SocketClients.WithLabelValues().Set(float64(len(clients)))
+		metrics.SocketConnections.WithLabelValues().Set(float64(len(clients)))
 	}
 
 	return func(c echo.Context) error {

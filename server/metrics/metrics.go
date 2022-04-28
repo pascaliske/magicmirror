@@ -30,7 +30,7 @@ func Setup(Version string, GitCommit string, BuildTime string) {
 	ConfigReloadsFailureTotal.WithLabelValues().Add(0)
 	ConfigLastReloadSuccess.WithLabelValues().Set(float64(startup))
 	ConfigLastReloadFailure.WithLabelValues().Set(0)
-	SocketClients.WithLabelValues().Set(0)
+	SocketConnections.WithLabelValues().Set(0)
 }
 
 func Middleware() echo.MiddlewareFunc {
