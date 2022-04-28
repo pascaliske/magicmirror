@@ -15,12 +15,15 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
+var startup int64 = time.Now().Unix()
+
 func Setup(Version string, GitCommit string, BuildTime string) {
 	GoVersion := runtime.Version()
 	Platform := fmt.Sprintf("%s/%s", runtime.GOOS, runtime.GOARCH)
 
 	logger.Debug("Metrics endpoint enabled at %s", color.CyanString(config.GetString("Metrics.Path")))
 	BuildInfo.WithLabelValues(Version, GitCommit, BuildTime, GoVersion, Platform).Set(1)
+	UptimeSeconds.WithLabelValues().Set(0)
 	ConfigReloadsTotal.WithLabelValues().Add(0)
 	ConfigReloadsFailureTotal.WithLabelValues().Add(0)
 	SocketClients.WithLabelValues().Set(0)
@@ -45,6 +48,7 @@ func Middleware() echo.MiddlewareFunc {
 			url := c.Path()
 
 			// update metrics
+			UptimeSeconds.WithLabelValues().Set(float64(time.Now().Unix() - startup))
 			RequestsTotal.WithLabelValues(status, method, host, url).Inc()
 			RequestDuration.WithLabelValues(status, method, url).Observe(float64(time.Since(start)) / float64(time.Second))
 			RequestSize.WithLabelValues(status, method, url).Observe(float64(computeApproximateRequestSize(c.Request())))

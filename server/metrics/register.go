@@ -16,6 +16,15 @@ var BuildInfo = promauto.NewGaugeVec(
 	[]string{"version", "git_commit", "build_time", "go_version", "platform"},
 )
 
+var UptimeSeconds = promauto.NewGaugeVec(
+	prometheus.GaugeOpts{
+		Subsystem: "magicmirror",
+		Name:      "uptime_seconds",
+		Help:      "Seconds since last successfull startup.",
+	},
+	[]string{},
+)
+
 // config reloads
 
 var ConfigReloadsTotal = promauto.NewCounterVec(
