@@ -25,5 +25,5 @@
       PGID: '{{ ansible_user_gid | string }}'
     mounts:
       - type: bind
-        source: '{{ paths.root }}/{{ role_name }}/config.yml'
-        target: /config.yml
+        source: '{{ paths.root }}/{{ role_name }}'
+        target: /etc/magicmirror
