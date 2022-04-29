@@ -68,8 +68,7 @@ func main() {
 
 	// metrics
 	if config.GetBool("Metrics.Enabled") {
-		metrics.Setup(Version, GitCommit, BuildTime)
-		server.Use(metrics.Middleware())
+		server.Use(metrics.Middleware(Version, GitCommit, BuildTime))
 		server.GET(config.GetString("Metrics.Path"), metrics.Handler(server))
 
 		// update config reload metric

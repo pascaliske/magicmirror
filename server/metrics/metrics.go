@@ -17,7 +17,7 @@ import (
 
 var startup int64 = time.Now().Unix()
 
-func Setup(Version string, GitCommit string, BuildTime string) {
+func Middleware(Version string, GitCommit string, BuildTime string) echo.MiddlewareFunc {
 	GoVersion := runtime.Version()
 	Platform := fmt.Sprintf("%s/%s", runtime.GOOS, runtime.GOARCH)
 
@@ -31,9 +31,7 @@ func Setup(Version string, GitCommit string, BuildTime string) {
 	ConfigLastReloadSuccess.WithLabelValues().Set(float64(startup))
 	ConfigLastReloadFailure.WithLabelValues().Set(0)
 	SocketConnections.WithLabelValues().Set(0)
-}
 
-func Middleware() echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			// skip on metrics path
