@@ -1,3 +1,20 @@
+## [0.0.9](https://github.com/pascaliske/magicmirror/compare/v0.0.8...v0.0.9) (2022-04-30)
+
+
+### Bug Fixes
+
+* **server:** use logger for socket errors ([f9d0002](https://github.com/pascaliske/magicmirror/commit/f9d00022af69ed1085b020894385554cecfd7207))
+* **socket:** replace deprecated rxjs operator ([762c95d](https://github.com/pascaliske/magicmirror/commit/762c95dd946976bf454e1462ba4acec700ca8c2d))
+
+
+### Features
+
+* **server:** add config file reload metrics ([007134b](https://github.com/pascaliske/magicmirror/commit/007134b10b790ee4e70ddc75c3e39c151efc24a1))
+* **server:** add socket client metric ([2782829](https://github.com/pascaliske/magicmirror/commit/27828291fe6969b4197fe4b9e74de7888da0d188))
+* **server:** add uptime metric ([b9e83b0](https://github.com/pascaliske/magicmirror/commit/b9e83b03ed6f17bac5521c4647f6517b0778375b))
+
+
+
 ## [0.0.8](https://github.com/pascaliske/magicmirror/compare/v0.0.7...v0.0.8) (2022-04-27)
 
 
