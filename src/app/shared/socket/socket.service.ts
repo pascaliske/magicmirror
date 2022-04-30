@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core'
 import { DOCUMENT } from '@angular/common'
 import { Subject, Observable, OperatorFunction, pipe, interval } from 'rxjs'
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket'
-import { filter, delay, tap, retryWhen, delayWhen, finalize } from 'rxjs/operators'
+import { filter, delay, tap, retry, delayWhen, finalize } from 'rxjs/operators'
 
 export const enum SocketAction {
     Register = 'register',
@@ -61,24 +61,21 @@ export class SocketService {
      * @returns
      */
     private reconnect<T extends SocketMessage>(after: number = 5000): OperatorFunction<T, T> {
-        const ready: () => void = () => {
-            console.info('[socket] Connection established.')
-        }
-        const error: (event: Event) => void = ({ type }: Event): void => {
-            if (type === 'close') {
-                console.info('[socket] Disconnected!')
-            }
-
-            console.info('[socket] Trying to reconnect...')
-        }
-
         return pipe(
-            tap(() => ready()),
-            retryWhen(errors => {
-                return errors.pipe(
-                    tap((event: Event) => error(event)),
-                    delayWhen(() => interval(after)),
-                )
+            tap(() => console.info('[socket] Connection established.')),
+            retry({
+                delay: error => {
+                    return error.pipe(
+                        tap(({ type }: Event): void => {
+                            if (type === 'close') {
+                                console.info('[socket] Disconnected!')
+                            }
+
+                            console.info('[socket] Trying to reconnect...')
+                        }),
+                        delayWhen(() => interval(after)),
+                    )
+                },
             }),
             tap(message => this.subject$.next(message)),
             finalize(() => this.subject$.complete()),
