@@ -5,6 +5,7 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/pascaliske/magicmirror/config"
+	"github.com/pascaliske/magicmirror/logger"
 	"github.com/pascaliske/magicmirror/metrics"
 )
 
@@ -58,7 +59,7 @@ func (client Client) Read(c echo.Context) {
 		// read message from client
 		if err := client.socket.ReadJSON(&message); err != nil {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
-				c.Logger().Error(err)
+				logger.Error(err.Error())
 			}
 			break
 		}

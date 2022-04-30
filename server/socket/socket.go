@@ -30,7 +30,7 @@ func Handler(server *echo.Echo) echo.HandlerFunc {
 
 		// could not upgrade connection
 		if err != nil {
-			c.Logger().Error(err)
+			logger.Error(err.Error())
 			return err
 		}
 
