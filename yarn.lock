@@ -1762,10 +1762,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@ngneat/until-destroy@^9.1.2":
-  version "9.1.2"
-  resolved "https://registry.yarnpkg.com/@ngneat/until-destroy/-/until-destroy-9.1.2.tgz#1b23621d81f1731b3cb851b00bfe556bac2c160e"
-  integrity sha512-mp6ZdNpxuAC6ica3NBJ2P4FVVesHqjqux+BWtXrUDOkQ9c2/i5qsGThky623Jzz5plFtOPBH2GhkOF2NLj5uKA==
+"@ngneat/until-destroy@^9.2.0":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@ngneat/until-destroy/-/until-destroy-9.2.0.tgz#970c1c7397f95b18c922c22765691539a61003e1"
+  integrity sha512-VbnDFsdAI0QTjz1aD+nsn/GK9j4N26YJUdQZSdL9De6zBIz/s+UtG/DXis0qY/J/kboM5wJNUZEEsTRyoyv+CQ==
   dependencies:
     tslib "^2.3.0"
 
