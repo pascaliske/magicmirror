@@ -10,7 +10,7 @@ require (
 	github.com/gorilla/websocket v1.5.0
 	github.com/hellofresh/health-go/v4 v4.5.0
 	github.com/labstack/echo/v4 v4.7.2
-	github.com/prometheus/client_golang v1.12.1
+	github.com/prometheus/client_golang v1.12.2
 	github.com/spf13/viper v1.11.0
 )
 
