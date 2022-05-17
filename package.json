@@ -63,7 +63,7 @@
     "@angular/cli": "~13.3.5",
     "@angular/compiler-cli": "~13.3.4",
     "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^16.2.4",
+    "@commitlint/config-conventional": "^17.0.0",
     "@pascaliske/eslint-config": "^2.0.6",
     "@pascaliske/prettier-config": "^1.1.5",
     "@rstacruz/bump-cli": "^2.0.1",
