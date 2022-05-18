@@ -141,11 +141,4 @@ jobs:
         id: scan
         with:
           image: ${{ steps.image-name.outputs.image }}:latest
-          dockerfile: ./Dockerfile
           annotations: true
-
-      # upload sarif file to github
-      - uses: github/codeql-action/upload-sarif@v1
-        if: ${{ steps.scan.outputs.sarif != '' }}
-        with:
-          sarif_file: ${{ steps.scan.outputs.sarif }}
