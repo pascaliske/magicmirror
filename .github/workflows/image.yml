@@ -117,3 +117,27 @@ jobs:
       - name: Output image digest
         run: |
           echo ${{ steps.build.outputs.digest }}
+  scan:
+    name: Scan
+    runs-on: ubuntu-latest
+    steps:
+      # build image name
+      - name: Build image name
+        id: image-name
+        run: echo "::set-output name=image::${REPOSITORY//docker-/}"
+        env:
+          REPOSITORY: ${{ github.repository }}
+
+      # scan image 
+      - uses: crazy-max/ghaction-container-scan@v1
+        id: scan
+        with:
+          image: ${{ steps.image-name.outputs.image }}:latest
+          dockerfile: ./Dockerfile
+          annotations: true
+
+      # upload sarif file to github
+      - uses: github/codeql-action/upload-sarif@v1
+        if: ${{ steps.scan.outputs.sarif != '' }}
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}
