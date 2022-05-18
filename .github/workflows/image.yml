@@ -128,8 +128,16 @@ jobs:
         env:
           REPOSITORY: ${{ github.repository }}
 
+      # login to docker hub
+      - uses: docker/login-action@v2
+        if: github.event_name != 'pull_request'
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
       # scan image 
       - uses: crazy-max/ghaction-container-scan@v1
+        if: github.event_name != 'pull_request'
         id: scan
         with:
           image: ${{ steps.image-name.outputs.image }}:latest
