@@ -171,14 +171,6 @@
     aria-query "^4.2.2"
     axobject-query "^2.2.0"
 
-"@angular-eslint/eslint-plugin@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-13.3.0.tgz#1a5d51793a20b38d0add4eb2439ce7d339269b10"
-  integrity sha512-V+k7HhdEX5KgGlAPKZvhz68h6xErTrO1gR6vVSOB0ccJIxMqS2FVvIGcH7r7G000C3ZRIsFVqdpjxGw/l/v45Q==
-  dependencies:
-    "@angular-eslint/utils" "13.3.0"
-    "@typescript-eslint/experimental-utils" "5.17.0"
-
 "@angular-eslint/eslint-plugin@13.5.0":
   version "13.5.0"
   resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-13.5.0.tgz#7af8414e2e51421079f3f92eccf1e548090adba0"
@@ -205,14 +197,6 @@
   dependencies:
     "@angular-eslint/bundled-angular-compiler" "13.5.0"
     eslint-scope "^5.1.0"
-
-"@angular-eslint/utils@13.3.0":
-  version "13.3.0"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/utils/-/utils-13.3.0.tgz#5273ce750cd39b59e7aceb0c5f62e6f6c3f8b43f"
-  integrity sha512-CprQizpHfHbFp4E7GJOn4ceNZjV/77g0R+QOZZqzOGAcQmm1QbCuYQo+rVpH0C/zul09xg3DpRZMa3ONb1r6bA==
-  dependencies:
-    "@angular-eslint/bundled-angular-compiler" "13.3.0"
-    "@typescript-eslint/experimental-utils" "5.17.0"
 
 "@angular-eslint/utils@13.5.0":
   version "13.5.0"
