@@ -1,0 +1,76 @@
+# project
+site_name: pascaliske/magicmirror
+site_description: Go + Angular based smart mirror platform - packaged as single docker image.
+site_author: Pascal Iske
+site_url: https://pascaliske.dev
+
+# repository
+repo_name: pascaliske/magicmirror
+repo_url: https://github.com/pascaliske/magicmirror
+
+# theme
+theme:
+  name: material
+  favicon: assets/favicon.png
+  language: en
+  palette:
+    - scheme: default
+      media: '(prefers-color-scheme: light)'
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+    - scheme: slate
+      primary: lime
+      accent: lime
+      media: '(prefers-color-scheme: dark)'
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+  font:
+    text: Lato
+    code: Source Code Pro
+  icon:
+    logo: material/mirror-rectangle
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - toc.follow
+    - toc.integrate
+    - content.code.annotate
+    - content.tabs.link
+
+# navigation
+nav:
+  - Home: index.md
+
+# socials
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/pascaliske
+    - icon: fontawesome/brands/github
+      link: https://github.com/pascaliske
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/u/pascaliske
+
+# code highlighting
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+
+# customizations
+extra_css:
+  - styles/custom.css
