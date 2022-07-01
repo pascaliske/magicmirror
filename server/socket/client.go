@@ -78,13 +78,22 @@ func (client Client) Write(c echo.Context) {
 	defer client.socket.Close()
 
 	for {
-		// send message to client
+		// get message for client
 		message := <-client.send
-		client.socket.WriteJSON(message)
+
+		// send message to client
+		if err := client.socket.WriteJSON(message); err != nil {
+			logger.Error(err.Error())
+		}
 	}
 }
 
 func (client Client) SendAction(action string, payload interface{}) {
+	// build message for client
 	message := SocketMessage{Action: action, Payload: payload}
-	client.socket.WriteJSON(message)
+
+	// send message to client
+	if err := client.socket.WriteJSON(message); err != nil {
+		logger.Error(err.Error())
+	}
 }
