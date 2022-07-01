@@ -47,3 +47,7 @@ Thumbs.db
 
 # config files
 /config.yml
+
+# docs
+docs/index.md
+docs/license.md
