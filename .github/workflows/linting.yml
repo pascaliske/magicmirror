@@ -30,6 +30,8 @@ jobs:
 
       # lint dockerfile
       - uses: hadolint/hadolint-action@v2.0.0
+        with:
+          failure-threshold: warning
 
   lint-angular:
     name: Angular
@@ -47,6 +49,7 @@ jobs:
       # lint angular
       - name: Lint
         run: |
+          yarn install --frozen-lockfile --ignore-scripts
           yarn run lint
 
   lint-go:
