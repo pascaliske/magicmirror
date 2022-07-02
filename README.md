@@ -8,13 +8,13 @@
 
 | Registry   | Image                                                                                                                             |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Docker Hub | [`pascaliske/magicmirror`](https://hub.docker.com/r/pascaliske/magicmirror)                                           |
-| GitHub     | [`ghcr.io/pascaliske/magicmirror`](https://github.com/pascaliske/docker-magicmirror/pkgs/container/magicmirror) |
+| GitHub     | [`ghcr.io/pascaliske/magicmirror`](https://github.com/pascaliske/docker-magicmirror/pkgs/container/magicmirror)                   |
+| Docker Hub | [`pascaliske/magicmirror`](https://hub.docker.com/r/pascaliske/magicmirror)                                                       |
 
 The following platforms are available for this image:
 
 ```bash
-$ docker run --rm mplatform/mquery pascaliske/magicmirror:latest
+$ docker run --rm mplatform/mquery ghcr.io/pascaliske/magicmirror:latest
 Image: pascaliske/magicmirror:latest
  * Manifest List: Yes
  * Supported platforms:
@@ -28,11 +28,11 @@ Image: pascaliske/magicmirror:latest
 To use this image pull it from one of the following registries:
 
 ```bash
-# docker hub
-docker pull pascaliske/magicmirror
-
 # github container registry
 docker pull ghcr.io/pascaliske/magicmirror
+
+# docker hub
+docker pull pascaliske/magicmirror
 ```
 
 Now you can run the server using the following command:
