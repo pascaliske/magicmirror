@@ -46,6 +46,7 @@ theme:
 # navigation
 nav:
   - Home: index.md
+  - Configuration: configuration/index.md
 
 # socials
 extra:
