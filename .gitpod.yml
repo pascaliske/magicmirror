@@ -18,7 +18,7 @@ ports:
   - port: 9000
     onOpen: notify
   - port: 4200
-    onOpen: notify
+    onOpen: ignore
 
 vscode:
   extensions:
