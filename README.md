@@ -42,7 +42,7 @@ docker run \
     --detach \
     --name magicmirror \
     --publish 9000:9000 \
-    --volume $(pwd)/config.yml:/config.yml \
+    --volume $(pwd)/config.yml:/etc/magicmirror/config.yml \
     ghcr.io/pascaliske/magicmirror
 ```
 
