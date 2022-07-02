@@ -46,6 +46,10 @@ docker run \
     ghcr.io/pascaliske/magicmirror
 ```
 
+## Configuration
+
+The project is configurable using a YAML file. You can find all possible values on the [configuration page](https://pascaliske.github.io/magicmirror/configuration/).
+
 ## License
 
 [MIT](LICENSE.md) – © 2022 [Pascal Iske](https://pascaliske.dev)
