@@ -5,14 +5,13 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/fatih/color"
-	"github.com/fsnotify/fsnotify"
 	"github.com/pascaliske/magicmirror/logger"
 	"github.com/spf13/viper"
 )
 
-var callbacks = make(map[string]func(bool))
-
+/**
+ * Parse a possible config file and watch for changes.
+ */
 func Parse() error {
 	// define config file type
 	viper.SetConfigType("yaml")
@@ -42,24 +41,14 @@ func Parse() error {
 	}
 
 	// watch for config file changes
-	if file := viper.ConfigFileUsed(); len(file) > 0 {
-		logger.Info("Watching for config file changes: %s", color.CyanString(file))
-		viper.WatchConfig()
-		viper.OnConfigChange(func(e fsnotify.Event) {
-			logger.Info("Config file changed")
-
-			// check if change is valid
-			valid := viper.ReadInConfig() == nil
-
-			for _, callback := range callbacks {
-				callback(valid)
-			}
-		})
-	}
+	watchConfig()
 
 	return nil
 }
 
+/**
+ * Parse a config flag if set and extract file and dir values.
+ */
 func parseConfigFlag() (bool, string, string) {
 	// register config flag
 	input := flag.String("config", "", "")
@@ -77,37 +66,4 @@ func parseConfigFlag() (bool, string, string) {
 
 	// return file name and directory
 	return true, filepath.Base(file), filepath.Dir(file)
-}
-
-func OnChange(id string, run func(bool)) func() {
-	// no config file used
-	if len(viper.ConfigFileUsed()) == 0 {
-		return func() {}
-	}
-
-	// add callback to queue
-	callbacks[id] = func(success bool) {
-		run(success)
-	}
-
-	// return unregister function
-	return func() {
-		delete(callbacks, id)
-	}
-}
-
-func OnChangeSuccess(id string, run func()) func() {
-	return OnChange(id, func(success bool) {
-		if success {
-			run()
-		}
-	})
-}
-
-func OnChangeError(id string, run func()) func() {
-	return OnChange(id, func(success bool) {
-		if !success {
-			run()
-		}
-	})
 }
