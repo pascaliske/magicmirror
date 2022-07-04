@@ -1,4 +1,4 @@
-# `pascaliske/magicmirror`
+# [`pascaliske/magicmirror`](https://pascaliske.github.io/magicmirror/)
 
 > Go + Angular based smart mirror platform - packaged as single docker image.
 
@@ -25,7 +25,9 @@ Image: pascaliske/magicmirror:latest
 
 ## Usage
 
-To use this image pull it from one of the following registries:
+Visit the [documentation](https://pascaliske.github.io/magicmirror/) for a complete setup guide.
+
+To run a quick demo, you can just pull the image from one of the registries:
 
 ```bash
 # github container registry
@@ -35,7 +37,7 @@ docker pull ghcr.io/pascaliske/magicmirror
 docker pull pascaliske/magicmirror
 ```
 
-Now you can run the server using the following command:
+Now you can simply run the server component using the following command:
 
 ```bash
 docker run \
