@@ -3,8 +3,10 @@ image:
 
 tasks:
   - name: dependencies
-    before: go install github.com/mitranim/gow@latest
-    init: yarn install && gp sync-done install
+    init: >
+      yarn install &&
+      go install github.com/mitranim/gow@latest &&
+      gp sync-done install
   - name: app
     init: gp sync-await install
     command: yarn start
