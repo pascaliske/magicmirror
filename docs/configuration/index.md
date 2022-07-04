@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Magic Mirror can be fully customized using a YAML configuration file. The file can be placed in one of the following destinations where it will be automatically picked up by the server:
+Both, the server and app components can be fully customized using a single YAML configuration file but none of the keys are actually required. The file can be placed in one of the following destinations inside the container where it will be automatically picked up:
 
 - `/etc/magicmirror/config.yml` (preferred)
 - `/config.yml`
@@ -13,15 +13,45 @@ Alternatively you could explicitly pass in the configuration file via flag:
 $ /magicmirror --config /foo/bar/baz.yml
 ```
 
+??? tldr "Full example with all possible keys"
+
+    ```yaml title="/etc/magicmirror/config.yml"
+    # optional: http listener port for the server
+    port: 9000
+
+    # optional: configuration for logging, possible values: 'debug', 'info', 'warn', 'error', 'fatal'
+    log:
+      level: debug
+
+    # optional: configuration for prometheus metrics endpoint
+    metrics:
+      enabled: true
+      path: /metrics
+
+    # optional: geo location, only required for various cards and apis, e.g. weather card
+    location:
+      latitude: 1.2345678
+      longitude: 1.234567
+
+    # optional: rss feeds displayed inside news card
+    feeds:
+      - https://my-news.org/rss/feed
+
+    # optional: api keys for the respective data apis
+    apiKeys:
+      # optional: open weather api key, required if weather card is used
+      openWeather: my-api-key-123
+    ```
+
 ## Sections
 
 To keep things simple the configuration file is divided into multiple sections. Many of them can be omitted as they are optional.
 
 ### Basic
 
-| Key  | Type  | Mandatory | Default | Description                                   |
-| ---- | ----- | --------- | ------- | --------------------------------------------- |
-| port | `int` | no        | `9000`  | Port for the HTTP server to serve the web UI. |
+| Key    | Type  | Mandatory | Default | Description                                   |
+| ------ | ----- | --------- | ------- | --------------------------------------------- |
+| `port` | `int` | no        | `9000`  | Port for the HTTP server to serve the web UI. |
 
 ??? example
 
@@ -31,9 +61,9 @@ To keep things simple the configuration file is divided into multiple sections. 
 
 ### Log
 
-| Key   | Type                                               | Mandatory | Default | Description                         |
-| ----- | -------------------------------------------------- | --------- | ------- | ----------------------------------- |
-| level | `enum` (`debug`, `info`, `warn`, `error`, `fatal`) | no        | `info`  | Log level for the server component. |
+| Key     | Type                                               | Mandatory | Default | Description                         |
+| ------- | -------------------------------------------------- | --------- | ------- | ----------------------------------- |
+| `level` | `enum` (`debug`, `info`, `warn`, `error`, `fatal`) | no        | `info`  | Log level for the server component. |
 
 ??? example
 
@@ -46,10 +76,10 @@ To keep things simple the configuration file is divided into multiple sections. 
 
 The server is capable of exposing some basic metrics for [Prometheus](https://prometheus.io/). To enable them the following configuration values can be used:
 
-| Key     | Type     | Mandatory | Default    | Description                                                                             |
-| ------- | -------- | --------- | ---------- | --------------------------------------------------------------------------------------- |
-| enabled | `bool`   | no        | `true`     | Enable/Disable Prometheus metrics endpoint.                                             |
-| path    | `string` | no        | `/metrics` | Path of the metrics endpoint. The default value is ready for Prometheus to be consumed. |
+| Key       | Type     | Mandatory | Default    | Description                                                                             |
+| --------- | -------- | --------- | ---------- | --------------------------------------------------------------------------------------- |
+| `enabled` | `bool`   | no        | `true`     | Enable/Disable Prometheus metrics endpoint.                                             |
+| `path`    | `string` | no        | `/metrics` | Path of the metrics endpoint. The default value is ready for Prometheus to be consumed. |
 
 ??? example
 
@@ -65,10 +95,10 @@ Customize your geo location. It is needed for various cards, such as the weather
 
 > Note: If you skip this section those cards will be disabled automatically.
 
-| Key       | Type    | Mandatory | Default | Description                               |
-| --------- | ------- | --------- | ------- | ----------------------------------------- |
-| latitude  | `float` | no        | -       | Latitude as float for your geo location.  |
-| longitude | `float` | no        | -       | Longitude as float for your geo location. |
+| Key         | Type    | Mandatory | Default | Description                               |
+| ----------- | ------- | --------- | ------- | ----------------------------------------- |
+| `latitude`  | `float` | no        | -       | Latitude as float for your geo location.  |
+| `longitude` | `float` | no        | -       | Longitude as float for your geo location. |
 
 ??? example
 
@@ -95,9 +125,9 @@ Some cards (e.g. the weather card) need an API key to authenticate you against t
 
 > Note: If you skip this section those cards will be disabled automatically.
 
-| Key         | Type     | Mandatory | Default | Description                                        |
-| ----------- | -------- | --------- | ------- | -------------------------------------------------- |
-| openWeather | `string` | no        | -       | OpenWeather API key required for the weather card. |
+| Key           | Type     | Mandatory | Default | Description                                        |
+| ------------- | -------- | --------- | ------- | -------------------------------------------------- |
+| `openWeather` | `string` | no        | -       | OpenWeather API key required for the weather card. |
 
 ??? example
 
