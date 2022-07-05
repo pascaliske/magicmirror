@@ -1,3 +1,20 @@
+## [0.0.10](https://github.com/pascaliske/magicmirror/compare/v0.0.9...v0.0.10) (2022-07-05)
+
+
+### Bug Fixes
+
+* **dockerfile:** pin alpine image to latest version ([4df57df](https://github.com/pascaliske/magicmirror/commit/4df57df6598a98d9c3555b9b1234bdb7cdc94ad3))
+* **server:** defer metric update after socket client disconnects ([4e29b3e](https://github.com/pascaliske/magicmirror/commit/4e29b3ee88a42daa56dab1621a66db93dc1a671f))
+* **server:** handle client write message errors ([5c0c8a4](https://github.com/pascaliske/magicmirror/commit/5c0c8a425e47233fb82178b2c912f1db6ba3281c))
+
+
+### Features
+
+* initial docs setup ([2a84b98](https://github.com/pascaliske/magicmirror/commit/2a84b98ac0633405aa14f66b9bb978715535fffb))
+* **news-card:** implement link behind news headlines ([e165e1d](https://github.com/pascaliske/magicmirror/commit/e165e1d1616fd1dc4aea0b4d04905fd5b99c53f5))
+
+
+
 ## [0.0.9](https://github.com/pascaliske/magicmirror/compare/v0.0.8...v0.0.9) (2022-04-30)
 
 
