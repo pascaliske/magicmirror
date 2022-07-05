@@ -31,16 +31,16 @@ To run a quick demo, you can just pull the image from one of the registries:
 
 ```bash
 # github container registry
-docker pull ghcr.io/pascaliske/magicmirror
+$ docker pull ghcr.io/pascaliske/magicmirror
 
 # docker hub
-docker pull pascaliske/magicmirror
+$ docker pull pascaliske/magicmirror
 ```
 
 Now you can simply run the server component using the following command:
 
 ```bash
-docker run \
+$ docker run \
     --detach \
     --name magicmirror \
     --publish 9000:9000 \
