@@ -1,5 +1,5 @@
 <div class="cmp-news-card" *ngIf="data$ | async as data">
     <div class="cmp-news-card__headline" *ngFor="let headline of data">
-        {{ headline }}
+        <a [href]="headline.link" target="_blank" rel="noopener noreferrer">{{ headline.title }}</a>
     </div>
 </div>
