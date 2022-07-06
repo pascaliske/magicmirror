@@ -5,8 +5,8 @@ import { Cacheable } from 'ts-cacheable'
 import { BaseCardComponent, repeatAfter } from '../base-card/base-card.component'
 
 interface Headline {
-    title: string
-    link: string
+    label: string
+    url: string
 }
 
 @Component({
@@ -37,11 +37,12 @@ export class NewsCardComponent extends BaseCardComponent {
 
             return Array.from(feed.querySelectorAll('item'))
                 .slice(0, count)
-                .map(item => {
-                    const title = item?.querySelector('title')?.innerHTML ?? ''
-                    const link = item?.querySelector('link')?.innerHTML ?? ''
-
-                    return { title, link }
+                .map(item => ({
+                    label: item?.querySelector('title')?.innerHTML ?? '',
+                    url: item?.querySelector('link')?.innerHTML ?? '',
+                }))
+                .filter((item: Headline) => {
+                    return item?.label?.length > 0 && item?.url?.length > 0
                 })
         })
     }
