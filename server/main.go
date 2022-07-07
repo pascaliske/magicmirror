@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/common-nighthawk/go-figure"
@@ -106,15 +107,17 @@ func listen(server *echo.Echo) {
 }
 
 func shutdown(server *echo.Echo) {
-	// wait for interrupt signal
+	// wait for interrupt or terminate signals
 	quit := make(chan os.Signal, 1)
-	signal.Notify(quit, os.Interrupt)
+	signal.Notify(quit, os.Interrupt, syscall.SIGTERM)
 	<-quit
-
-	logger.Raw("\nGracefully shutting down server...")
 
 	// timeout of 10 seconds
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+
+	// clean-up
+	defer logger.Raw("\nGracefully shutting down server...")
+	defer signal.Stop(quit)
 	defer cancel()
 
 	// shutdown server
