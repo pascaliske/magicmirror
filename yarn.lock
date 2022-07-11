@@ -158,6 +158,16 @@
     aria-query "5.0.0"
     axobject-query "3.0.1"
 
+"@angular-eslint/eslint-plugin-template@14.0.2":
+  version "14.0.2"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-14.0.2.tgz#ff888b51f6df73469b7237f430571746d05ce2c6"
+  integrity sha512-egan0a2GVkubST4H7x2mPMTz3Ee9QXeLEchJyWXdFBZ6Nrpfjaki5dOQYhLU7KyxqhrSW4XugMWPGj2KW2gMxQ==
+  dependencies:
+    "@angular-eslint/bundled-angular-compiler" "14.0.2"
+    "@typescript-eslint/utils" "5.29.0"
+    aria-query "5.0.0"
+    axobject-query "3.0.1"
+
 "@angular-eslint/eslint-plugin@14.0.0":
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-14.0.0.tgz#36305a7b279b75fcfa817f47987c95debf1737fe"
