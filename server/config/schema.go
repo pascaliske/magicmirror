@@ -4,31 +4,69 @@ import (
 	"github.com/spf13/viper"
 )
 
-type Config struct {
-	// general
-	Environment string
-	Port        int
-	Log         struct {
-		Level string
-	}
-	Metrics struct {
-		Enabled bool
-		Path    string
-	}
+/**
+ * Application environment. Can be "production" or "development".
+ */
+type Environment string
 
-	// settings
-	Location struct {
-		Latitude  float64
-		Longitude float64
-	}
-	Feeds []string
+/**
+ * Port for the server to listen on.
+ */
+type Port int
 
-	// api keys
-	ApiKeys struct {
-		OpenWeather string
-	}
+/**
+ * Logging specific settings.
+ */
+type Log struct {
+	Level string
 }
 
+/**
+ * Metrics specific settings.
+ */
+type Metrics struct {
+	Enabled bool
+	Path    string
+}
+
+/**
+ * Geo location settings. Pass-through to web app.
+ */
+type Location struct {
+	Latitude  float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+}
+
+/**
+ * News feed sources. Pass-through to web app.
+ */
+type Feeds []string
+
+/**
+ * API keys. Pass-through to web app.
+ */
+type ApiKeys struct {
+	OpenWeather string `json:"openWeather"`
+}
+
+type Config struct {
+	// general
+	Environment Environment
+	Port        Port
+	Log         Log
+	Metrics     Metrics
+
+	// settings
+	Location Location
+	Feeds    Feeds
+
+	// api keys
+	ApiKeys ApiKeys
+}
+
+/**
+ * Initialize default configuration values.
+ */
 func init() {
 	// general
 	viper.SetDefault("Environment", "production")
