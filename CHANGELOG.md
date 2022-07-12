@@ -1,3 +1,13 @@
+## [0.0.11](https://github.com/pascaliske/magicmirror/compare/v0.0.10...v0.0.11) (2022-07-12)
+
+
+### Bug Fixes
+
+* **news-card:** bind label as html and filter out empty headlines ([dd30862](https://github.com/pascaliske/magicmirror/commit/dd30862696eef625abfbf09a7576a16f15a3b348))
+* **server:** catch sigterm and gracefully stop the server ([a12b9bb](https://github.com/pascaliske/magicmirror/commit/a12b9bb060b040ef03f311b86d8ce567bb167909))
+
+
+
 ## [0.0.10](https://github.com/pascaliske/magicmirror/compare/v0.0.9...v0.0.10) (2022-07-05)
 
 
