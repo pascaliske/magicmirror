@@ -1,0 +1,9 @@
+- name: Update host
+  hosts: all
+  become: true
+  tasks:
+    - name: Update apt packages
+      apt:
+        upgrade: safe
+        update_cache: yes
+        autoremove: yes

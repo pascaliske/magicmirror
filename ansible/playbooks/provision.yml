@@ -1,5 +1,4 @@
----
-- name: provision
+- name: Provision host
   hosts: all
   roles:
     - role: common
