@@ -30,7 +30,7 @@ func CreateClient(socket *websocket.Conn) (client Client) {
 	}
 
 	// build client settings
-	settings := BuildSettings()
+	settings := client.BuildSettings()
 
 	// send register message
 	client.SendAction("register", settings)
