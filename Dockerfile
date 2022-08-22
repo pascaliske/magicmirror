@@ -1,5 +1,5 @@
 # server
-FROM --platform=${BUILDPLATFORM} golang:1.18-alpine as server
+FROM --platform=${BUILDPLATFORM} golang:1.19.0-alpine as server
 LABEL maintainer="info@pascaliske.dev"
 WORKDIR /go/src/app
 
