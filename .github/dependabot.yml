@@ -11,6 +11,17 @@ updates:
       - pascaliske
     labels:
       - dependencies
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: daily
+    commit-message:
+      prefix: chore
+      include: scope
+    assignees:
+      - pascaliske
+    labels:
+      - dependencies
   - package-ecosystem: gomod
     directory: /server
     schedule:
