@@ -1,6 +1,6 @@
 # configure hostname
 - name: Configure hostname
-  become: yes
+  become: true
   block:
     - name: Set the hostname
       command: hostnamectl set-hostname "{{ inventory_hostname }}"
@@ -12,7 +12,7 @@
 
 # configure static ip
 - name: Configure static ip
-  become: yes
+  become: true
   lineinfile:
     path: /etc/dhcpcd.conf
     line: '{{ item.line }}'
@@ -25,7 +25,7 @@
 
 # configure locale
 - name: Configure locale
-  become: yes
+  become: true
   vars:
     locale: en_US.UTF-8
   block:
@@ -48,7 +48,7 @@
 
 # update system
 - name: Update apt packages
-  become: yes
+  become: true
   apt:
     upgrade: safe
     update_cache: yes
@@ -56,7 +56,7 @@
 
 # install common apt packages
 - name: Install common apt packages
-  become: yes
+  become: true
   apt:
     name: '{{ item }}'
     update_cache: yes
@@ -72,7 +72,7 @@
 
 # disable swap
 - name: Disable swap
-  become: yes
+  become: true
   block:
     - name: Clear swap
       command: swapoff -a
@@ -104,7 +104,7 @@
 
 # configure openbox
 - name: Configure openbox
-  become: yes
+  become: true
   template:
     src: '{{ role_name }}/autostart.j2'
     dest: /etc/xdg/openbox/autostart
