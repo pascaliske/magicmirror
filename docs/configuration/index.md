@@ -43,6 +43,18 @@ $ /magicmirror --config /foo/bar/baz.yml
       openWeather: my-api-key-123
     ```
 
+## Check-only mode
+
+You can run the server in a check-only mode to validate the configuration file. Simply pass the `--check` flag like so:
+
+```shell
+# default config path
+$ /magicmirror --check
+
+# custom config path
+$ /magicmirror --config /foo/bar/baz.yml --check
+```
+
 ## Sections
 
 To keep things simple the configuration file is divided into multiple sections. Many of them can be omitted as they are optional.

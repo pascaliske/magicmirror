@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"net/http"
 	"os"
@@ -21,22 +22,30 @@ import (
 	"github.com/pascaliske/magicmirror/socket"
 )
 
+// build information
 var Version string
 var GitCommit string
 var BuildTime string
+
+// flags
+var configPath *string
+var checkMode *bool
+
+func init() {
+	configPath = flag.String("config", "", "Path to configuration file")
+	checkMode = flag.Bool("check", false, "Enable configuration check only mode")
+	flag.Parse()
+}
 
 func main() {
 	// build information
 	figure.NewFigure("MagicMirror", "graffiti", true).Print()
 	logger.Raw("\nVersion %s @ %s (%s)\n", color.CyanString(Version), color.CyanString(GitCommit), color.CyanString(BuildTime))
 
-	// parse config
-	if err := config.Parse(); err != nil {
-		logger.Error("Couldn't parse config")
-		os.Exit(2)
-	}
+	// parse and validate config
+	config.ParseAndValidate(*configPath, *checkMode)
 
-	// configure logging
+	// configure log level
 	logger.SetLevel(config.GetString("Log.Level"))
 	config.OnChangeSuccess("log-level", func() {
 		logger.SetLevel(config.GetString("Log.Level"))

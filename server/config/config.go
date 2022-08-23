@@ -1,7 +1,7 @@
 package config
 
 import (
-	"flag"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -12,12 +12,12 @@ import (
 /**
  * Parse a possible config file and watch for changes.
  */
-func Parse() error {
+func ParseAndValidate(path string, checkMode bool) {
 	// define config file type
 	viper.SetConfigType("yaml")
 
 	// read config file from flag or default paths
-	if found, file, dir := parseConfigFlag(); found {
+	if found, file, dir := parseConfigPath(path); found {
 		viper.SetConfigName(file)
 		viper.AddConfigPath(dir)
 	} else {
@@ -36,33 +36,37 @@ func Parse() error {
 	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
 			logger.Error("Config file found but not readable")
-			return err
+			os.Exit(2)
 		}
+	}
+
+	// validate config
+	if valid, err := validateConfig(); !valid {
+		logger.Error(err.Error())
+		os.Exit(2)
+	}
+
+	// exit if check mode is active
+	if checkMode {
+		logger.Info("Successfully validated config")
+		os.Exit(0)
 	}
 
 	// watch for config file changes
 	watchConfig()
-
-	return nil
 }
 
 /**
  * Parse a config flag if set and extract file and dir values.
  */
-func parseConfigFlag() (bool, string, string) {
-	// register config flag
-	input := flag.String("config", "", "")
-
-	// parse flags
-	flag.Parse()
-
-	// config flag not set
-	if len(*input) == 0 {
+func parseConfigPath(path string) (bool, string, string) {
+	// config path is empty
+	if len(path) == 0 {
 		return false, "", ""
 	}
 
 	// ensure absolute directory
-	file, _ := filepath.Abs(*input)
+	file, _ := filepath.Abs(path)
 
 	// return file name and directory
 	return true, filepath.Base(file), filepath.Dir(file)
