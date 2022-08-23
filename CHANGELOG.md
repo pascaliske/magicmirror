@@ -1,3 +1,17 @@
+# [1.0.0](https://github.com/pascaliske/magicmirror/compare/v0.0.11...v1.0.0) (2022-08-23)
+
+
+### Bug Fixes
+
+* **docker:** use minor version tag for base image ([f8fec75](https://github.com/pascaliske/magicmirror/commit/f8fec7545353d9c7636729ed3081ff377121af40))
+
+
+### Features
+
+* implement config file validation ([6df3076](https://github.com/pascaliske/magicmirror/commit/6df30768760a8a21cb22c7ba68db37e609b597cc)), closes [#382](https://github.com/pascaliske/magicmirror/issues/382)
+
+
+
 ## [0.0.11](https://github.com/pascaliske/magicmirror/compare/v0.0.10...v0.0.11) (2022-07-12)
 
 
