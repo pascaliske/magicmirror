@@ -37,7 +37,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.2",
     "@fortawesome/free-regular-svg-icons": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
-    "@ngneat/until-destroy": "^9.2.1",
+    "@ngneat/until-destroy": "^9.2.2",
     "@ngrx/effects": "^14.2.0",
     "@ngrx/store": "^14.2.0",
     "@ngrx/store-devtools": "^14.2.0",
