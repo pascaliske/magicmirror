@@ -5,7 +5,7 @@ import (
 )
 
 /**
- * Application environment. Can be "production" or "development".
+ * Application environment. Can be 'production' or 'development'.
  */
 type Environment string
 
@@ -15,10 +15,10 @@ type Environment string
 type Port int
 
 /**
- * Logging specific settings.
+ * Logging specific settings. Can be 'debug', 'info', 'warn', 'error', 'fatal'.
  */
 type Log struct {
-	Level string
+	Level string `validate:"required,oneof=debug info warn error fatal"`
 }
 
 /**
@@ -26,15 +26,15 @@ type Log struct {
  */
 type Metrics struct {
 	Enabled bool
-	Path    string
+	Path    string `validate:"startswith=/,endsnotwith=/"`
 }
 
 /**
  * Geo location settings. Pass-through to web app.
  */
 type Location struct {
-	Latitude  float64 `json:"latitude"`
-	Longitude float64 `json:"longitude"`
+	Latitude  float64 `json:"latitude" validate:"latitude"`
+	Longitude float64 `json:"longitude" validate:"longitude"`
 }
 
 /**
@@ -51,14 +51,14 @@ type ApiKeys struct {
 
 type Config struct {
 	// general
-	Environment Environment
-	Port        Port
+	Environment Environment `validate:"required,oneof=production development"`
+	Port        Port        `validate:"required"`
 	Log         Log
 	Metrics     Metrics
 
 	// settings
 	Location Location
-	Feeds    Feeds
+	Feeds    Feeds `validate:"unique,dive,url"`
 
 	// api keys
 	ApiKeys ApiKeys
