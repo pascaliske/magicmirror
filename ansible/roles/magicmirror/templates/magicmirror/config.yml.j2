@@ -1,11 +1,23 @@
+# {{ ansible_managed }}
+# commit: {{ lookup('pipe', 'git rev-parse --short HEAD') }}
+
+# http listener port for the server
 port: '{{ url | urlsplit('port') }}'
 
+# configuration for logging, possible values: 'debug', 'info', 'warn', 'error', 'fatal'
+log:
+  level: info
+
+# geo location, required for various cards and apis
 location:
   latitude: '{{ vault.location.latitude }}'
   longitude: '{{ vault.location.longitude }}'
+
+# rss feeds displayed inside news card
 feeds:
   - https://www.heise.de/rss/heise-Rubrik-IT.rdf
   - https://www.tagesschau.de/xml/rss2/
 
+# api keys for the respective data apis
 apiKeys:
   openWeather: '{{ vault.apiKeys.openWeather }}'

@@ -9,6 +9,7 @@
   template:
     src: '{{ role_name }}/config.yml.j2'
     dest: '{{ paths.root }}/{{ role_name }}/config.yml'
+    validate: docker run --rm -v %s:/etc/{{ role_name }}/config.yml ghcr.io/pascaliske/{{ role_name }}:latest /{{ role_name }} --check
 
 # create container
 - name: Create container
@@ -26,4 +27,4 @@
     mounts:
       - type: bind
         source: '{{ paths.root }}/{{ role_name }}'
-        target: /etc/magicmirror
+        target: /etc/{{ role_name }}
