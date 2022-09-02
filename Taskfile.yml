@@ -1,0 +1,10 @@
+version: '3'
+
+includes:
+  docs: ./.github/taskfiles/docs.yml
+
+tasks:
+  docs:
+    summary: Documentation specific tasks.
+    cmds:
+      - task: docs:default
