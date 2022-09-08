@@ -183,6 +183,17 @@
     aria-query "5.0.0"
     axobject-query "3.0.1"
 
+"@angular-eslint/eslint-plugin-template@14.0.4":
+  version "14.0.4"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-14.0.4.tgz#8d937efa9e00c7d3d84f734231209bc10c3c48d5"
+  integrity sha512-F3GgItYHcEtQfOcJoyfvmRKdFIrI+/Wc7SjOo1X31tdeaQaRHseYWGFZ5AaA+MM+/rV7jPAd671Tv7wlm+Wjtg==
+  dependencies:
+    "@angular-eslint/bundled-angular-compiler" "14.0.4"
+    "@typescript-eslint/type-utils" "5.36.2"
+    "@typescript-eslint/utils" "5.36.2"
+    aria-query "5.0.2"
+    axobject-query "3.0.1"
+
 "@angular-eslint/eslint-plugin@14.0.3":
   version "14.0.3"
   resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-14.0.3.tgz#4fd2afd8b23e2a34d459390d5926ea76fd597ddd"
@@ -2814,6 +2825,11 @@ aria-query@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/aria-query/-/aria-query-5.0.0.tgz#210c21aaf469613ee8c9a62c7f86525e058db52c"
   integrity sha512-V+SM7AbUwJ+EBnB8+DXs0hPZHO0W6pqBcc0dW90OwtVG02PswOu/teuARoLQjdDOH+t9pJgGnW5/Qmouf3gPJg==
+
+aria-query@5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/aria-query/-/aria-query-5.0.2.tgz#0b8a744295271861e1d933f8feca13f9b70cfdc1"
+  integrity sha512-eigU3vhqSO+Z8BKDnVLN/ompjhf3pYzecKXz8+whRy+9gZu8n1TCGfwzQUUPnqdHl9ax1Hr9031orZ+UOEYr7Q==
 
 array-flatten@1.1.1:
   version "1.1.1"
