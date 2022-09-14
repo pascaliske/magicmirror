@@ -44,7 +44,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@pascaliske/ngx-sentry": "^4.1.0",
     "@sentry/browser": "^7.12.1",
-    "date-fns": "^2.29.2",
+    "date-fns": "^2.29.3",
     "modern-normalize": "^1.1.0",
     "modularscale-sass": "^3.0.10",
     "ngx-progressbar": "^9.0.0",
