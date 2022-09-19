@@ -165,13 +165,16 @@
     aria-query "5.0.2"
     axobject-query "3.0.1"
 
-"@angular-eslint/eslint-plugin@14.0.4":
-  version "14.0.4"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin/-/eslint-plugin-14.0.4.tgz#0e864b284551cac86386b37d0114cfa62f184c31"
-  integrity sha512-sPEXAZ/+u0jL849HV1dsc9C15zsiEiOd0Fo5St2YhZuCNsn94kg5zyai5p85/5tbpM6vchaH9cB4fZ3WE+FOog==
+"@angular-eslint/eslint-plugin-template@14.1.1":
+  version "14.1.1"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/eslint-plugin-template/-/eslint-plugin-template-14.1.1.tgz#5aec67c541a220e4db8e99d22492f05d29382027"
+  integrity sha512-jFvUFx+rn7cqLjsvvZP8Sr0VA9ihYYzaXJHDx5KBVyyA1+VpTecBBKNW9nKW23IcJFwuW2Xxx2lqwj2H8xcTtQ==
   dependencies:
-    "@angular-eslint/utils" "14.0.4"
-    "@typescript-eslint/utils" "5.36.2"
+    "@angular-eslint/bundled-angular-compiler" "14.1.1"
+    "@typescript-eslint/type-utils" "5.37.0"
+    "@typescript-eslint/utils" "5.37.0"
+    aria-query "5.0.2"
+    axobject-query "3.0.1"
 
 "@angular-eslint/eslint-plugin@14.1.1":
   version "14.1.1"
@@ -181,13 +184,13 @@
     "@angular-eslint/utils" "14.1.1"
     "@typescript-eslint/utils" "5.37.0"
 
-"@angular-eslint/schematics@14.0.4":
-  version "14.0.4"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/schematics/-/schematics-14.0.4.tgz#1cc65d0438eef0c3bcb67a5da77f255258a8285c"
-  integrity sha512-Yg1bQhJa5VTlGOMHcczXvLDn5t+NimK2Wczy9T+QHmBdFf1GQWb6lOxJmgFTr3sFlC2sGXcP0N1AUikO4n0f/Q==
+"@angular-eslint/schematics@14.1.1":
+  version "14.1.1"
+  resolved "https://registry.yarnpkg.com/@angular-eslint/schematics/-/schematics-14.1.1.tgz#b906eade060a21d4cdc82f72e0974b69e8d11752"
+  integrity sha512-+/IvAJs0YaEtH/2ZLqDb4V8NgqPAnpJoEP97zk8ypJFyT0EGkDFfi2VIxwpxiMWBap4Fdwd2Fo7XanLonboSeg==
   dependencies:
-    "@angular-eslint/eslint-plugin" "14.0.4"
-    "@angular-eslint/eslint-plugin-template" "14.0.4"
+    "@angular-eslint/eslint-plugin" "14.1.1"
+    "@angular-eslint/eslint-plugin-template" "14.1.1"
     ignore "5.2.0"
     strip-json-comments "3.1.1"
     tmp "0.2.1"
@@ -199,14 +202,6 @@
   dependencies:
     "@angular-eslint/bundled-angular-compiler" "14.1.1"
     eslint-scope "^5.1.0"
-
-"@angular-eslint/utils@14.0.4":
-  version "14.0.4"
-  resolved "https://registry.yarnpkg.com/@angular-eslint/utils/-/utils-14.0.4.tgz#b741bda21b36036092c339abca7a2291d98c6322"
-  integrity sha512-7BcK+g0qaMRXfRFeOf57UOb5R4V8/uzGLyeXkugA65s7BLDLPEV1StRTpGW7w4jK7I8sldfsnbrkJqb6hgQtfA==
-  dependencies:
-    "@angular-eslint/bundled-angular-compiler" "14.0.4"
-    "@typescript-eslint/utils" "5.36.2"
 
 "@angular-eslint/utils@14.1.1":
   version "14.1.1"
@@ -2359,6 +2354,16 @@
   dependencies:
     "@typescript-eslint/typescript-estree" "5.36.2"
     "@typescript-eslint/utils" "5.36.2"
+    debug "^4.3.4"
+    tsutils "^3.21.0"
+
+"@typescript-eslint/type-utils@5.37.0":
+  version "5.37.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/type-utils/-/type-utils-5.37.0.tgz#43ed2f567ada49d7e33a6e4b6f9babd060445fe5"
+  integrity sha512-BSx/O0Z0SXOF5tY0bNTBcDEKz2Ec20GVYvq/H/XNKiUorUFilH7NPbFUuiiyzWaSdN3PA8JV0OvYx0gH/5aFAQ==
+  dependencies:
+    "@typescript-eslint/typescript-estree" "5.37.0"
+    "@typescript-eslint/utils" "5.37.0"
     debug "^4.3.4"
     tsutils "^3.21.0"
 
