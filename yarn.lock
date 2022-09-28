@@ -6972,7 +6972,7 @@ rxjs@6.6.7:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^7.5.5, rxjs@~7.5.7:
+rxjs@^7.5.5, rxjs@^7.5.6, rxjs@~7.5.7:
   version "7.5.7"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.7.tgz#2ec0d57fdc89ece220d2e702730ae8f1e49def39"
   integrity sha512-z9MzKh/UcOqB3i20H6rtrlaE/CgjLOvheWK/9ILrbhROGTweAi1BaFsTT9FbwZi5Trr1qNRs+MXkhmR06awzQA==
@@ -7661,10 +7661,12 @@ trim-newlines@^3.0.0:
   resolved "https://registry.yarnpkg.com/trim-newlines/-/trim-newlines-3.0.1.tgz#260a5d962d8b752425b32f3a7db0dcacd176c144"
   integrity sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==
 
-ts-cacheable@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/ts-cacheable/-/ts-cacheable-1.0.6.tgz#2266733930d40b8835022887176a38322538b4e5"
-  integrity sha512-Fqr0Xt3ra5ADqJytckD6P83vzVBM/t/z/Oa8nkPXjKAjJY5i/VsefbWXmNZAca0oLs+DxKErBkwfQFqLG8snqw==
+ts-cacheable@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/ts-cacheable/-/ts-cacheable-1.0.7.tgz#7eb5c3404e285369801b55dda2d1a44cb282345c"
+  integrity sha512-4pJC2/tDZlIXzhrfCoKIMMgM1D1f1Pf+87FH+RN0HeV4RrArANGX/iBcJGZ8LRY/P7Nbzb60VL5u2O1iWwldng==
+  dependencies:
+    rxjs "^7.5.6"
 
 ts-node@^10.0.0:
   version "10.7.0"
