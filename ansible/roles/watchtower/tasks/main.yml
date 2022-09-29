@@ -15,7 +15,7 @@
 - name: Create container
   community.docker.docker_container:
     name: watchtower
-    image: containrrr/watchtower:latest
+    image: ghcr.io/containrrr/watchtower:1.4.0
     restart_policy: always
     pull: yes
     env:
