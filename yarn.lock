@@ -1856,24 +1856,24 @@
   dependencies:
     tslib "^2.3.0"
 
-"@ngrx/effects@^14.2.0":
-  version "14.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-14.2.0.tgz#a9bc2a9b0f4798c5387f197629332a8528e3f4b7"
-  integrity sha512-rYXQJpFtdIPI2OM+WJ5h91hyYTpph3/qgyk9MhHaRPdnTziY2pxVRkGkrLQrdLKwPzLDgxrZFa1fw5FjxcVt3g==
+"@ngrx/effects@^14.3.1":
+  version "14.3.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-14.3.1.tgz#b22dcbc084c85d02b8ae34a4c6b7ce83f66d58d3"
+  integrity sha512-2+hTlw79f8snayMCBDdVUYaAneowhXJwR0pwhOPAwldv/QufiFaoRA9M26nm9tC4mxIFlGY0gJ03c94/E0sKjQ==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store-devtools@^14.2.0":
-  version "14.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-14.2.0.tgz#50a3d2fcd82aaefd2755874cd33879c75b267c50"
-  integrity sha512-3xxhhmB2AKYLEh9+2+VvCQKe5QJ+O8dQt2XBXfZjlK1+6rYuKv8oJ8rNsZMBbVPrASontQrnK5Rnys2DqwDy3Q==
+"@ngrx/store-devtools@^14.3.1":
+  version "14.3.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-14.3.1.tgz#867e3b7afaf393e251b1452b44191e4ef5f5ab5e"
+  integrity sha512-FbCYcMMfR0NbkQdkYlNDscskz3jWbntA1gybndrG9yP8zmPKHUb8i0pPXOXg+gV/jfHM2mKrj4u0SLZCOUdeXw==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store@^14.2.0":
-  version "14.2.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-14.2.0.tgz#181b75355ffd3148fe7155eac3361667701427f5"
-  integrity sha512-tICfBlLRTafyBlpe9y3Bv0HY3siekST/37GIw4D1Vx6g/3bhz48z/hU7+et2kFl90xprZ0zjBNjsKk2Rfuaw4Q==
+"@ngrx/store@^14.3.1":
+  version "14.3.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-14.3.1.tgz#b371f7cce3c9825ba017b220928228903b3bc31e"
+  integrity sha512-5fKZVxwyawH8wXuYaAkMfPxLJ+GzdXmjWjQtUkMjpa8lsgEBtIs+UdyirgwjBcwYUt0ewp2CM14+Io5eeb8bQA==
   dependencies:
     tslib "^2.0.0"
 
@@ -7759,10 +7759,15 @@ typed-assert@^1.0.8:
   resolved "https://registry.yarnpkg.com/typed-assert/-/typed-assert-1.0.8.tgz#4bf9f1ce7f3f974d09c3afd7c68d12e1391a233c"
   integrity sha512-5NkbXZUlmCE73Fs7gvkp1XXJWHYetPkg60QnQ2NXQmBYNFxbBr2zA8GCtaH4K2s2WhOmSlgiSTmrjrcm5tnM5g==
 
-typescript@^4.6.4, typescript@~4.6.4:
+typescript@^4.6.4:
   version "4.6.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.4.tgz#caa78bbc3a59e6a5c510d35703f6a09877ce45e9"
   integrity sha512-9ia/jWHIEbo49HfjrLGfKbZSuWo9iTMwXO+Ca3pRsSpbsMbc7/IU8NKdCZVRRBafVPGnoJeFL76ZOAA84I9fEg==
+
+typescript@~4.8.4:
+  version "4.8.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.4.tgz#c464abca159669597be5f96b8943500b238e60e6"
+  integrity sha512-QCh+85mCy+h0IGff8r5XWzOVSbBO+KfeYrMQh7NJ58QujwcE22u+NUSmUxqF+un70P9GXKxa2HCNiTTMJknyjQ==
 
 uglify-js@^3.1.4:
   version "3.14.5"

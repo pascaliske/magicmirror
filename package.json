@@ -38,9 +38,9 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@ngneat/until-destroy": "^9.2.2",
-    "@ngrx/effects": "^14.2.0",
-    "@ngrx/store": "^14.2.0",
-    "@ngrx/store-devtools": "^14.2.0",
+    "@ngrx/effects": "^14.3.1",
+    "@ngrx/store": "^14.3.1",
+    "@ngrx/store-devtools": "^14.3.1",
     "@ngx-translate/core": "^14.0.0",
     "@pascaliske/ngx-sentry": "^4.1.0",
     "@sentry/browser": "^7.14.0",
@@ -76,6 +76,6 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "standard-changelog": "^2.0.27",
-    "typescript": "~4.6.4"
+    "typescript": "~4.8.4"
   }
 }
