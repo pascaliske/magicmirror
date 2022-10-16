@@ -71,7 +71,7 @@ var RequestsTotal = promauto.NewCounterVec(
 		Name:      "requests_total",
 		Help:      "How many HTTP requests processed, partitioned by status code and HTTP method.",
 	},
-	[]string{"code", "method", "host", "url"},
+	[]string{"code", "method", "url", "host"},
 )
 
 var RequestDuration = promauto.NewHistogramVec(
