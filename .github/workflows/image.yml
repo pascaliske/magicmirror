@@ -19,14 +19,14 @@ jobs:
       # build image name
       - name: Build image name
         id: image-name
-        run: echo "::set-output name=image::${REPOSITORY//docker-/}"
+        run: echo "image=${REPOSITORY//docker-/}" >> $GITHUB_OUTPUT
         env:
           REPOSITORY: ${{ github.repository }}
 
       # set build time
       - name: Set build time
         id: build-time
-        run: echo "::set-output name=time::$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+        run: echo "time=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> $GITHUB_OUTPUT
 
       # checkout
       - uses: actions/checkout@v3
@@ -124,7 +124,7 @@ jobs:
       # build image name
       - name: Build image name
         id: image-name
-        run: echo "::set-output name=image::${REPOSITORY//docker-/}"
+        run: echo "image=${REPOSITORY//docker-/}" >> $GITHUB_OUTPUT
         env:
           REPOSITORY: ${{ github.repository }}
 
@@ -135,7 +135,7 @@ jobs:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
-      # scan image 
+      # scan image
       - uses: crazy-max/ghaction-container-scan@v2
         if: github.event_name != 'pull_request'
         id: scan
