@@ -67,5 +67,5 @@ jobs:
       # lint go
       - uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.29
+          version: latest
           working-directory: server
