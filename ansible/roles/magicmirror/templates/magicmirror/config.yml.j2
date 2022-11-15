@@ -1,5 +1,4 @@
 # {{ ansible_managed }}
-# commit: {{ lookup('pipe', 'git rev-parse --short HEAD') }}
 
 # http listener port for the server
 port: '{{ url | urlsplit('port') }}'
