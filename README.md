@@ -54,4 +54,4 @@ The project is configurable using a YAML file. You can find all possible values 
 
 ## License
 
-[MIT](LICENSE.md) – © 2022 [Pascal Iske](https://pascaliske.dev)
+[MIT](LICENSE.md) – © 2023 [Pascal Iske](https://pascaliske.dev)
