@@ -33,6 +33,10 @@ func SetLevel(level string) {
 	}
 }
 
+func (level LogLevel) Disabled() bool {
+	return level < logLevel
+}
+
 func (level LogLevel) String() string {
 	switch level {
 	case DebugLevel:

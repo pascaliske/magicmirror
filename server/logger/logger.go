@@ -31,7 +31,7 @@ func Raw(message string, args ...interface{}) {
 
 func logMessage(level LogLevel, message string, args []interface{}) {
 	// skip log if below level
-	if level < logLevel {
+	if level.Disabled() {
 		return
 	}
 
