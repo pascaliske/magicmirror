@@ -1,0 +1,15 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: '3'
+
+tasks:
+  encrypt:
+    summary: Encrypt Ansible vault file
+    interactive: true
+    cmds:
+      - ansible-vault encrypt ansible/vars/vault.yml
+
+  decrypt:
+    summary: Decrypt Ansible vault file
+    interactive: true
+    cmds:
+      - ansible-vault decrypt ansible/vars/vault.yml

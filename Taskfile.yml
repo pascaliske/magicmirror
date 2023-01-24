@@ -1,9 +1,36 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
 version: '3'
 
 includes:
+  vault: ./.github/taskfiles/vault.yml
   docs: ./.github/taskfiles/docs.yml
 
 tasks:
+  install:
+    summary: Install all related dependencies
+    cmds:
+      - yarn install
+      - ansible-galaxy install -r requirements.yml
+      - cd server && go mod tidy -compat=1.19
+
+  provision:
+    summary: Provision the target host using Ansible
+    interactive: true
+    cmds:
+      - ansible-playbook --diff --ask-vault-pass --extra-vars @ansible/vars/vault.yml ansible/playbooks/provision.yml
+
+  update:
+    summary: Update the target host using Ansible
+    interactive: true
+    cmds:
+      - ansible-playbook --diff --ask-vault-pass --extra-vars @ansible/vars/vault.yml ansible/playbooks/update.yml
+
+  ssh:
+    summary: SSH into target host
+    interactive: true
+    cmds:
+      - ssh -t -i "$ANSIBLE_PRIVATE_KEY_FILE" "$SSH_USER@$SSH_HOST" {{.CLI_ARGS}}
+
   docs:
     summary: Documentation specific tasks.
     cmds:
