@@ -57,7 +57,7 @@ $ /magicmirror --config /foo/bar/baz.yml --check
 
 ## Sections
 
-To keep things simple the configuration file is divided into multiple sections. Many of them can be omitted as they are optional.
+To keep things simple the configuration file is divided into multiple sections. Almost all of them can be omitted as they are optional.
 
 ### Basic
 
