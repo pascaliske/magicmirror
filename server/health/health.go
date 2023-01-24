@@ -2,7 +2,7 @@ package health
 
 import (
 	"github.com/fatih/color"
-	"github.com/hellofresh/health-go/v4"
+	"github.com/hellofresh/health-go/v5"
 	"github.com/labstack/echo/v4"
 	"github.com/pascaliske/magicmirror/logger"
 )
