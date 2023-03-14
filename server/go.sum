@@ -170,6 +170,8 @@ github.com/hellofresh/health-go/v5 v5.0.0 h1:jxjllHekqEU4VYIajKJtFoOxDp1YaaygNWw
 github.com/hellofresh/health-go/v5 v5.0.0/go.mod h1:9hFVIBdKkxrg1bJurUPlw1D/0FWhl47IVfGYPy4Op9o=
 github.com/hellofresh/health-go/v5 v5.1.0 h1:dxeIREsXQrO6D7+JEF++QPmqtRGhBclla5eLnCiKpSs=
 github.com/hellofresh/health-go/v5 v5.1.0/go.mod h1:ZUymhy/viIPx3xmGT9EkWny0CUZq9GLxqasC4Y2xdSc=
+github.com/hellofresh/health-go/v5 v5.1.1 h1:Ss0EQekzT45NVgk1hSgbXAa1LBaagZhqJ4Xql8bxxBA=
+github.com/hellofresh/health-go/v5 v5.1.1/go.mod h1:ZUymhy/viIPx3xmGT9EkWny0CUZq9GLxqasC4Y2xdSc=
 github.com/ianlancetaylor/demangle v0.0.0-20181102032728-5e5cf60278f6/go.mod h1:aSSvb/t6k1mPoxDqO4vJh6VOCGPwU4O0C2/Eqndh1Sc=
 github.com/ianlancetaylor/demangle v0.0.0-20200824232613-28f6c0f3b639/go.mod h1:aSSvb/t6k1mPoxDqO4vJh6VOCGPwU4O0C2/Eqndh1Sc=
 github.com/jpillora/backoff v1.0.0/go.mod h1:J/6gKK9jxlEcS3zixgDgUAsiuZ7yrSoa/FX5e0EB2j4=
