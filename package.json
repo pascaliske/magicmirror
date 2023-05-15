@@ -39,7 +39,7 @@
     "@pascaliske/ngx-sentry": "^4.1.0",
     "@sentry/browser": "^7.32.1",
     "date-fns": "^2.29.3",
-    "modern-normalize": "^1.1.0",
+    "modern-normalize": "^2.0.0",
     "modularscale-sass": "^3.0.10",
     "ngx-progressbar": "^9.0.0",
     "rxjs": "~7.8.0",
