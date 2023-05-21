@@ -35,7 +35,7 @@
     "@ngrx/effects": "^15.1.0",
     "@ngrx/store": "^15.1.0",
     "@ngrx/store-devtools": "^15.1.0",
-    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/core": "^15.0.0",
     "@pascaliske/ngx-sentry": "^4.1.0",
     "@sentry/browser": "^7.32.1",
     "date-fns": "^2.29.3",
