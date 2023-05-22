@@ -1,4 +1,21 @@
-# server
+# --- tini
+FROM --platform=${BUILDPLATFORM} alpine:3.18 as tini
+LABEL maintainer="info@pascaliske.dev"
+
+# environment
+ENV TINI_VERSION=v0.19.0
+ARG TARGETPLATFORM
+
+# install tini
+RUN case ${TARGETPLATFORM} in \
+    "linux/amd64")  TINI_ARCH=amd64  ;; \
+    "linux/arm64")  TINI_ARCH=arm64  ;; \
+    "linux/arm/v7") TINI_ARCH=armhf  ;; \
+    esac \
+    && wget -q https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-${TINI_ARCH} -O /tini \
+    && chmod +x /tini
+
+# --- server
 FROM --platform=${BUILDPLATFORM} golang:1.20-alpine as server
 LABEL maintainer="info@pascaliske.dev"
 WORKDIR /go/src/app
@@ -20,7 +37,7 @@ RUN go mod download
 COPY server /go/src/app
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -ldflags="-w -s -X main.Version=${VERSION} -X main.GitCommit=${GIT_COMMIT} -X main.BuildTime=${BUILD_TIME}" -o ./magicmirror main.go
 
-# app
+# --- app
 FROM --platform=${BUILDPLATFORM} node:18-alpine AS app
 LABEL maintainer="info@pascaliske.dev"
 WORKDIR /build
@@ -33,23 +50,6 @@ RUN yarn install --frozen-lockfile --ignore-scripts
 # build app
 COPY . /build
 RUN yarn run build
-
-# tini
-FROM --platform=${BUILDPLATFORM} alpine:3.18 as tini
-LABEL maintainer="info@pascaliske.dev"
-
-# environment
-ENV TINI_VERSION=v0.19.0
-ARG TARGETPLATFORM
-
-# install tini
-RUN case ${TARGETPLATFORM} in \
-    "linux/amd64")  TINI_ARCH=amd64  ;; \
-    "linux/arm64")  TINI_ARCH=arm64  ;; \
-    "linux/arm/v7") TINI_ARCH=armhf  ;; \
-    esac \
-    && wget -q https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-${TINI_ARCH} -O /tini \
-    && chmod +x /tini
 
 # final image
 FROM alpine:3.18
