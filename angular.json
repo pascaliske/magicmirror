@@ -59,7 +59,7 @@
       "prefix": "cmp",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/magicmirror",
             "index": "src/index.html",
@@ -74,9 +74,6 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": ["src/scss"]
-            },
-            "customWebpackConfig": {
-              "path": "webpack.config.ts"
             }
           },
           "configurations": {
@@ -113,7 +110,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-builders/custom-webpack:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "magicmirror:build:production"

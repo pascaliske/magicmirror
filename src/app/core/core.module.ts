@@ -20,7 +20,7 @@ import { SettingsEffects } from 'store/settings'
         }),
         EffectsModule.forRoot([SettingsEffects]),
         StoreDevtoolsModule.instrument({
-            name: APP_ID,
+            name: 'magicmirror',
             logOnly: environment.production,
             autoPause: true,
             maxAge: 25,

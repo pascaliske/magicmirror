@@ -11,8 +11,6 @@ GlobalCacheConfig.maxAge = 600000
 
 // enable prod mode
 if (environment.production) {
-    // eslint-disable-next-line no-console
-    console.log(APP_VERSION)
     enableProdMode()
 }
 
