@@ -1743,13 +1743,6 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@ngneat/until-destroy@^9.2.3":
-  version "9.2.3"
-  resolved "https://registry.yarnpkg.com/@ngneat/until-destroy/-/until-destroy-9.2.3.tgz#c435b686b6c714c9004e82b23a341595a49ba5b5"
-  integrity sha512-ryX0vqDOdmYo53f7v5Ivbj1jcqOEX+vM1iiV9NYepWDha4VJp9lWrDFK9tRt2evAMzF/9u67JLzs4Xjcoh+Taw==
-  dependencies:
-    tslib "^2.3.0"
-
 "@ngrx/effects@^16.0.1":
   version "16.0.1"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-16.0.1.tgz#9f303d31797fee93f8c5c7ebab9ce82cb29390a4"

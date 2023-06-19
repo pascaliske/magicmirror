@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy'
+import { Component, OnInit, DestroyRef, inject } from '@angular/core'
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { Store } from '@ngrx/store'
 import { SocketService, SocketAction } from 'shared/socket/socket.service'
 import { HealthService, Status } from 'shared/health/health.service'
@@ -7,13 +7,14 @@ import { ReloadService } from 'shared/reload/reload.service'
 import { AppState } from 'store'
 import { LoadSettings } from 'store/settings'
 
-@UntilDestroy()
 @Component({
     selector: 'cmp-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+    private readonly destroy: DestroyRef = inject(DestroyRef)
+
     public constructor(
         private readonly store: Store<AppState>,
         private readonly socket: SocketService,
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit {
         // watch for reload actions
         this.socket
             .subscribe(SocketAction.Reload)
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.destroy))
             .subscribe(() => {
                 this.reload.reload()
             })
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit {
         // watch for unhealthy state
         this.health
             .watch(Status.Unavailable)
-            .pipe(untilDestroyed(this))
+            .pipe(takeUntilDestroyed(this.destroy))
             .subscribe(() => {
                 this.reload.reload()
             })
