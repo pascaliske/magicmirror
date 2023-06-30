@@ -9,7 +9,7 @@ require (
 	github.com/go-playground/validator/v10 v10.14.1
 	github.com/google/uuid v1.3.0
 	github.com/gorilla/websocket v1.5.0
-	github.com/hellofresh/health-go/v5 v5.2.0
+	github.com/hellofresh/health-go/v5 v5.3.0
 	github.com/labstack/echo/v4 v4.10.2
 	github.com/prometheus/client_golang v1.16.0
 	github.com/spf13/viper v1.16.0
