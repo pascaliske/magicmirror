@@ -1926,10 +1926,10 @@
     node-addon-api "^3.2.1"
     node-gyp-build "^4.3.0"
 
-"@pascaliske/eslint-config@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/@pascaliske/eslint-config/-/eslint-config-2.0.7.tgz#8a3e64dc7c161b35a336d54abef5ea9c6388bcc6"
-  integrity sha512-28EhPBI/OJqQcUt9LmA3a91oYLWZSItDeFEAMt+Cf2UmC8jOFfmjJ2WC0A+N+x/KMG9ljP16k81xQOROl/bS7A==
+"@pascaliske/eslint-config@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@pascaliske/eslint-config/-/eslint-config-3.0.0.tgz#ecddb57bc2200485609bc63ea9d6eb015506423f"
+  integrity sha512-dzplhZuuOU+ANgD8V4EKi+30LdQm1UKxj6PxGTUVMN4hBq3Rql8xZUfNZ7TsNgFT5jiSiYysLbTnlEqlrsJu1Q==
   dependencies:
     eslint-config-prettier "^8.5.0"
 
