@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # lint ansible
       - uses: ansible-community/ansible-lint-action@v6
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # lint dockerfile
       - uses: hadolint/hadolint-action@v3.1.0
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # setup node
       - uses: actions/setup-node@v3.8.1
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       # setup go
       - uses: actions/setup-go@v4
