@@ -43,7 +43,7 @@
     "rxjs": "~7.8.0",
     "ts-cacheable": "^1.0.9",
     "tslib": "^2.4.1",
-    "zone.js": "~0.13.0"
+    "zone.js": "~0.14.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.1.0",
