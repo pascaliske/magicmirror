@@ -4,12 +4,14 @@ version: '3'
 tasks:
   encrypt:
     summary: Encrypt Ansible vault file
+    dir: ansible
     interactive: true
     cmds:
-      - ansible-vault encrypt ansible/vars/vault.yml
+      - ansible-vault encrypt vars/vault.yml
 
   decrypt:
     summary: Decrypt Ansible vault file
+    dir: ansible
     interactive: true
     cmds:
-      - ansible-vault decrypt ansible/vars/vault.yml
+      - ansible-vault decrypt vars/vault.yml

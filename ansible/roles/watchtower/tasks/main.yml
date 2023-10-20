@@ -17,7 +17,7 @@
     name: watchtower
     image: ghcr.io/containrrr/watchtower:1.6.0
     restart_policy: always
-    pull: yes
+    pull: true
     env:
       TZ: '{{ timezone }}'
       WATCHTOWER_SCHEDULE: '0 */10 * * * *' # every 10 minutes

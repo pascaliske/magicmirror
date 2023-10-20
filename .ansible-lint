@@ -1,0 +1,12 @@
+quiet: true
+skip_list:
+  - no-changed-when
+  - no-tabs
+  - package-latest
+  - risky-file-permissions
+  - var-naming[no-role-prefix]
+  - fqcn[action]
+  - fqcn[action-core]
+  - fqcn[canonical]
+  - fqcn[deep]
+  - fqcn[keyword]

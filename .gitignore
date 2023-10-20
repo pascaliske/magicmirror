@@ -51,3 +51,6 @@ Thumbs.db
 # docs
 docs/index.md
 docs/license.md
+
+# ansible
+.ansible-vault-password

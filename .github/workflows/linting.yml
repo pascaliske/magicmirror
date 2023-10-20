@@ -14,12 +14,9 @@ jobs:
       - uses: actions/checkout@v4
 
       # lint ansible
-      - uses: ansible-community/ansible-lint-action@v6
+      - uses: ansible/ansible-lint@v6.21.1
         with:
-          path: |
-            ansible/playbooks/**/*.yml
-            ansible/roles/**/tasks/*.yml
-            ansible/roles/**/handlers/*.yml
+          working_directory: ./ansible
 
   lint-dockerfile:
     name: Dockerfile

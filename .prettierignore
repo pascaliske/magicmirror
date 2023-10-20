@@ -1,3 +1,4 @@
 .angular
+.ansible-lint
 dist
 CHANGELOG.md

@@ -43,7 +43,7 @@
     line: 'alias {{ item.alias }}="{{ item.command }}"'
     regexp: 'alias {{ item.alias }}="{{ item.command }}"$'
     insertafter: ^alias
-    create: yes
+    create: true
   loop: '{{ aliases }}'
 
 # update system
@@ -51,15 +51,15 @@
   become: true
   apt:
     upgrade: safe
-    update_cache: yes
-    autoremove: yes
+    update_cache: true
+    autoremove: true
 
 # install common apt packages
 - name: Install common apt packages
   become: true
   apt:
     name: '{{ item }}'
-    update_cache: yes
+    update_cache: true
     state: latest
   loop: '{{ packages.apt }}'
 
@@ -88,13 +88,13 @@
     - name: Disable swap service
       systemd:
         name: dphys-swapfile
-        enabled: no
+        enabled: false
       when: service.stat.exists
     - name: Uninstall swap service
       apt:
         name: dphys-swapfile
         state: absent
-        purge: yes
+        purge: true
 
 # prepare directory
 - name: Ensure directory exists
@@ -115,4 +115,4 @@
     path: '{{ paths.home }}/.bashrc'
     line: '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx -- -nocursor'
     regexp: '[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx -- -nocursor$'
-    create: yes
+    create: true

@@ -16,7 +16,7 @@
   become: true
   apt:
     name: tailscale
-    update_cache: yes
+    update_cache: true
     state: latest
 
 - name: Check connection
