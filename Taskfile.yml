@@ -11,7 +11,7 @@ tasks:
     cmds:
       - yarn install
       - cd ansible && ansible-galaxy install -r requirements.yml
-      - cd server && go mod tidy -compat=1.19
+      - cd server && go mod tidy
 
   provision:
     summary: Provision the target host using Ansible
