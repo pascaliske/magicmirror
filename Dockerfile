@@ -38,7 +38,7 @@ COPY server /go/src/app
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -ldflags="-w -s -X main.Version=${VERSION} -X main.GitCommit=${GIT_COMMIT} -X main.BuildTime=${BUILD_TIME}" -o ./magicmirror main.go
 
 # --- app
-FROM --platform=${BUILDPLATFORM} node:18-alpine AS app
+FROM --platform=${BUILDPLATFORM} node:21-alpine AS app
 LABEL maintainer="info@pascaliske.dev"
 WORKDIR /build
 
