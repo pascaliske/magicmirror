@@ -59,7 +59,7 @@
     "@pascaliske/eslint-config": "^3.0.0",
     "@pascaliske/prettier-config": "^1.2.0",
     "@rstacruz/bump-cli": "^2.0.1",
-    "@types/node": "^18.11.18",
+    "@types/node": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.28.0",
