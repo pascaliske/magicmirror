@@ -12,7 +12,7 @@ require (
 	github.com/hellofresh/health-go/v5 v5.5.1
 	github.com/labstack/echo/v4 v4.11.3
 	github.com/prometheus/client_golang v1.17.0
-	github.com/spf13/viper v1.18.1
+	github.com/spf13/viper v1.18.2
 )
 
 require (
