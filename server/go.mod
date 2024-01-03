@@ -9,7 +9,7 @@ require (
 	github.com/go-playground/validator/v10 v10.16.0
 	github.com/google/uuid v1.5.0
 	github.com/gorilla/websocket v1.5.1
-	github.com/hellofresh/health-go/v5 v5.5.1
+	github.com/hellofresh/health-go/v5 v5.5.2
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/prometheus/client_golang v1.18.0
 	github.com/spf13/viper v1.18.2
@@ -45,8 +45,8 @@ require (
 	github.com/subosito/gotenv v1.6.0 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
-	go.opentelemetry.io/otel v1.19.0 // indirect
-	go.opentelemetry.io/otel/trace v1.19.0 // indirect
+	go.opentelemetry.io/otel v1.21.0 // indirect
+	go.opentelemetry.io/otel/trace v1.21.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
 	golang.org/x/crypto v0.17.0 // indirect
