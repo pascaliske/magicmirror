@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "start": "ng serve",
     "start:server": "cd server && gow run -ldflags=\"$LDFLAGS\" main.go --config ../config.yml",
     "build": "ng build",
@@ -63,7 +63,7 @@
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "eslint": "^8.56.0",
-    "husky": "^8.0.3",
+    "husky": "^9.0.10",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
     "standard-changelog": "^5.0.0",
