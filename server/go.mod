@@ -11,7 +11,7 @@ require (
 	github.com/gorilla/websocket v1.5.1
 	github.com/hellofresh/health-go/v5 v5.5.3
 	github.com/labstack/echo/v4 v4.12.0
-	github.com/prometheus/client_golang v1.19.0
+	github.com/prometheus/client_golang v1.19.1
 	github.com/spf13/viper v1.18.2
 )
 
