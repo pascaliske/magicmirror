@@ -1,5 +1,5 @@
 # --- tini
-FROM --platform=${BUILDPLATFORM} alpine:3.19 as tini
+FROM --platform=${BUILDPLATFORM} alpine:3.20 as tini
 LABEL maintainer="info@pascaliske.dev"
 
 # environment
@@ -52,7 +52,7 @@ COPY . /build
 RUN yarn run build
 
 # final image
-FROM alpine:3.19
+FROM alpine:3.20
 LABEL maintainer="info@pascaliske.dev"
 
 # create non-root user
