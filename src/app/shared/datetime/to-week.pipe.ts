@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core'
 import { getISOWeek } from 'date-fns'
 
 @Pipe({
+    standalone: true,
     name: 'toWeek',
 })
 export class ToWeekPipe implements PipeTransform {

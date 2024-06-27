@@ -3,6 +3,7 @@ import { format } from 'date-fns'
 import { DateFnsConfig, DATE_FNS_CONFIG } from './config'
 
 @Pipe({
+    standalone: true,
     name: 'toMonthName',
 })
 export class ToMonthNamePipe implements PipeTransform {

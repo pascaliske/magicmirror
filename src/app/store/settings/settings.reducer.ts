@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store'
 import { Settings } from './settings.model'
-import { LoadSettings, LoadSettingsSuccess, LoadSettingsFail } from './settings.actions'
+import { SettingsActions } from './settings.actions'
 
 export interface SettingsState {
     data: Settings
@@ -16,16 +16,22 @@ export const initialState: SettingsState = {
     loading: false,
 }
 
-export const settings = createReducer(
+export const settingsReducer = createReducer(
     initialState,
-    on(LoadSettings, state => ({ ...state, loading: true, loaded: false })),
-    on(LoadSettingsSuccess, (state, { payload }) => ({
+
+    // load
+    on(SettingsActions.load, (state: SettingsState) => ({
+        ...state,
+        loading: true,
+        loaded: false,
+    })),
+    on(SettingsActions.loadSuccess, (state: SettingsState, { payload }) => ({
         ...state,
         data: payload,
         loading: false,
         loaded: true,
     })),
-    on(LoadSettingsFail, (state, { payload }) => ({
+    on(SettingsActions.loadError, (state: SettingsState, { payload }) => ({
         ...state,
         error: payload,
         loading: false,
