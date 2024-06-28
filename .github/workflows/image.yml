@@ -90,9 +90,9 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           build-args: |
-            VERSION=${{ steps.metadata.outputs.version }}
-            GIT_COMMIT=${{ github.sha }}
-            BUILD_TIME=${{ steps.build-time.outputs.time }}
+            MM_VERSION=${{ steps.metadata.outputs.version }}
+            MM_GIT_COMMIT=${{ github.sha }}
+            MM_BUILD_TIME=${{ steps.build-time.outputs.time }}
 
       # generate release notes
       - name: Generate release notes

@@ -1,18 +1,22 @@
 package config
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
 
 	"github.com/pascaliske/magicmirror/logger"
+	"github.com/pascaliske/magicmirror/version"
 	"github.com/spf13/viper"
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 /**
  * Parse a possible config file and watch for changes.
  */
-func ParseAndValidate(path string, checkMode bool) {
+func ParseAndValidate(path string, checkMode bool, watchMode bool) {
 	// define config file type
 	viper.SetConfigType("yaml")
 
@@ -22,7 +26,7 @@ func ParseAndValidate(path string, checkMode bool) {
 		viper.AddConfigPath(dir)
 	} else {
 		viper.SetConfigName("config.yml")
-		viper.AddConfigPath("/etc/magicmirror")
+		viper.AddConfigPath(fmt.Sprintf("/etc/%s", cases.Lower(language.English).String(version.Name)))
 		viper.AddConfigPath(".")
 	}
 
@@ -53,7 +57,9 @@ func ParseAndValidate(path string, checkMode bool) {
 	}
 
 	// watch for config file changes
-	watchConfig()
+	if watchMode {
+		watchConfig()
+	}
 }
 
 /**

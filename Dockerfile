@@ -15,27 +15,28 @@ RUN case ${TARGETPLATFORM} in \
     && wget -q https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-${TINI_ARCH} -O /tini \
     && chmod +x /tini
 
-# --- server
-FROM --platform=${BUILDPLATFORM} golang:1.22-alpine as server
+# --- api
+FROM --platform=${BUILDPLATFORM} golang:1.22-alpine as api
 LABEL maintainer="info@pascaliske.dev"
-WORKDIR /go/src/app
+WORKDIR /build
 
 # environment
-ARG VERSION
-ARG GIT_COMMIT
-ARG BUILD_TIME
 ARG TARGETOS
 ARG TARGETARCH
 ENV CGO_ENABLED=0
+ARG MM_PKG="github.com/pascaliske/magicmirror/version"
+ARG MM_VERSION
+ARG MM_GIT_COMMIT
+ARG MM_BUILD_TIME
 
 # install dependencies
-COPY server/go.mod /go/src/app
-COPY server/go.sum /go/src/app
+COPY api/go.mod /build
+COPY api/go.sum /build
 RUN go mod download
 
 # build binary
-COPY server /go/src/app
-RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -ldflags="-w -s -X main.Version=${VERSION} -X main.GitCommit=${GIT_COMMIT} -X main.BuildTime=${BUILD_TIME}" -o ./magicmirror main.go
+COPY api /build
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -ldflags="-w -s -X ${MM_PKG}.Version=${MM_VERSION} -X ${MM_PKG}.GitCommit=${MM_GIT_COMMIT} -X ${MM_PKG}.BuildTime=${MM_BUILD_TIME}" -o ./magicmirror main.go
 
 # --- app
 FROM --platform=${BUILDPLATFORM} node:20-alpine AS app
@@ -66,7 +67,7 @@ RUN apk add --no-cache curl shadow su-exec
 
 # inject built files
 COPY --from=tini /tini /sbin/tini
-COPY --from=server /go/src/app/magicmirror /magicmirror
+COPY --from=api /build/magicmirror /magicmirror
 COPY --from=app /build/dist/magicmirror /public
 
 # inject entrypoint

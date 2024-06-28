@@ -3,6 +3,8 @@ package logger
 import (
 	"fmt"
 	"time"
+
+	"github.com/fatih/color"
 )
 
 func Debug(message string, args ...interface{}) {
@@ -33,6 +35,11 @@ func logMessage(level LogLevel, message string, args []interface{}) {
 	// skip log if below level
 	if level.Disabled() {
 		return
+	}
+
+	// colorize args
+	for i, arg := range args {
+		args[i] = color.CyanString("%v", arg)
 	}
 
 	// prepare formatted time

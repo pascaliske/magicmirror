@@ -16,7 +16,7 @@ type SocketMessage struct {
 
 var upgrader = websocket.Upgrader{}
 
-func Handler(server *echo.Echo) echo.HandlerFunc {
+func Handler() echo.HandlerFunc {
 	logger.Debug("Socket endpoint ready at %s", color.CyanString("/socket"))
 
 	// update metric
