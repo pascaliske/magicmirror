@@ -14,7 +14,7 @@ require (
 	github.com/prometheus/client_golang v1.19.1
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.19.0
-	golang.org/x/text v0.14.0
+	golang.org/x/text v0.16.0
 )
 
 require (
