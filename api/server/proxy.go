@@ -1,22 +1,29 @@
-package proxy
+package server
 
 import (
 	"net/url"
 	"strings"
 
-	"github.com/fatih/color"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/pascaliske/magicmirror/config"
 	"github.com/pascaliske/magicmirror/logger"
 )
 
-func Handler(server *echo.Echo, target string) echo.MiddlewareFunc {
-	logger.Debug("Using %s proxy for %s", config.GetString("Environment"), color.CyanString(target))
+func (server Server) setupProxy(target string) {
+	// skip proxy in production
+	if config.GetString("Environment") == "production" {
+		logger.Debug("Skipping proxy for %s environment", config.GetString("Environment"))
+		return
+	}
 
+	logger.Debug("Using proxy for %s", target)
+
+	// parse target url
 	url, _ := url.Parse(target)
 
-	return middleware.ProxyWithConfig(middleware.ProxyConfig{
+	// configure proxy middleware
+	server.router.Use(middleware.ProxyWithConfig(middleware.ProxyConfig{
 		Balancer: middleware.NewRandomBalancer([]*middleware.ProxyTarget{
 			{
 				URL: url,
@@ -34,5 +41,5 @@ func Handler(server *echo.Echo, target string) echo.MiddlewareFunc {
 			}
 			return false
 		},
-	})
+	}))
 }

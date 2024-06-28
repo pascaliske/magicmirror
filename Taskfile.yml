@@ -13,6 +13,30 @@ tasks:
       - cd ansible && ansible-galaxy install -r requirements.yml
       - cd server && go mod tidy
 
+  start:app:
+    summary: Start the frontend app in development mode
+    cmds:
+      - ng serve
+
+  start:api:
+    summary: Start the API in development mode
+    dir: api
+    interactive: true
+    cmds:
+      - gow run -ldflags="$GO_LDFLAGS" main.go --config ../config.yml serve {{.CLI_ARGS}}
+
+  run:api:
+    summary: Run API commands in development mode
+    dir: api
+    cmds:
+      - go run -ldflags="$GO_LDFLAGS" main.go --config ../config.yml {{.CLI_ARGS}}
+
+  build:api:
+    summary: Build the API for testing purposes
+    dir: api
+    cmds:
+      - go build -v -ldflags="$GO_LDFLAGS" -o ../magicmirror main.go {{.CLI_ARGS}}
+
   provision:
     summary: Provision the target host using Ansible
     dir: ansible

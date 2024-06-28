@@ -29,7 +29,7 @@ func validateConfig() (bool, error) {
 	if err := validate.Struct(config); err != nil {
 		for _, err := range err.(validator.ValidationErrors) {
 			switch err.Tag() {
-			case "required":
+			case "required", "required_unless":
 				logger.Error("Required value for \"%s\" is missing.", err.Namespace())
 			case "unique":
 				logger.Error("Duplicate value found in \"%s\".", err.Namespace())
@@ -37,10 +37,18 @@ func validateConfig() (bool, error) {
 				logger.Error("Value for \"%s\" should be one of \"%s\" (actual: %s).", err.Namespace(), err.Param(), err.Value())
 			case "url":
 				logger.Error("Value for \"%s\" should be of type URL (actual: %s).", err.Namespace(), err.Value())
+			case "number":
+				logger.Error("Value for \"%s\" should be of type Number (actual: %s)", err.Namespace(), err.Value())
+			case "hostname_rfc1123":
+				logger.Error("Value for \"%s\" should be of type Hostname (actual: %s)", err.Namespace(), err.Value())
 			case "startswith":
 				logger.Error("Value for \"%s\" should start with \"%s\" (actual: %s).", err.Namespace(), err.Param(), err.Value())
 			case "endsnotwith":
 				logger.Error("Value for \"%s\" should not end with \"%s\" (actual: %s).", err.Namespace(), err.Param(), err.Value())
+			case "min", "gte":
+				logger.Error("Value for \"%s\" should be at least of length/size \"%s\" (actual: %s)", err.Namespace(), err.Param(), err.Value())
+			default:
+				logger.Error("Unknown error for \"%s\" (actual: %s)", err.Namespace(), err.Value())
 			}
 		}
 

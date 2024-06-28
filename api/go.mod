@@ -12,7 +12,9 @@ require (
 	github.com/hellofresh/health-go/v5 v5.5.3
 	github.com/labstack/echo/v4 v4.12.0
 	github.com/prometheus/client_golang v1.19.1
+	github.com/spf13/cobra v1.8.1
 	github.com/spf13/viper v1.19.0
+	golang.org/x/text v0.14.0
 )
 
 require (
@@ -23,6 +25,7 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
@@ -50,7 +53,6 @@ require (
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
 	golang.org/x/net v0.24.0 // indirect
 	golang.org/x/sys v0.19.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
