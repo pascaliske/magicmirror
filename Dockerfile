@@ -68,7 +68,7 @@ RUN apk add --no-cache curl shadow su-exec
 # inject built files
 COPY --from=tini /tini /sbin/tini
 COPY --from=api /build/magicmirror /magicmirror
-COPY --from=app /build/dist/magicmirror /public
+COPY --from=app /build/dist/magicmirror/browser /public
 
 # inject entrypoint
 COPY docker-entrypoint.sh /docker-entrypoint.sh

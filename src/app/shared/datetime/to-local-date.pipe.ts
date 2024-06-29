@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core'
 
 @Pipe({
+    standalone: true,
     name: 'toLocalDate',
 })
 export class ToLocalDatePipe implements PipeTransform {

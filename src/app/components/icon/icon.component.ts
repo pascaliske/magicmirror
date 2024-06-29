@@ -1,11 +1,15 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
+import { NgIf } from '@angular/common'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 @Component({
+    standalone: true,
     selector: 'cmp-icon',
     templateUrl: './icon.component.html',
     styleUrls: ['./icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NgIf, FontAwesomeModule],
 })
 export class IconComponent {
     @Input()
