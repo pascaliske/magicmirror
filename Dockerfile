@@ -15,6 +15,22 @@ RUN case "${TARGETPLATFORM}" in \
     && wget -q https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static-${TINI_ARCH} -O /tini \
     && chmod +x /tini
 
+# --- app
+FROM --platform=${BUILDPLATFORM} node:20-alpine AS app
+LABEL maintainer="info@pascaliske.dev"
+WORKDIR /build
+
+# install dependencies
+COPY package.json /build
+COPY yarn.lock /build
+RUN yarn install --frozen-lockfile --ignore-scripts
+
+# inject source code
+COPY . /build
+
+# build app
+RUN yarn run build
+
 # --- api
 FROM --platform=${BUILDPLATFORM} golang:1.22-alpine as api
 LABEL maintainer="info@pascaliske.dev"
@@ -34,25 +50,16 @@ COPY api/go.mod /build
 COPY api/go.sum /build
 RUN go mod download
 
-# build binary
+# inject source code
 COPY api /build
+
+# inject built app
+COPY --from=app /build/dist/magicmirror/browser /build/public/static
+
+# build binary
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -ldflags="-w -s -X ${MM_PKG}.Version=${MM_VERSION} -X ${MM_PKG}.GitCommit=${MM_GIT_COMMIT} -X ${MM_PKG}.BuildTime=${MM_BUILD_TIME}" -o ./magicmirror main.go
 
-# --- app
-FROM --platform=${BUILDPLATFORM} node:20-alpine AS app
-LABEL maintainer="info@pascaliske.dev"
-WORKDIR /build
-
-# install dependencies
-COPY package.json /build
-COPY yarn.lock /build
-RUN yarn install --frozen-lockfile --ignore-scripts
-
-# build app
-COPY . /build
-RUN yarn run build
-
-# final image
+# --- final image
 FROM alpine:3.20
 LABEL maintainer="info@pascaliske.dev"
 
@@ -71,7 +78,6 @@ RUN apk add --no-cache \
 # inject built files
 COPY --from=tini /tini /sbin/tini
 COPY --from=api /build/magicmirror /magicmirror
-COPY --from=app /build/dist/magicmirror/browser /public
 
 # inject entrypoint
 COPY docker-entrypoint.sh /docker-entrypoint.sh
