@@ -54,3 +54,6 @@ docs/license.md
 
 # ansible
 .ansible-vault-password
+
+# go
+/magicmirror
