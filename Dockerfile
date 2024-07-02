@@ -60,31 +60,16 @@ COPY --from=app /build/dist/magicmirror/browser /build/public/static
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -v -ldflags="-w -s -X ${MM_PKG}.Version=${MM_VERSION} -X ${MM_PKG}.GitCommit=${MM_GIT_COMMIT} -X ${MM_PKG}.BuildTime=${MM_BUILD_TIME}" -o ./magicmirror main.go
 
 # --- final image
-FROM alpine:3.20
+FROM scratch
 LABEL maintainer="info@pascaliske.dev"
 
-# create non-root user
-RUN addgroup -S -g 911 unknown && adduser -S -u 911 -G unknown -s /bin/false unknown
-
-# environment
-ENV MM_PORT=9000
-
-# install curl
-RUN apk add --no-cache \
-    curl=8.8.0-r0 \
-    shadow=4.15.1-r0 \
-    su-exec=0.2-r3
-
-# inject built files
+# inject binaries
 COPY --from=tini /tini /sbin/tini
 COPY --from=api /build/magicmirror /magicmirror
 
-# inject entrypoint
-COPY docker-entrypoint.sh /docker-entrypoint.sh
-
 # health check
-HEALTHCHECK CMD curl -f http://localhost:${MM_PORT}/health || exit 1
+HEALTHCHECK CMD ["/magicmirror", "health"]
 
 # let's go!
-ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh" ]
-CMD [ "/magicmirror", "serve" ]
+ENTRYPOINT [ "/sbin/tini", "--", "/magicmirror" ]
+CMD [ "serve" ]
