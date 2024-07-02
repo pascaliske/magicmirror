@@ -37,6 +37,19 @@ tasks:
     cmds:
       - go build -v -ldflags="$GO_LDFLAGS" -o ../magicmirror main.go {{.CLI_ARGS}}
 
+  docker:build:
+    summary: Build the Docker image for testing purposes
+    cmds:
+      - docker build -t {{.DOCKER_IMAGE}} --build-arg=MM_VERSION={{.VERSION}} --build-arg=MM_GIT_COMMIT={{.GIT_COMMIT}} --build-arg=MM_BUILD_TIME={{.BUILD_TIME}} .
+    vars:
+      DOCKER_IMAGE: ghcr.io/pascaliske/magicmirror:dev
+      VERSION:
+        sh: git symbolic-ref -q --short HEAD || git describe --tags --exact-match | tr -d v
+      GIT_COMMIT:
+        sh: git rev-list -1 HEAD
+      BUILD_TIME:
+        sh: date -u +%Y-%m-%dT%H:%M:%SZ
+
   provision:
     summary: Provision the target host using Ansible
     dir: ansible
