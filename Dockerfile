@@ -81,4 +81,4 @@ HEALTHCHECK CMD curl -f http://localhost:${MM_PORT}/health || exit 1
 
 # let's go!
 ENTRYPOINT [ "/sbin/tini", "--", "/docker-entrypoint.sh" ]
-CMD [ "/magicmirror" ]
+CMD [ "/magicmirror", "serve" ]
