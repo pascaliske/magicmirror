@@ -7,7 +7,7 @@ ENV TINI_VERSION=v0.19.0
 ARG TARGETPLATFORM
 
 # install tini
-RUN case ${TARGETPLATFORM} in \
+RUN case "${TARGETPLATFORM}" in \
     "linux/amd64")  TINI_ARCH=amd64  ;; \
     "linux/arm64")  TINI_ARCH=arm64  ;; \
     "linux/arm/v7") TINI_ARCH=armhf  ;; \
@@ -63,7 +63,10 @@ RUN addgroup -S -g 911 unknown && adduser -S -u 911 -G unknown -s /bin/false unk
 ENV MM_PORT=9000
 
 # install curl
-RUN apk add --no-cache curl shadow su-exec
+RUN apk add --no-cache \
+    curl=8.8.0-r0 \
+    shadow=4.15.1-r0 \
+    su-exec=0.2-r3
 
 # inject built files
 COPY --from=tini /tini /sbin/tini
