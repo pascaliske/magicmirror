@@ -14,9 +14,9 @@ import (
 )
 
 /**
- * Parse a possible config file and watch for changes.
+ * Parse a possible config file.
  */
-func ParseAndValidate(path string, checkMode bool, watchMode bool) {
+func ParseAndValidate(path string) {
 	// define config file type
 	viper.SetConfigType("yaml")
 
@@ -48,17 +48,6 @@ func ParseAndValidate(path string, checkMode bool, watchMode bool) {
 	if valid, err := validateConfig(); !valid {
 		logger.Error(err.Error())
 		os.Exit(2)
-	}
-
-	// exit if check mode is active
-	if checkMode {
-		logger.Info("Successfully validated config")
-		os.Exit(0)
-	}
-
-	// watch for config file changes
-	if watchMode {
-		watchConfig()
 	}
 }
 

@@ -26,13 +26,10 @@ var cli = &cobra.Command{
 		}
 
 		// parse and validate config file
-		config.ParseAndValidate(configPath, false, cmd.CalledAs() == serveCmd.Name())
+		config.ParseAndValidate(configPath)
 
 		// configure log level
 		logger.SetLevel(config.GetString("Log.Level"))
-		config.OnChangeSuccess("log-level", func() {
-			logger.SetLevel(config.GetString("Log.Level"))
-		})
 	},
 }
 

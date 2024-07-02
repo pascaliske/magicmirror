@@ -13,7 +13,7 @@ var watchers = make(map[string]func(bool))
 /**
  * Watch config file for changes and notify all watchers.
  */
-func watchConfig() {
+func Watch() {
 	if file := viper.ConfigFileUsed(); len(file) > 0 {
 		logger.Info("Watching for config file changes: %s", color.CyanString(file))
 		viper.WatchConfig()
