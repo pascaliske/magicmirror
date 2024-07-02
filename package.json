@@ -37,7 +37,7 @@
     "@ngrx/store-devtools": "^18.0.0",
     "@ngx-translate/core": "^15.0.0",
     "@pascaliske/ngx-sentry": "^4.2.0",
-    "@sentry/browser": "^7.32.1",
+    "@sentry/browser": "^8.0.0",
     "date-fns": "^3.0.0",
     "modern-normalize": "^2.0.0",
     "modularscale-sass": "^3.0.10",
