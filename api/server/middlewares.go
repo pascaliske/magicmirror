@@ -5,6 +5,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/pascaliske/magicmirror/public"
 )
 
 func (server Server) setupMiddlewares() {
@@ -26,5 +27,12 @@ func (server Server) setupMiddlewares() {
 		Skipper: func(c echo.Context) bool {
 			return c.Response().Status >= 200 && c.Response().Status <= 299
 		},
+	}))
+
+	// static files
+	server.router.Use(middleware.StaticWithConfig(middleware.StaticConfig{
+		Filesystem: public.StaticFiles(),
+		Index:      "index.html",
+		HTML5:      true,
 	}))
 }

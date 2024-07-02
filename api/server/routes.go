@@ -1,7 +1,6 @@
 package server
 
 import (
-	"github.com/labstack/echo/v4/middleware"
 	"github.com/pascaliske/magicmirror/config"
 	"github.com/pascaliske/magicmirror/health"
 	"github.com/pascaliske/magicmirror/metrics"
@@ -20,11 +19,4 @@ func (server Server) setupRoutes() {
 		server.router.Use(metrics.Middleware())
 		server.router.GET(config.GetString("Metrics.Path"), metrics.Handler())
 	}
-
-	// static files
-	server.router.Use(middleware.StaticWithConfig(middleware.StaticConfig{
-		Root:  "public",
-		Index: "index.html",
-		HTML5: true,
-	}))
 }
