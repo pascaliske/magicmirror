@@ -6,7 +6,6 @@
   "scripts": {
     "prepare": "husky",
     "start": "ng serve",
-    "start:server": "cd server && gow run -ldflags=\"$LDFLAGS\" main.go --config ../config.yml",
     "build": "ng build",
     "lint": "ng lint",
     "format": "prettier --write \"**/*.{ts,scss,md,html,json,yml}\"",

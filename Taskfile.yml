@@ -11,7 +11,7 @@ tasks:
     cmds:
       - yarn install
       - cd ansible && ansible-galaxy install -r requirements.yml
-      - cd server && go mod tidy
+      - cd api && go mod tidy
 
   start:app:
     summary: Start the frontend app in development mode
