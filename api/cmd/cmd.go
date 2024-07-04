@@ -7,7 +7,6 @@ import (
 	"github.com/pascaliske/magicmirror/logger"
 	"github.com/pascaliske/magicmirror/version"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 	"golang.org/x/text/cases"
 	"golang.org/x/text/language"
 )
@@ -25,8 +24,11 @@ var cli = &cobra.Command{
 			version.PrintBannerWithVersion()
 		}
 
-		// parse and validate config file
-		config.ParseAndValidate(configPath)
+		// setup config file
+		config.Setup(configPath)
+
+		// parse and validate config
+		config.ParseAndValidate()
 
 		// configure log level
 		logger.SetLevel(config.GetString("Log.Level"))
@@ -39,9 +41,6 @@ func init() {
 
 	// config flag
 	cli.PersistentFlags().StringVar(&configPath, "config", "", "Path to configuration file")
-	if err := viper.BindPFlag("config", cli.PersistentFlags().Lookup("config")); err != nil {
-		logger.Error(err.Error())
-	}
 }
 
 func Execute() error {

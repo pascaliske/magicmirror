@@ -4,7 +4,6 @@ import (
 	"github.com/fatih/color"
 	"github.com/fsnotify/fsnotify"
 	"github.com/pascaliske/magicmirror/logger"
-	"github.com/spf13/viper"
 )
 
 // internal storage of config file watchers
@@ -14,13 +13,13 @@ var watchers = make(map[string]func(bool))
  * Watch config file for changes and notify all watchers.
  */
 func Watch() {
-	if file := viper.ConfigFileUsed(); len(file) > 0 {
+	if file := c.viper.ConfigFileUsed(); len(file) > 0 {
 		logger.Info("Watching for config file changes: %s", color.CyanString(file))
-		viper.WatchConfig()
-		viper.OnConfigChange(func(e fsnotify.Event) {
+		c.viper.WatchConfig()
+		c.viper.OnConfigChange(func(e fsnotify.Event) {
 			// read-in config changes
 			logger.Debug("Config file changed - %s", e.Op.String())
-			success := viper.ReadInConfig() == nil
+			success := c.viper.ReadInConfig() == nil
 
 			if success {
 				logger.Info("Config file reloaded successfully")
@@ -41,7 +40,7 @@ func Watch() {
  */
 func OnChange(id string, run func(bool)) func() {
 	// no config file used
-	if len(viper.ConfigFileUsed()) == 0 {
+	if len(c.viper.ConfigFileUsed()) == 0 {
 		return func() {}
 	}
 

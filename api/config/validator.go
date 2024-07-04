@@ -6,27 +6,23 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/pascaliske/magicmirror/logger"
-	"github.com/spf13/viper"
 )
 
 /**
  * Validate config at given path.
  */
-func validateConfig() (bool, error) {
-	// variable to be validated
-	var config Config
-
+func (c *Config) validateConfig() (bool, error) {
 	// setup validator
 	var validate *validator.Validate = validator.New()
 
 	// prepare config for validation
-	if err := viper.Unmarshal(&config); err != nil {
+	if err := c.viper.Unmarshal(&c); err != nil {
 		fmt.Println(err)
 		return false, errors.New("Unable to validate config.")
 	}
 
 	// validate config
-	if err := validate.Struct(config); err != nil {
+	if err := validate.Struct(c); err != nil {
 		for _, err := range err.(validator.ValidationErrors) {
 			switch err.Tag() {
 			case "required", "required_unless":

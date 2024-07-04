@@ -50,8 +50,11 @@ type ApiKeys struct {
 }
 
 type Config struct {
+	// internal
+	viper *viper.Viper `yaml:"-"`
+
 	// general
-	Environment Environment `validate:"required,oneof=production development"`
+	Environment Environment `yaml:"-" validate:"required,oneof=production development"`
 	Port        Port        `validate:"required"`
 	Log         Log
 	Metrics     Metrics
@@ -62,24 +65,4 @@ type Config struct {
 
 	// api keys
 	ApiKeys ApiKeys
-}
-
-/**
- * Initialize default configuration values.
- */
-func init() {
-	// general
-	viper.SetDefault("Environment", "production")
-	viper.SetDefault("Port", 9000)
-	viper.SetDefault("Log.Level", "info")
-	viper.SetDefault("Metrics.Enabled", true)
-	viper.SetDefault("Metrics.Path", "/metrics")
-
-	// settings
-	viper.SetDefault("Location.Latitude", "")
-	viper.SetDefault("Location.Longitude", "")
-	viper.SetDefault("Feeds", []string{})
-
-	// api keys
-	viper.SetDefault("ApiKeys.OpenWeather", "")
 }
