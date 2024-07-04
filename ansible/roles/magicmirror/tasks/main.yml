@@ -1,15 +1,15 @@
 # ensure directory exists
 - name: Ensure directory exists
-  file:
+  ansible.builtin.file:
     path: '{{ paths.root }}/{{ role_name }}'
     state: directory
 
 # configure magicmirror
 - name: Create configuration
-  template:
+  ansible.builtin.template:
     src: '{{ role_name }}/config.yml.j2'
     dest: '{{ paths.root }}/{{ role_name }}/config.yml'
-    validate: docker run --rm -v %s:/etc/{{ role_name }}/config.yml ghcr.io/pascaliske/{{ role_name }}:latest /{{ role_name }} --check
+    validate: docker run --rm -v %s:/etc/{{ role_name }}/config.yml ghcr.io/pascaliske/{{ role_name }}:latest config validate
 
 # create container
 - name: Create container
@@ -22,8 +22,6 @@
       - "{{ url | urlsplit('port') }}:{{ url | urlsplit('port') }}"
     env:
       TZ: '{{ timezone }}'
-      PUID: '{{ ansible_user_uid | string }}'
-      PGID: '{{ ansible_user_gid | string }}'
     mounts:
       - type: bind
         source: '{{ paths.root }}/{{ role_name }}'
