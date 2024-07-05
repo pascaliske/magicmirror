@@ -25,9 +25,7 @@ func CreateClient(socket *websocket.Conn) (client Client) {
 	clients[client] = true
 
 	// update metric
-	if config.GetBool("Metrics.Enabled") {
-		metrics.SocketConnections.WithLabelValues().Set(float64(len(clients)))
-	}
+	metrics.SocketConnections.WithLabelValues().Set(float64(len(clients)))
 
 	// build client settings
 	settings := client.BuildSettings()
@@ -49,9 +47,7 @@ func (client Client) Read(c echo.Context) {
 	defer delete(clients, client)
 
 	// update metric
-	if config.GetBool("Metrics.Enabled") {
-		defer metrics.SocketConnections.WithLabelValues().Set(float64(len(clients)))
-	}
+	defer metrics.SocketConnections.WithLabelValues().Set(float64(len(clients)))
 
 	for {
 		message := SocketMessage{}

@@ -4,7 +4,6 @@ import (
 	"github.com/fatih/color"
 	"github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
-	"github.com/pascaliske/magicmirror/config"
 	"github.com/pascaliske/magicmirror/logger"
 	"github.com/pascaliske/magicmirror/metrics"
 )
@@ -20,9 +19,7 @@ func Handler() echo.HandlerFunc {
 	logger.Debug("Socket endpoint ready at %s", color.CyanString("/socket"))
 
 	// update metric
-	if config.GetBool("Metrics.Enabled") {
-		metrics.SocketConnections.WithLabelValues().Set(float64(len(clients)))
-	}
+	metrics.SocketConnections.WithLabelValues().Set(float64(len(clients)))
 
 	return func(c echo.Context) error {
 		// upgrade connection to socket
