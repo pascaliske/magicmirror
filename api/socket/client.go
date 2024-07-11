@@ -28,7 +28,7 @@ func CreateClient(socket *websocket.Conn) (client Client) {
 	metrics.SocketConnections.WithLabelValues().Set(float64(len(clients)))
 
 	// build client settings
-	settings := client.BuildSettings()
+	settings := client.CreateSettings()
 
 	// send register message
 	client.SendAction("register", settings)

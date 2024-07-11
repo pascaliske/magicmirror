@@ -10,7 +10,7 @@ type Settings struct {
 	ApiKeys  config.ApiKeys  `json:"apiKeys"`
 }
 
-func (client Client) BuildSettings() Settings {
+func (client Client) CreateSettings() Settings {
 	return Settings{
 		Location: config.Location{
 			Latitude:  config.GetFloat64("Location.Latitude"),
