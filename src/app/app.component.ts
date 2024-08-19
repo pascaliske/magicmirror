@@ -2,7 +2,9 @@ import { Component, OnInit, DestroyRef, inject } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { Router, RouterOutlet } from '@angular/router'
 import { Store } from '@ngrx/store'
-import { NgProgressModule } from 'ngx-progressbar'
+import { NgProgressbar } from 'ngx-progressbar'
+import { NgProgressHttp } from 'ngx-progressbar/http'
+import { NgProgressRouter } from 'ngx-progressbar/router'
 import { SocketService, SocketAction } from 'shared/socket/socket.service'
 import { HealthService, Status } from 'shared/health/health.service'
 import { ReloadService } from 'shared/reload/reload.service'
@@ -13,7 +15,7 @@ import { SettingsActions } from 'store/settings'
     selector: 'cmp-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    imports: [RouterOutlet, NgProgressModule],
+    imports: [RouterOutlet, NgProgressbar, NgProgressHttp, NgProgressRouter],
 })
 export class AppComponent implements OnInit {
     private readonly destroy: DestroyRef = inject(DestroyRef)
