@@ -13,9 +13,9 @@ import { provideRouterStore } from '@ngrx/router-store'
 import { provideEffects } from '@ngrx/effects'
 import { SentryModule } from '@pascaliske/ngx-sentry'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
-import { NgProgressModule } from 'ngx-progressbar'
-import { NgProgressHttpModule } from 'ngx-progressbar/http'
-import { NgProgressRouterModule } from 'ngx-progressbar/router'
+import { provideNgProgressOptions } from 'ngx-progressbar'
+import { provideNgProgressHttp } from 'ngx-progressbar/http'
+import { provideNgProgressRouter } from 'ngx-progressbar/router'
 import { environment } from 'environments/environment'
 import { reducers, metaReducers, storeDevtoolsOptions } from 'store'
 import { SettingsEffects } from 'store/settings'
@@ -47,15 +47,6 @@ export const appConfig: ApplicationConfig = {
                     deps: [HttpClient],
                 },
             }),
-            NgProgressModule.withConfig({
-                color: '#fff',
-                speed: 250,
-                thick: true,
-                spinner: true,
-                meteor: true,
-            }),
-            NgProgressHttpModule,
-            NgProgressRouterModule,
         ),
         provideRouter(routes, ...features),
         provideHttpClient(withFetch()),
@@ -69,6 +60,9 @@ export const appConfig: ApplicationConfig = {
         provideStoreDevtools(storeDevtoolsOptions),
         provideRouterStore(),
         provideEffects(SettingsEffects),
+        provideNgProgressOptions({ speed: 250, spinner: true, flat: true }),
+        provideNgProgressHttp({}),
+        provideNgProgressRouter({ minDuration: 1500 }),
         provideAppId(),
         provideLocaleId(),
     ],
