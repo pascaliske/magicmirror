@@ -23,14 +23,14 @@ func GetVersion() string {
 }
 
 func PrintBanner() {
-	logger.Raw(GetBanner())
+	logger.Raw("%s", GetBanner())
 }
 
 func PrintVersion() {
-	logger.Raw(GetVersion())
+	logger.Raw("%s", GetVersion())
 }
 
 func PrintBannerWithVersion() {
-	logger.Raw(GetBanner())
-	logger.Raw(GetVersion())
+	logger.Raw("%s", GetBanner())
+	logger.Raw("%s", GetVersion())
 }
