@@ -44,7 +44,7 @@
     "rxjs": "~7.8.0",
     "ts-cacheable": "^1.0.10",
     "tslib": "^2.4.1",
-    "zone.js": "~0.14.10"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@angular-eslint/builder": "18.3.0",
