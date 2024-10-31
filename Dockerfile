@@ -16,7 +16,7 @@ RUN case "${TARGETPLATFORM}" in \
     && chmod +x /tini
 
 # --- app
-FROM --platform=${BUILDPLATFORM} node:20-alpine AS app
+FROM --platform=${BUILDPLATFORM} node:22-alpine AS app
 LABEL maintainer="info@pascaliske.dev"
 WORKDIR /build
 
