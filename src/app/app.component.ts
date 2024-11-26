@@ -11,7 +11,6 @@ import { ReloadService } from 'shared/reload/reload.service'
 import { SettingsActions } from 'store/settings'
 
 @Component({
-    standalone: true,
     selector: 'cmp-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],

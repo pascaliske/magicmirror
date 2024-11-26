@@ -9,7 +9,6 @@ import { ToLocalTimePipe } from 'shared/datetime/to-local-time.pipe'
 import { BaseCardComponent } from '../base-card/base-card.component'
 
 @Component({
-    standalone: true,
     selector: 'cmp-time-card',
     templateUrl: './time-card.component.html',
     styleUrls: ['./time-card.component.scss'],

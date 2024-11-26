@@ -11,7 +11,6 @@ interface Headline {
 }
 
 @Component({
-    standalone: true,
     selector: 'cmp-news-card',
     templateUrl: './news-card.component.html',
     styleUrls: ['./news-card.component.scss'],

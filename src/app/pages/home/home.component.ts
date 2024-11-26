@@ -10,7 +10,6 @@ import { WeatherCardComponent } from 'components/cards/weather-card/weather-card
 import { animations } from './home.animations'
 
 @Component({
-    standalone: true,
     selector: 'cmp-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],

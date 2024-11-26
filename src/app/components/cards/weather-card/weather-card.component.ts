@@ -20,7 +20,6 @@ import { BaseCardComponent, repeatAfter } from '../base-card/base-card.component
 import { WeatherData } from './weather-data'
 
 @Component({
-    standalone: true,
     selector: 'cmp-weather-card',
     templateUrl: './weather-card.component.html',
     styleUrls: ['./weather-card.component.scss'],
