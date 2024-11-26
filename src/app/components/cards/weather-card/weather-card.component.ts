@@ -7,14 +7,7 @@ import { Cacheable } from 'ts-cacheable'
 import { environment } from 'environments/environment'
 import { Settings } from 'store/settings'
 import { FromTimestampPipe } from 'shared/datetime/from-timestamp.pipe'
-import { ToLocalDatePipe } from 'shared/datetime/to-local-date.pipe'
-import { ToLocalTimePipe } from 'shared/datetime/to-local-time.pipe'
-import { ToDayPipe } from 'shared/datetime/to-day.pipe'
 import { ToDayNamePipe } from 'shared/datetime/to-day-name.pipe'
-import { ToWeekPipe } from 'shared/datetime/to-week.pipe'
-import { ToMonthPipe } from 'shared/datetime/to-month.pipe'
-import { ToMonthNamePipe } from 'shared/datetime/to-month-name.pipe'
-import { ToYearPipe } from 'shared/datetime/to-year.pipe'
 import { ToHumanNumberPipe } from 'shared/numbers/to-human.pipe'
 import { BaseCardComponent, repeatAfter } from '../base-card/base-card.component'
 import { WeatherData } from './weather-data'
@@ -24,21 +17,7 @@ import { WeatherData } from './weather-data'
     templateUrl: './weather-card.component.html',
     styleUrls: ['./weather-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        NgIf,
-        NgFor,
-        AsyncPipe,
-        FromTimestampPipe,
-        ToLocalDatePipe,
-        ToLocalTimePipe,
-        ToDayPipe,
-        ToDayNamePipe,
-        ToWeekPipe,
-        ToMonthPipe,
-        ToMonthNamePipe,
-        ToYearPipe,
-        ToHumanNumberPipe,
-    ],
+    imports: [NgIf, NgFor, AsyncPipe, FromTimestampPipe, ToDayNamePipe, ToHumanNumberPipe],
 })
 export class WeatherCardComponent extends BaseCardComponent {
     private readonly data$: Observable<WeatherData> = this.settings$.pipe(
