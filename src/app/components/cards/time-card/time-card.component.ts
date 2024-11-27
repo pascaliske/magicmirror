@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
 import { NgIf, AsyncPipe } from '@angular/common'
-import { TranslateModule } from '@ngx-translate/core'
+import { TranslatePipe } from '@ngx-translate/core'
 import { Observable, interval } from 'rxjs'
 import { startWith, map } from 'rxjs/operators'
 import { ToWeekPipe } from 'shared/datetime/to-week.pipe'
@@ -13,7 +13,7 @@ import { BaseCardComponent } from '../base-card/base-card.component'
     templateUrl: './time-card.component.html',
     styleUrls: ['./time-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgIf, AsyncPipe, TranslateModule, ToWeekPipe, ToLocalDatePipe, ToLocalTimePipe],
+    imports: [NgIf, AsyncPipe, TranslatePipe, ToWeekPipe, ToLocalDatePipe, ToLocalTimePipe],
 })
 export class TimeCardComponent extends BaseCardComponent {
     public readonly interval$: Observable<Date> = interval(1000).pipe(
