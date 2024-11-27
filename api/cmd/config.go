@@ -83,6 +83,8 @@ var configValidateCmd = &cobra.Command{
 	Short: "Validate configuration file",
 	Long:  "Validate the configuration file against it's schema",
 
+	Aliases: []string{"check"},
+
 	Run: func(cmd *cobra.Command, args []string) {
 		// config seems valid
 		logger.Info("Successfully validated config")
