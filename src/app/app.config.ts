@@ -1,8 +1,7 @@
+import type { ApplicationConfig, ValueProvider } from '@angular/core'
 import {
     provideExperimentalZonelessChangeDetection,
     importProvidersFrom,
-    ApplicationConfig,
-    ValueProvider,
     APP_ID,
     LOCALE_ID,
 } from '@angular/core'
