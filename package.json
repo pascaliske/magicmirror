@@ -34,7 +34,7 @@
     "@ngrx/router-store": "^18.0.2",
     "@ngrx/store": "^18.0.2",
     "@ngrx/store-devtools": "^18.0.2",
-    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/core": "^16.0.3",
     "@pascaliske/ngx-sentry": "^5.0.0",
     "@sentry/browser": "^8.26.0",
     "date-fns": "^4.0.0",

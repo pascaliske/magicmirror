@@ -11,8 +11,8 @@ import { provideStore } from '@ngrx/store'
 import { provideStoreDevtools } from '@ngrx/store-devtools'
 import { provideRouterStore } from '@ngrx/router-store'
 import { provideEffects } from '@ngrx/effects'
-import { SentryModule } from '@pascaliske/ngx-sentry'
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core'
+import { SentryModule, SentryService } from '@pascaliske/ngx-sentry'
+import { provideTranslateService, TranslateLoader } from '@ngx-translate/core'
 import { provideNgProgressOptions } from 'ngx-progressbar'
 import { provideNgProgressHttp } from 'ngx-progressbar/http'
 import { provideNgProgressRouter } from 'ngx-progressbar/router'
@@ -40,15 +40,17 @@ export const appConfig: ApplicationConfig = {
                 enabled: environment.production,
                 sentry: environment.sentry,
             }),
-            TranslateModule.forRoot({
-                defaultLanguage: 'de',
-                loader: {
-                    provide: TranslateLoader,
-                    useClass: TranslationLoader,
-                    deps: [HttpClient],
-                },
-            }),
         ),
+        provideTranslateService({
+            defaultLanguage: 'de',
+            loader: {
+                provide: TranslateLoader,
+                deps: [HttpClient],
+                useFactory: (http: HttpClient, sentry: SentryService) => {
+                    return new TranslationLoader(http, sentry)
+                },
+            },
+        }),
         provideRouter(routes, ...features),
         provideHttpClient(withFetch()),
         provideStore(reducers, {
