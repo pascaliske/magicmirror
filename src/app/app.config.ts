@@ -1,4 +1,5 @@
 import {
+    provideExperimentalZonelessChangeDetection,
     importProvidersFrom,
     ApplicationConfig,
     ValueProvider,
@@ -34,6 +35,7 @@ export const provideLocaleId: () => ValueProvider = (): ValueProvider => ({
 
 export const appConfig: ApplicationConfig = {
     providers: [
+        provideExperimentalZonelessChangeDetection(),
         importProvidersFrom(
             SentryModule.forRoot({
                 enabled: environment.production,
