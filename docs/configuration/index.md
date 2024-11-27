@@ -45,14 +45,14 @@ $ /magicmirror --config /foo/bar/baz.yml
 
 ## Check-only mode
 
-You can run the server in a check-only mode to validate the configuration file. Simply pass the `--check` flag like so:
+You can just validate the configuration file using the following sub command:
 
 ```shell
 # default config path
-$ /magicmirror --check
+$ /magicmirror config validate
 
 # custom config path
-$ /magicmirror --config /foo/bar/baz.yml --check
+$ /magicmirror config validate --config /foo/bar/baz.yml
 ```
 
 ## Sections
