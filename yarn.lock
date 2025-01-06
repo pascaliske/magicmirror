@@ -4238,12 +4238,12 @@ neo-async@^2.6.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ngx-progressbar@^13.0.0:
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-13.0.0.tgz#8054ef717218de9778fe4a42f502141438c376e7"
-  integrity sha512-vzycISa9kddf2eo1qF7WSrHPLFRR0dia2NaxYFCSnvspJ30D69OBN8qV9gZ0BLU+AQib5I3CGhDbjF6QqvKtzA==
+ngx-progressbar@^14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-progressbar/-/ngx-progressbar-14.0.0.tgz#941dd19a20bf1846f94685cda5f8aa030711934f"
+  integrity sha512-tDj7h5F2aSI4/XaJjs50FnELVe6qFqyz3vVq22acacd3oDW2EyJB4c+IYaxMf5972OdTw0WL4n6UwQ3dqC+gCA==
   dependencies:
-    tslib "^2.0.0"
+    tslib "^2.3.0"
 
 node-addon-api@^6.1.0:
   version "6.1.0"
