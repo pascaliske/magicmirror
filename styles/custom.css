@@ -1,0 +1,15 @@
+/* invert logo on dark theme */
+body[data-md-color-scheme="slate"] img[alt="logo"] {
+    filter: invert(1);
+}
+
+/* increase logo on desktop */
+@media (min-width: 76.25em) {
+    .md-logo {
+        transform: scale(1.5) translateY(2px);
+    }
+
+    .md-header .md-header__title {
+        margin-left: .4rem;
+    }
+}
