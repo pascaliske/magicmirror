@@ -2028,51 +2028,51 @@
     "@angular-devkit/schematics" "19.2.0"
     jsonc-parser "3.3.1"
 
-"@sentry-internal/browser-utils@8.47.0":
-  version "8.47.0"
-  resolved "https://registry.yarnpkg.com/@sentry-internal/browser-utils/-/browser-utils-8.47.0.tgz#39f2766a1bbdffc2d211e2f61f8ed8c258245b3d"
-  integrity sha512-vOXzYzHTKkahTLDzWWIA4EiVCQ+Gk+7xGWUlNcR2ZiEPBqYZVb5MjsUozAcc7syrSUy6WicyFjcomZ3rlCVQhg==
+"@sentry-internal/browser-utils@9.19.0":
+  version "9.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/browser-utils/-/browser-utils-9.19.0.tgz#b7df4f1de6e467e62f255967e441de68b5db5c2f"
+  integrity sha512-DlEHX4eIHe5yIuh/cFu9OiaFuk1CTnFK95zj61I7Q2fxmN43dIwC3xAAGJ/Hy+GDQi7kU+BiS2sudSHSTq81BA==
   dependencies:
-    "@sentry/core" "8.47.0"
+    "@sentry/core" "9.19.0"
 
-"@sentry-internal/feedback@8.47.0":
-  version "8.47.0"
-  resolved "https://registry.yarnpkg.com/@sentry-internal/feedback/-/feedback-8.47.0.tgz#22bceac03b61ab8509e79c0875fb140f214b7c4f"
-  integrity sha512-IAiIemTQIalxAOYhUENs9bZ8pMNgJnX3uQSuY7v0gknEqClOGpGkG04X/cxCmtJUj1acZ9ShTGDxoh55a+ggAQ==
+"@sentry-internal/feedback@9.19.0":
+  version "9.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/feedback/-/feedback-9.19.0.tgz#a3bf7a7a14d615eb3b8130a97b2c077767a54b27"
+  integrity sha512-yixRrv4NfpjhFW56AuUTjVwZlignB9FWAXXyrmRP3SsFeJCFrAsSD8HOxV9RXNr9ePYl7MEU0Agi43YWhJsiAw==
   dependencies:
-    "@sentry/core" "8.47.0"
+    "@sentry/core" "9.19.0"
 
-"@sentry-internal/replay-canvas@8.47.0":
-  version "8.47.0"
-  resolved "https://registry.yarnpkg.com/@sentry-internal/replay-canvas/-/replay-canvas-8.47.0.tgz#5bbd04c81235b2bf627aa216185ae1993d2102c4"
-  integrity sha512-M4W9UGouEeELbGbP3QsXLDVtGiQSZoWJlKwqMWyqdQgZuLoKw0S33+60t6teLVMhuQZR0UI9VJTF5coiXysnnA==
+"@sentry-internal/replay-canvas@9.19.0":
+  version "9.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/replay-canvas/-/replay-canvas-9.19.0.tgz#0f830ebadb7c49a3fb04457f1510aa7972445780"
+  integrity sha512-YC8yrOjuKSfQgGniJnzkdbFsWEPTlNpzeeYPTxS4ouH1FwfGrSkPmcddjor2YHaLfiuHHqQ/Vvq70n+zruJH7A==
   dependencies:
-    "@sentry-internal/replay" "8.47.0"
-    "@sentry/core" "8.47.0"
+    "@sentry-internal/replay" "9.19.0"
+    "@sentry/core" "9.19.0"
 
-"@sentry-internal/replay@8.47.0":
-  version "8.47.0"
-  resolved "https://registry.yarnpkg.com/@sentry-internal/replay/-/replay-8.47.0.tgz#4f7bd359df2de25d919a378295cab67dfa05a406"
-  integrity sha512-G/S40ZBORj0HSMLw/uVC6YDEPN/dqVk901vf4VYfml686DEhJrZesfAfp5SydJumQ0NKZQrdtvny+BWnlI5H1w==
+"@sentry-internal/replay@9.19.0":
+  version "9.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry-internal/replay/-/replay-9.19.0.tgz#a1068ba5ba8eee9cd2459081be6e11bd3469d401"
+  integrity sha512-i/X9brRchbAF25yjxLTI7E8eoESRPBgIyQOWoWRXXt2n51iBRTjLXSaEfGvjdN+qrMq/yd6nC1/UqJVxXHeIhA==
   dependencies:
-    "@sentry-internal/browser-utils" "8.47.0"
-    "@sentry/core" "8.47.0"
+    "@sentry-internal/browser-utils" "9.19.0"
+    "@sentry/core" "9.19.0"
 
-"@sentry/browser@^8.47.0":
-  version "8.47.0"
-  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-8.47.0.tgz#fe0b6b65c0394f54438d6704039adeaec214ce18"
-  integrity sha512-K6BzHisykmbFy/wORtGyfsAlw7ShevLALzu3ReZZZ18dVubO1bjSNjkZQU9MJD5Jcb9oLwkq89n3N9XIBfvdRA==
+"@sentry/browser@^9.0.0":
+  version "9.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry/browser/-/browser-9.19.0.tgz#17d5e2ef30e75083c56955cdbe5c2db5deabb542"
+  integrity sha512-efKfPQ0yQkdIkC7qJ5TIHxnecLNENGUYl1YD/TC8yyzW2JRf/3OYo5yg1hY2rhsP5RwQShXlT7uA03ABVIkA4A==
   dependencies:
-    "@sentry-internal/browser-utils" "8.47.0"
-    "@sentry-internal/feedback" "8.47.0"
-    "@sentry-internal/replay" "8.47.0"
-    "@sentry-internal/replay-canvas" "8.47.0"
-    "@sentry/core" "8.47.0"
+    "@sentry-internal/browser-utils" "9.19.0"
+    "@sentry-internal/feedback" "9.19.0"
+    "@sentry-internal/replay" "9.19.0"
+    "@sentry-internal/replay-canvas" "9.19.0"
+    "@sentry/core" "9.19.0"
 
-"@sentry/core@8.47.0":
-  version "8.47.0"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-8.47.0.tgz#e811444552f7a91b5de573875a318a6cd4e802f8"
-  integrity sha512-iSEJZMe3DOcqBFZQAqgA3NB2lCWBc4Gv5x/SCri/TVg96wAlss4VrUunSI2Mp0J4jJ5nJcJ2ChqHSBAU48k3FA==
+"@sentry/core@9.19.0":
+  version "9.19.0"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-9.19.0.tgz#b0c291494abd4fdefb8f77d200e381c3f7167c3f"
+  integrity sha512-I41rKpMJHHZb0z0Nja+Lxto6IkEEmX3uWjnECypF8Z1HIjeJB0+PXl8p/7TeaKYqw2J2GYcRTg7jQZDmvKle1w==
 
 "@sigstore/bundle@^3.0.0":
   version "3.0.0"
