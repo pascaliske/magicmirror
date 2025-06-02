@@ -1,5 +1,5 @@
 # --- tini
-FROM --platform=${BUILDPLATFORM} alpine:3.21 as tini
+FROM --platform=${BUILDPLATFORM} alpine:3.22 as tini
 LABEL maintainer="info@pascaliske.dev"
 
 # environment
