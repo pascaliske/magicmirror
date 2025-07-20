@@ -6,10 +6,10 @@
 
 ## Images
 
-| Registry   | Image                                                                                                                             |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| GitHub     | [`ghcr.io/pascaliske/magicmirror`](https://github.com/pascaliske/docker-magicmirror/pkgs/container/magicmirror)                   |
-| Docker Hub | [`pascaliske/magicmirror`](https://hub.docker.com/r/pascaliske/magicmirror)                                                       |
+| Registry   | Image                                                                                                           |
+| ---------- | --------------------------------------------------------------------------------------------------------------- |
+| GitHub     | [`ghcr.io/pascaliske/magicmirror`](https://github.com/pascaliske/docker-magicmirror/pkgs/container/magicmirror) |
+| Docker Hub | [`pascaliske/magicmirror`](https://hub.docker.com/r/pascaliske/magicmirror)                                     |
 
 The following platforms are available for the images:
 

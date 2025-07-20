@@ -1,5 +1,5 @@
 # --- tini
-FROM --platform=${BUILDPLATFORM} alpine:3.22 as tini
+FROM --platform=${BUILDPLATFORM} alpine:3.22 AS tini
 LABEL maintainer="info@pascaliske.dev"
 
 # environment
@@ -32,7 +32,7 @@ COPY . /build
 RUN yarn run build
 
 # --- api
-FROM --platform=${BUILDPLATFORM} golang:1.24-alpine as api
+FROM --platform=${BUILDPLATFORM} golang:1.24-alpine AS api
 LABEL maintainer="info@pascaliske.dev"
 WORKDIR /build
 
