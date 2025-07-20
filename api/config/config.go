@@ -70,7 +70,7 @@ func ParseAndValidate() {
 
 	// validate config
 	if valid, err := c.validateConfig(); !valid {
-		logger.Error(err.Error())
+		logger.Error(fmt.Sprintf("An error occurred: %s", err.Error()))
 		os.Exit(2)
 	}
 }
