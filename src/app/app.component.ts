@@ -19,13 +19,15 @@ import { SettingsActions } from 'store/settings'
 export class AppComponent implements OnInit {
     private readonly destroy: DestroyRef = inject(DestroyRef)
 
-    public constructor(
-        private readonly router: Router,
-        private readonly store: Store,
-        private readonly socket: SocketService,
-        private readonly health: HealthService,
-        private readonly reload: ReloadService,
-    ) {}
+    private readonly router: Router = inject(Router)
+
+    private readonly store: Store = inject(Store)
+
+    private readonly socket: SocketService = inject(SocketService)
+
+    private readonly health: HealthService = inject(HealthService)
+
+    private readonly reload: ReloadService = inject(ReloadService)
 
     public ngOnInit(): void {
         // delayed initial navigation

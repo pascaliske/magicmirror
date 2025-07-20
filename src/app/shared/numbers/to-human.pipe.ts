@@ -1,11 +1,11 @@
-import { Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core'
+import { Pipe, PipeTransform, LOCALE_ID, inject } from '@angular/core'
 
 @Pipe({
     standalone: true,
     name: 'toHumanNumber',
 })
 export class ToHumanNumberPipe implements PipeTransform {
-    public constructor(@Inject(LOCALE_ID) private readonly locale: string) {}
+    private readonly locale: string = inject(LOCALE_ID)
 
     public transform(value: number, format: string = '1.0-1'): string {
         const [minIntegerDigits, minFractionDigits, maxFractionDigits] = format.split(/[.-]/)

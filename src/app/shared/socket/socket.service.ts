@@ -1,4 +1,4 @@
-import { Injectable, Inject, DOCUMENT } from '@angular/core'
+import { Injectable, DOCUMENT, inject } from '@angular/core'
 import { Subject, Observable, OperatorFunction, pipe, interval } from 'rxjs'
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket'
 import { filter, delay, tap, retry, delayWhen, finalize } from 'rxjs/operators'
@@ -20,13 +20,15 @@ export interface SocketMessage<T = any> {
     providedIn: 'root',
 })
 export class SocketService {
+    private readonly document: Document = inject<Document>(DOCUMENT)
+
     private readonly url: string = `ws://${this.document.location.host}/socket`
 
     private readonly socket$: WebSocketSubject<SocketMessage> = webSocket(this.url)
 
     private readonly subject$: Subject<SocketMessage> = new Subject()
 
-    public constructor(@Inject(DOCUMENT) private readonly document: Document) {
+    public constructor() {
         this.socket$.pipe(this.reconnect(5000)).subscribe()
     }
 

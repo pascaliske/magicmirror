@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Inject, LOCALE_ID } from '@angular/core'
+import { Component, ChangeDetectionStrategy, LOCALE_ID, inject } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Store, select } from '@ngrx/store'
 import { Observable, OperatorFunction, interval } from 'rxjs'
@@ -13,16 +13,16 @@ import { SettingsFeature, SettingsState } from 'store/settings'
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BaseCardComponent {
+    protected readonly locale: string = inject(LOCALE_ID)
+
+    protected http: HttpClient = inject(HttpClient)
+
+    private readonly store: Store = inject(Store)
+
     protected settings$: Observable<SettingsState> = this.store.pipe(
         select(SettingsFeature.selectSettingsState),
         filter(({ loaded }) => loaded),
     )
-
-    public constructor(
-        @Inject(LOCALE_ID) protected readonly locale: string,
-        protected http: HttpClient,
-        private readonly store: Store,
-    ) {}
 }
 
 /**

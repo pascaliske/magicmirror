@@ -1,11 +1,11 @@
-import { Pipe, PipeTransform, Inject, LOCALE_ID } from '@angular/core'
+import { Pipe, PipeTransform, LOCALE_ID, inject } from '@angular/core'
 
 @Pipe({
     standalone: true,
     name: 'toLocalDate',
 })
 export class ToLocalDatePipe implements PipeTransform {
-    public constructor(@Inject(LOCALE_ID) private readonly locale: string) {}
+    private readonly locale: string = inject(LOCALE_ID)
 
     public transform(value: Date, length: 'short' | 'long' = 'short'): string {
         if (length === 'short') {

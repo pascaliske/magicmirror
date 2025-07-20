@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, inject } from '@angular/core'
 import { AsyncPipe } from '@angular/common'
 import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
@@ -16,7 +16,7 @@ import { animations } from './home.animations'
     imports: [AsyncPipe, NewsCardComponent, TimeCardComponent, WeatherCardComponent],
 })
 export default class HomeComponent {
-    public loaded$: Observable<boolean> = this.store.pipe(select(SettingsFeature.selectLoaded))
+    private readonly store: Store = inject(Store)
 
-    public constructor(private readonly store: Store) {}
+    public loaded$: Observable<boolean> = this.store.pipe(select(SettingsFeature.selectLoaded))
 }

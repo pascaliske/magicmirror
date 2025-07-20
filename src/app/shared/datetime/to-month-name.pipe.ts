@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, Inject } from '@angular/core'
+import { Pipe, PipeTransform, inject } from '@angular/core'
 import { format } from 'date-fns'
 import { DateFnsConfig, DATE_FNS_CONFIG } from './config'
 
@@ -7,7 +7,7 @@ import { DateFnsConfig, DATE_FNS_CONFIG } from './config'
     name: 'toMonthName',
 })
 export class ToMonthNamePipe implements PipeTransform {
-    public constructor(@Inject(DATE_FNS_CONFIG) private readonly dateFnsConfig: DateFnsConfig) {}
+    private readonly dateFnsConfig: DateFnsConfig = inject<DateFnsConfig>(DATE_FNS_CONFIG)
 
     public transform(value: Date): string {
         return format(value, 'LLLL', this.dateFnsConfig)

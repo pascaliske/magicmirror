@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Injectable, inject } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { of } from 'rxjs'
 import { mergeMap, map, catchError } from 'rxjs/operators'
@@ -8,6 +8,10 @@ import { Settings } from './settings.model'
 
 @Injectable()
 export class SettingsEffects {
+    private readonly actions$: Actions = inject(Actions)
+
+    private readonly socket: SocketService = inject(SocketService)
+
     public getSettings$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(SettingsActions.load),
@@ -23,9 +27,4 @@ export class SettingsEffects {
             }),
         )
     })
-
-    public constructor(
-        private readonly actions$: Actions,
-        private readonly socket: SocketService,
-    ) {}
 }

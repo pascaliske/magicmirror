@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Injectable, inject } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable, interval, of, EMPTY } from 'rxjs'
 import { concatMap, filter, map, catchError } from 'rxjs/operators'
@@ -15,12 +15,12 @@ export const enum Status {
     providedIn: 'root',
 })
 export class HealthService {
+    private readonly http: HttpClient = inject(HttpClient)
+
     /**
      * Interval in milliseconds between subsequent health checks.
      */
     private readonly interval: number = 5 * 1000 * 60
-
-    public constructor(private readonly http: HttpClient) {}
 
     /**
      * Watch for a specific health check status.
