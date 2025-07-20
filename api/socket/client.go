@@ -71,7 +71,11 @@ func (client Client) Read(c echo.Context) {
 
 func (client Client) Write(c echo.Context) {
 	// close connection
-	defer client.socket.Close()
+	defer func() {
+		if err := client.socket.Close(); err != nil {
+			logger.Error(err.Error())
+		}
+	}()
 
 	for {
 		// get message for client
