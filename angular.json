@@ -12,43 +12,53 @@
     },
     "@schematics/angular:module": {
       "flat": false,
-      "commonModule": false
+      "commonModule": false,
+      "typeSeparator": "."
     },
     "@schematics/angular:component": {
       "style": "scss",
       "changeDetection": "OnPush",
       "flat": false,
       "export": true,
-      "skipTests": true
+      "skipTests": true,
+      "type": "component"
     },
     "@schematics/angular:class": {
       "skipTests": true
     },
     "@schematics/angular:directive": {
       "flat": false,
-      "skipTests": true
+      "skipTests": true,
+      "type": "directive"
     },
     "@schematics/angular:guard": {
       "flat": false,
-      "skipTests": true
+      "skipTests": true,
+      "typeSeparator": "."
     },
     "@schematics/angular:interceptor": {
       "flat": false,
-      "skipTests": true
+      "skipTests": true,
+      "typeSeparator": "."
     },
     "@schematics/angular:pipe": {
       "flat": false,
-      "skipTests": false
+      "skipTests": false,
+      "typeSeparator": "."
     },
     "@schematics/angular:service": {
       "flat": false,
-      "skipTests": true
+      "skipTests": true,
+      "type": "service"
     },
     "@angular-eslint/schematics:application": {
       "setParserOptionsProject": true
     },
     "@angular-eslint/schematics:library": {
       "setParserOptionsProject": true
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
     }
   },
   "projects": {

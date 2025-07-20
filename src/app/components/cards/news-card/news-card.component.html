@@ -1,5 +1,14 @@
-<div class="cmp-news-card" *ngIf="data$ | async as data">
-    <div class="cmp-news-card__headline" *ngFor="let item of data">
-        <a [href]="item.url" [innerHTML]="item.label" target="_blank" rel="noopener noreferrer"></a>
+@if (data$ | async; as data) {
+    <div class="cmp-news-card">
+        @for (item of data; track item) {
+            <div class="cmp-news-card__headline">
+                <a
+                    [href]="item.url"
+                    [innerHTML]="item.label"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                ></a>
+            </div>
+        }
     </div>
-</div>
+}

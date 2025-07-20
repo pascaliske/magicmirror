@@ -8,7 +8,10 @@ import { Cacheable, LocalStorageStrategy } from 'ts-cacheable'
 const cacheBuster$: Subject<void> = new Subject<void>()
 
 export class TranslationLoader implements TranslateLoader {
-    public constructor(private readonly http: HttpClient, private readonly sentry: SentryService) {}
+    public constructor(
+        private readonly http: HttpClient,
+        private readonly sentry: SentryService,
+    ) {}
 
     /**
      * Fetches the translations from the API.

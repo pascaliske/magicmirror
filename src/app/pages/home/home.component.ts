@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { NgIf, AsyncPipe } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
 import { SettingsFeature } from 'store/settings'
@@ -13,7 +13,7 @@ import { animations } from './home.animations'
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     animations: [animations],
-    imports: [NgIf, AsyncPipe, NewsCardComponent, TimeCardComponent, WeatherCardComponent],
+    imports: [AsyncPipe, NewsCardComponent, TimeCardComponent, WeatherCardComponent],
 })
 export default class HomeComponent {
     public loaded$: Observable<boolean> = this.store.pipe(select(SettingsFeature.selectLoaded))

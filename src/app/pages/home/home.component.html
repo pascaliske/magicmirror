@@ -1,11 +1,13 @@
-<div class="cmp-home" [@fade]="loaded" *ngIf="loaded$ | async as loaded">
-    <div class="cmp-home__left">
-        <cmp-weather-card></cmp-weather-card>
+@if (loaded$ | async; as loaded) {
+    <div class="cmp-home" [@fade]="loaded">
+        <div class="cmp-home__left">
+            <cmp-weather-card></cmp-weather-card>
+        </div>
+        <div class="cmp-home__center">
+            <cmp-news-card></cmp-news-card>
+        </div>
+        <div class="cmp-home__right">
+            <cmp-time-card></cmp-time-card>
+        </div>
     </div>
-    <div class="cmp-home__center">
-        <cmp-news-card></cmp-news-card>
-    </div>
-    <div class="cmp-home__right">
-        <cmp-time-card></cmp-time-card>
-    </div>
-</div>
+}

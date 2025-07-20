@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import { NgIf, NgFor, AsyncPipe } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { HttpParams } from '@angular/common/http'
 import { Observable, EMPTY } from 'rxjs'
 import { concatMap, map } from 'rxjs/operators'
@@ -17,7 +17,7 @@ import { WeatherData } from './weather-data'
     templateUrl: './weather-card.component.html',
     styleUrls: ['./weather-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgIf, NgFor, AsyncPipe, FromTimestampPipe, ToDayNamePipe, ToHumanNumberPipe],
+    imports: [AsyncPipe, FromTimestampPipe, ToDayNamePipe, ToHumanNumberPipe],
 })
 export class WeatherCardComponent extends BaseCardComponent {
     private readonly data$: Observable<WeatherData> = this.settings$.pipe(

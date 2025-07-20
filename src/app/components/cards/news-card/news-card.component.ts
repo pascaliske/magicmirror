@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core'
-import { NgIf, NgFor, AsyncPipe } from '@angular/common'
+import { AsyncPipe } from '@angular/common'
 import { forkJoin, Observable, OperatorFunction } from 'rxjs'
 import { concatMap, map } from 'rxjs/operators'
 import { Cacheable } from 'ts-cacheable'
@@ -15,7 +15,7 @@ interface Headline {
     templateUrl: './news-card.component.html',
     styleUrls: ['./news-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgIf, NgFor, AsyncPipe],
+    imports: [AsyncPipe],
 })
 export class NewsCardComponent extends BaseCardComponent {
     public readonly data$: Observable<Headline[]> = this.settings$.pipe(

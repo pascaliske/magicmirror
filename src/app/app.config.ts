@@ -1,5 +1,5 @@
 import type { ApplicationConfig, ValueProvider } from '@angular/core'
-import { provideExperimentalZonelessChangeDetection, APP_ID, LOCALE_ID } from '@angular/core'
+import { provideZonelessChangeDetection, APP_ID, LOCALE_ID } from '@angular/core'
 import { provideRouter } from '@angular/router'
 import { provideHttpClient, HttpClient, withFetch } from '@angular/common/http'
 import { provideStore } from '@ngrx/store'
@@ -29,7 +29,7 @@ export const provideLocaleId: () => ValueProvider = (): ValueProvider => ({
 
 export const appConfig: ApplicationConfig = {
     providers: [
-        provideExperimentalZonelessChangeDetection(),
+        provideZonelessChangeDetection(),
         provideSentry({
             enabled: environment.production,
             sentry: environment.sentry,

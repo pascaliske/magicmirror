@@ -1,5 +1,4 @@
-import { Injectable, Inject } from '@angular/core'
-import { DOCUMENT } from '@angular/common'
+import { Injectable, Inject, DOCUMENT } from '@angular/core'
 import { Subject, Observable, OperatorFunction, pipe, interval } from 'rxjs'
 import { WebSocketSubject, webSocket } from 'rxjs/webSocket'
 import { filter, delay, tap, retry, delayWhen, finalize } from 'rxjs/operators'
