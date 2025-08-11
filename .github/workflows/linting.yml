@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # workaround: ensure git directory exists in working directory, ansible action requires this
       - name: Symlink Git directory to ansible working directory
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # lint dockerfile
       - uses: hadolint/hadolint-action@v3.1.0
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # setup node
       - uses: actions/setup-node@v4.4.0
@@ -60,7 +60,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # setup go
       - uses: actions/setup-go@v5
