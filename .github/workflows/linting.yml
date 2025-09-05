@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v5
 
       # lint dockerfile
-      - uses: hadolint/hadolint-action@v3.1.0
+      - uses: hadolint/hadolint-action@v3.2.0
         with:
           failure-threshold: warning
 
