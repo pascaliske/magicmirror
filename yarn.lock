@@ -1722,31 +1722,31 @@
     "@napi-rs/nice-win32-ia32-msvc" "1.0.1"
     "@napi-rs/nice-win32-x64-msvc" "1.0.1"
 
-"@ngrx/effects@^19.2.1":
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-19.2.1.tgz#e9ee714deb7f8963b7d4b22bf21e06b2c680cae9"
-  integrity sha512-RZmTPOIC/h4JtySxh4Oa0ReQomxv4/+2er9vJ2IiuPDgUo7oE83iKZvB8uZUW/8y9dcu+MB6u0VjWM6rcbpCcA==
+"@ngrx/effects@^20.0.0":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-20.0.1.tgz#324716a792c5048f71153da471f8eeaa0a5a43f9"
+  integrity sha512-bUwAPxwk9ly9FAalECLsjEFrIrrEK5iE95idv1TCekMwShqWuw1XzhqVqcmonbCFEiAGBDgyvDYwJxGi0W6UPw==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/router-store@^19.2.1":
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-19.2.1.tgz#a76444f63d9c4b4964fba43b39efd003187aaee6"
-  integrity sha512-4gI9A5Mnl52UEHskLKb2A6QXdHDdGr6eyBM940t16mI5RCXfkoSJNb5mQ/jXh2OZjhx9ponRVNmCaLwkxBMB5g==
+"@ngrx/router-store@^20.0.0":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-20.0.1.tgz#f897cd34f9179f8005b918e43298e26db3159d4e"
+  integrity sha512-sjl2n2LxBkK7+ShuictIoRSVj+N8QgGEL7btznR8rK0oGfUr5iMC/k23oENje4N4a80Gd2i+jEXsX1pBz8//vA==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store-devtools@^19.2.1":
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-19.2.1.tgz#331ff0108e27f6e713f7ba43d59a2a84f3555a03"
-  integrity sha512-gj1YO+4yl6D0l9vzLWdw07TQSu5UPKgsSLsNJfDLXraaLCUcB8voAp4J7zohN8qR5ixDuHeMoiSSVuklQ75u2w==
+"@ngrx/store-devtools@^20.0.0":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store-devtools/-/store-devtools-20.0.1.tgz#282fad69a95c48a4e9e466abd0beec5d90414f95"
+  integrity sha512-csP579rdeiz0WF5kOmUSX+6PWb4Q/zw6ejYzktJHcQvauWcVU2rPsBCxbyaK6eRJl/ZgzJrTmmGDRnySIglE1A==
   dependencies:
     tslib "^2.0.0"
 
-"@ngrx/store@^19.2.1":
-  version "19.2.1"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-19.2.1.tgz#8599cfdd167158952e7adba85e2790777a0e50a6"
-  integrity sha512-c5vQId7YoAhM0y4HASrz9mtLju+28vJspd6OBlhPbBlSae8GN8m9S/oav+8LaSY19yh95cZ5B/nMcLNNWgL/jA==
+"@ngrx/store@^20.0.0":
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-20.0.1.tgz#614a7dcc357f18fc2ed05e0cec91d7d4cffded29"
+  integrity sha512-SWIHKe9lBoNf4rOklaWbCRAz8ie1Duf1iL4SMe6BipqhdUfJ/pEbcz3xMQUIlv1CciHhRgMJFTzFrDxamYHknQ==
   dependencies:
     tslib "^2.0.0"
 
