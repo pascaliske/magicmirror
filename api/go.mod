@@ -1,6 +1,6 @@
 module github.com/pascaliske/magicmirror
 
-go 1.23.0
+go 1.24.0
 
 toolchain go1.24.6
 
@@ -16,7 +16,7 @@ require (
 	github.com/prometheus/client_golang v1.23.2
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/viper v1.20.1
-	golang.org/x/text v0.28.0
+	golang.org/x/text v0.29.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
