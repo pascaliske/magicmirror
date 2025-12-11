@@ -20,7 +20,6 @@
     "target": "es2022",
     "module": "es2020",
     "typeRoots": ["node_modules/@types", "src/typings.d.ts"],
-    "lib": ["es2020", "dom"],
     "paths": {
       "environments": ["src/environments"],
       "environments/*": ["src/environments/*"],
