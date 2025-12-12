@@ -13,7 +13,6 @@ import { SettingsActions } from 'store/settings'
 @Component({
     selector: 'cmp-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
     imports: [RouterOutlet, NgProgressbar, NgProgressHttp, NgProgressRouter],
 })
 export class AppComponent implements OnInit {

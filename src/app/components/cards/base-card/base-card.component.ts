@@ -9,7 +9,6 @@ import { SettingsFeature, SettingsState } from 'store/settings'
     standalone: true,
     selector: 'cmp-base-card',
     templateUrl: './base-card.component.html',
-    styleUrls: ['./base-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BaseCardComponent {

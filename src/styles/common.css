@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+    --text-xlarge: 95px;
+    --text-large: 35px;
+    --text-medium: 24px;
+
+    --font-weight-*: initial;
+    --font-weight-thin: 100;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+
+    --font-lato: 'Lato', sans-serif;
+}
+
+@layer base {
+    /* Lato Thin */
+    @font-face {
+        font-family: 'Lato';
+        font-display: swap;
+        font-style: normal;
+        font-weight: 100;
+        src:
+            url('/assets/fonts/Lato-Thin.woff2') format('woff2'),
+            url('/assets/fonts/Lato-Thin.woff') format('woff');
+    }
+
+    /* Lato Light */
+    @font-face {
+        font-family: 'Lato';
+        font-display: swap;
+        font-style: normal;
+        font-weight: 300;
+        src:
+            url('/assets/fonts/Lato-Light.woff2') format('woff2'),
+            url('/assets/fonts/Lato-Light.woff') format('woff');
+    }
+
+    /* Lato Regular */
+    @font-face {
+        font-family: 'Lato';
+        font-display: swap;
+        font-style: normal;
+        font-weight: 400;
+        src:
+            url('/assets/fonts/Lato-Regular.woff2') format('woff2'),
+            url('/assets/fonts/Lato-Regular.woff') format('woff');
+    }
+
+    /* Lato Bold */
+    @font-face {
+        font-family: 'Lato';
+        font-display: swap;
+        font-style: normal;
+        font-weight: 700;
+        src:
+            url('/assets/fonts/Lato-Bold.woff2') format('woff2'),
+            url('/assets/fonts/Lato-Bold.woff') format('woff');
+    }
+
+    * {
+        @apply text-white;
+        @apply box-border;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    p {
+        -webkit-margin-before: 0;
+        -webkit-margin-after: 0;
+        -webkit-margin-start: 0;
+        -webkit-margin-end: 0;
+    }
+}
+
+:root {
+    --ng-progress-color: #fff;
+    --ng-progress-thickness: 3;
+    --ng-progress-spinner-thickness: 3;
+    --ng-progress-spinner-spacing: 20;
+    --ng-progress-spinner-size: 25;
+}
+
+.ng-progress-bar .ng-spinner {
+    top: 10px;
+}
+
+.ng-progress-bar .ng-spinner-icon {
+    border-color: #fff;
+}

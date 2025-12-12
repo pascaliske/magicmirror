@@ -6,7 +6,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
     standalone: true,
     selector: 'cmp-icon',
     templateUrl: './icon.component.html',
-    styleUrls: ['./icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [FaIconComponent],
 })

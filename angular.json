@@ -16,7 +16,7 @@
       "typeSeparator": "."
     },
     "@schematics/angular:component": {
-      "style": "scss",
+      "style": "css",
       "changeDetection": "OnPush",
       "flat": false,
       "export": true,
@@ -79,13 +79,10 @@
             "polyfills": [],
             "tsConfig": "tsconfig.app.json",
             "serviceWorker": "ngsw-config.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "css",
             "assets": ["src/favicon.ico", "src/assets", "src/manifest.webmanifest"],
-            "styles": ["src/scss/common.scss"],
-            "scripts": [],
-            "stylePreprocessorOptions": {
-              "includePaths": ["src/scss"]
-            }
+            "styles": ["src/styles/common.css"],
+            "scripts": []
           },
           "configurations": {
             "production": {

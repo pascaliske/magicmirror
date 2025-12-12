@@ -1,13 +1,19 @@
 <div class="cmp-weather-card">
     @if (current$ | async; as current) {
-        <div class="cmp-weather-card__current">
-            <div class="cmp-weather-card__temperature">
+        <div
+            class="grid grid-cols-[1fr_auto] [grid-template-areas:'temperature_feels-like'_'description_description'] mb-5"
+        >
+            <div
+                class="cmp-weather-card__temperature font-bold w-full self-baseline justify-self-start mr-5 text-xlarge/[70px] tabular-nums [grid-area:'temperature']"
+            >
                 <span>{{ current.temp | toHumanNumber }} °</span>
             </div>
-            <div class="cmp-weather-card__feels-like">
+            <div
+                class="font-light self-baseline justify-self-end text-xlarge tabular-nums [grid-area:'feels-like']"
+            >
                 <span>{{ current.feels_like | toHumanNumber }} °</span>
             </div>
-            <div class="cmp-weather-card__description">
+            <div class="font-regular mt-1.5 text-medium tabular-nums [grid-area:'description']">
                 <span>{{ current.weather[0].description }}</span>
                 @if (current.visibility < 1) {
                     <span>
@@ -18,16 +24,18 @@
         </div>
     }
     @if (daily$ | async; as daily) {
-        <div class="cmp-weather-card__forecast">
+        <div class="mask-[linear-gradient(to_bottom,black_0%,transparent_100%)]">
             @for (day of daily; track day) {
-                <div class="cmp-weather-card__forecast-day">
-                    <span class="cmp-weather-card__forecast-weekday">
+                <div
+                    class="grid grid-cols-[1fr_auto_auto] [grid-template-areas:'day_min_max'] font-light not-last-of-type:mb-2.5"
+                >
+                    <span class="">
                         {{ day.dt | fromTimestamp | toDayName }}
                     </span>
-                    <span class="cmp-weather-card__forecast-temperature">
+                    <span class="min-w-20 text-right">
                         {{ day.temp.min | toHumanNumber: '1.1-1' }} °
                     </span>
-                    <span class="cmp-weather-card__forecast-temperature">
+                    <span class="min-w-20 text-right">
                         {{ day.temp.max | toHumanNumber: '1.1-1' }} °
                     </span>
                 </div>

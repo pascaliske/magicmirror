@@ -15,7 +15,6 @@ import { WeatherData } from './weather-data'
 @Component({
     selector: 'cmp-weather-card',
     templateUrl: './weather-card.component.html',
-    styleUrls: ['./weather-card.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [AsyncPipe, FromTimestampPipe, ToDayNamePipe, ToHumanNumberPipe],
 })

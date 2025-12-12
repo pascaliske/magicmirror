@@ -11,7 +11,6 @@ import { animations } from './home.animations'
 @Component({
     selector: 'cmp-home',
     templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss'],
     animations: [animations],
     imports: [AsyncPipe, NewsCardComponent, TimeCardComponent, WeatherCardComponent],
 })

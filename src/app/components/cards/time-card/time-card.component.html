@@ -1,8 +1,12 @@
 @if (interval$ | async; as interval) {
     <div class="cmp-time-card">
-        <div class="cmp-time-card__date">{{ interval | toLocalDate: 'long' }}</div>
-        <div class="cmp-time-card__time">{{ interval | toLocalTime }}</div>
-        <div class="cmp-time-card__week">
+        <div class="text-3xl/[22px] font-thin text-right tabular-nums h-9">
+            {{ interval | toLocalDate: 'long' }}
+        </div>
+        <div class="text-8xl font-bold tabular-nums text-right">
+            {{ interval | toLocalTime }}
+        </div>
+        <div class="text-2xl font-regular tabular-nums text-right mt-1.5">
             {{ 'labels.week' | translate }} {{ interval | toWeek }}
         </div>
     </div>

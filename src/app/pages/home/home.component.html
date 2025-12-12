@@ -1,12 +1,15 @@
 @if (loaded$ | async; as loaded) {
-    <div class="cmp-home" [@fade]="loaded">
-        <div class="cmp-home__left">
+    <div
+        class="w-full h-full p-5 grid grid-cols-[1fr_2fr_1fr] grid-rows-[auto] [grid-template-areas:'left_center_right'] gap-5"
+        [@fade]="loaded"
+    >
+        <div class="grid [grid-area:'left'] gap-5">
             <cmp-weather-card></cmp-weather-card>
         </div>
-        <div class="cmp-home__center">
+        <div class="grid [grid-area:'center'] gap-5">
             <cmp-news-card></cmp-news-card>
         </div>
-        <div class="cmp-home__right">
+        <div class="grid [grid-area:'right'] gap-5">
             <cmp-time-card></cmp-time-card>
         </div>
     </div>

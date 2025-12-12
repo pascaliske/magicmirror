@@ -1,7 +1,7 @@
 @if (data$ | async; as data) {
-    <div class="cmp-news-card">
+    <div class="self-start mask-[linear-gradient(to_bottom,black_0%,transparent_100%)]">
         @for (item of data; track item) {
-            <div class="cmp-news-card__headline">
+            <div class="font-light text-center not-last-of-type:mb-2.5">
                 <a
                     [href]="item.url"
                     [innerHTML]="item.label"
