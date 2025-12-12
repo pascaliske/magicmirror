@@ -1,6 +1,5 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core'
-import { NgIf } from '@angular/common'
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { Component, ChangeDetectionStrategy, input } from '@angular/core'
+import { FaIconComponent } from '@fortawesome/angular-fontawesome'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 @Component({
@@ -9,15 +8,12 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core'
     templateUrl: './icon.component.html',
     styleUrls: ['./icon.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [NgIf, FontAwesomeModule],
+    imports: [FaIconComponent],
 })
 export class IconComponent {
-    @Input()
-    public icon!: IconProp
+    public icon = input<IconProp>()
 
-    @Input()
-    public size!: 'xs' | 'sm' | 'lg' | '2x' | '3x' | '5x' | '7x' | '10x'
+    public size = input<'xs' | 'sm' | 'lg' | '2x' | '3x' | '5x' | '7x' | '10x'>()
 
-    @Input()
-    public animate: 'spin' | 'pulse' | undefined
+    public animate = input<'beat' | 'fade' | 'beat-fade' | 'bounce' | 'flip' | 'shake' | 'spin'>()
 }

@@ -1,8 +1,3 @@
-<fa-icon
-    class="cmp-icon"
-    [icon]="icon"
-    [size]="size"
-    [spin]="animate === 'spin'"
-    [pulse]="animate === 'pulse'"
-    *ngIf="icon"
-></fa-icon>
+@if (icon()) {
+    <fa-icon class="cmp-icon" [icon]="icon()" [size]="size()" [animation]="animate()"></fa-icon>
+}
