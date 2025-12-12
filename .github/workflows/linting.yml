@@ -65,7 +65,7 @@ jobs:
       # setup go
       - uses: actions/setup-go@v6
         with:
-          go-version: 1.24
+          go-version: 1.25
 
       # lint go
       - uses: golangci/golangci-lint-action@v8
