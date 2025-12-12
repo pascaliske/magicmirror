@@ -14,7 +14,7 @@ require (
 	github.com/hellofresh/health-go/v5 v5.5.5
 	github.com/labstack/echo/v4 v4.13.4
 	github.com/prometheus/client_golang v1.23.2
-	github.com/spf13/cobra v1.9.1
+	github.com/spf13/cobra v1.10.2
 	github.com/spf13/viper v1.21.0
 	golang.org/x/text v0.29.0
 	gopkg.in/yaml.v3 v3.0.1
