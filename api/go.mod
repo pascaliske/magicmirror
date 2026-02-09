@@ -2,7 +2,7 @@ module github.com/pascaliske/magicmirror
 
 go 1.25.0
 
-toolchain go1.25.5
+toolchain go1.25.7
 
 require (
 	github.com/common-nighthawk/go-figure v0.0.0-20210622060536-734e95fb86be
