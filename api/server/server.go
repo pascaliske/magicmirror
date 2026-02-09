@@ -18,6 +18,7 @@ func SetupAndListen() {
 	server.router.HideBanner = true
 
 	// setup middlewares & routes
+	server.setupLogger()
 	server.setupMiddlewares()
 	server.setupRoutes()
 	server.setupProxy("http://localhost:4200")
