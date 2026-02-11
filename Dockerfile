@@ -32,7 +32,7 @@ COPY . /build
 RUN yarn run build
 
 # --- api
-FROM --platform=${BUILDPLATFORM} golang:1.25-alpine AS api
+FROM --platform=${BUILDPLATFORM} golang:1.26-alpine AS api
 LABEL maintainer="info@pascaliske.dev"
 WORKDIR /build
 
