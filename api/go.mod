@@ -12,7 +12,7 @@ require (
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/websocket v1.5.3
 	github.com/hellofresh/health-go/v5 v5.5.5
-	github.com/labstack/echo/v4 v4.15.0
+	github.com/labstack/echo/v5 v5.0.4
 	github.com/labstack/echo/v5 v5.0.4
 	github.com/prometheus/client_golang v1.23.2
 	github.com/spf13/cobra v1.10.2
