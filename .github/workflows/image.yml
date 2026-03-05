@@ -43,7 +43,7 @@ jobs:
           platforms: all
 
       # setup docker metadata
-      - uses: docker/metadata-action@v5
+      - uses: docker/metadata-action@v6
         id: metadata
         with:
           images: |
