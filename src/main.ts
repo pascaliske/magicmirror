@@ -8,8 +8,6 @@ GlobalCacheConfig.globalCacheKey = 'MM_LOCAL_CACHE'
 GlobalCacheConfig.storageStrategy = LocalStorageStrategy
 GlobalCacheConfig.maxAge = 600000
 
-setTimeout(() => {
-    bootstrapApplication(AppComponent, appConfig).catch(err => {
-        console.error(err)
-    })
+bootstrapApplication(AppComponent, appConfig).catch(err => {
+    console.error(err)
 })
