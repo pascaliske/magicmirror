@@ -4,13 +4,13 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/echo/v5"
+	"github.com/labstack/echo/v5/middleware"
 	"github.com/pascaliske/magicmirror/config"
 	"github.com/pascaliske/magicmirror/logger"
 )
 
-func (server Server) setupProxy(target string) {
+func (server *Server) setupProxy(target string) {
 	// skip proxy in production
 	if config.GetString("Environment") == "production" {
 		logger.Debug("Skipping proxy for %s environment", config.GetString("Environment"))
@@ -29,7 +29,7 @@ func (server Server) setupProxy(target string) {
 				URL: url,
 			},
 		}),
-		Skipper: func(c echo.Context) bool {
+		Skipper: func(c *echo.Context) bool {
 			if skip := strings.Contains(c.Request().RequestURI, "health"); skip {
 				return skip
 			}

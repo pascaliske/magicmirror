@@ -3,21 +3,21 @@ package server
 import (
 	"net/http"
 
-	"github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/echo/v5/middleware"
 	"github.com/pascaliske/magicmirror/public"
 )
 
-func (server Server) setupMiddlewares() {
+func (server *Server) setupMiddlewares() {
 	// basics
 	server.router.Use(middleware.RecoverWithConfig(middleware.RecoverConfig{
 		DisablePrintStack: true,
 	}))
-	server.router.Use(middleware.RemoveTrailingSlashWithConfig(middleware.TrailingSlashConfig{
+	server.router.Use(middleware.RemoveTrailingSlashWithConfig(middleware.RemoveTrailingSlashConfig{
 		RedirectCode: http.StatusMovedPermanently,
 	}))
 
 	// security
-	server.router.Use(middleware.CORS())
+	server.router.Use(middleware.CORS("*"))
 	server.router.Use(middleware.Secure())
 
 	// static files

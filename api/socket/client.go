@@ -3,7 +3,7 @@ package socket
 import (
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"github.com/pascaliske/magicmirror/config"
 	"github.com/pascaliske/magicmirror/logger"
 	"github.com/pascaliske/magicmirror/metrics"
@@ -36,7 +36,7 @@ func CreateClient(socket *websocket.Conn) (client Client) {
 	return
 }
 
-func (client Client) Read(c echo.Context) {
+func (client Client) Read(c *echo.Context) {
 	// send reload message on config changes
 	cancel := config.OnChangeSuccess(client.UUID, func() {
 		client.SendAction("reload", nil)
@@ -69,7 +69,7 @@ func (client Client) Read(c echo.Context) {
 	}
 }
 
-func (client Client) Write(c echo.Context) {
+func (client Client) Write(c *echo.Context) {
 	// close connection
 	defer func() {
 		if err := client.socket.Close(); err != nil {

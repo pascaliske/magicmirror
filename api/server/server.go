@@ -1,21 +1,25 @@
 package server
 
 import (
-	"github.com/labstack/echo/v4"
+	"fmt"
+	"net/http"
+
+	"github.com/labstack/echo/v5"
 	"github.com/pascaliske/magicmirror/config"
 )
 
 type Server struct {
+	port   int
 	router *echo.Echo
+	http   http.Server
 }
 
 func SetupAndListen() {
-	server := Server{}
+	server := Server{port: config.GetInt("Port")}
 
 	// setup router
 	server.router = echo.New()
-	server.router.HidePort = true
-	server.router.HideBanner = true
+	server.http = http.Server{Addr: fmt.Sprintf(":%d", server.port), Handler: server.router}
 
 	// setup middlewares & routes
 	server.setupLogger()
@@ -24,7 +28,7 @@ func SetupAndListen() {
 	server.setupProxy("http://localhost:4200")
 
 	// start server
-	go server.listen(config.GetInt("Port"))
+	go server.listen()
 
 	// graceful shutdown
 	server.shutdown()

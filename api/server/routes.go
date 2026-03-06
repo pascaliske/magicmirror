@@ -7,7 +7,7 @@ import (
 	"github.com/pascaliske/magicmirror/socket"
 )
 
-func (server Server) setupRoutes() {
+func (server *Server) setupRoutes() {
 	// health
 	server.router.GET("/health", health.Handler())
 

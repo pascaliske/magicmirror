@@ -4,11 +4,11 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/echo/v5"
+	"github.com/labstack/echo/v5/middleware"
 )
 
-func (server Server) setupLogger() {
+func (server *Server) setupLogger() {
 	// configure logger middleware
 	server.router.Use(middleware.RequestLoggerWithConfig(middleware.RequestLoggerConfig{
 		// enable log values
@@ -17,11 +17,10 @@ func (server Server) setupLogger() {
 		LogStatus:   true,
 		LogHost:     true,
 		LogRemoteIP: true,
-		LogError:    true,
 		HandleError: true,
 
 		// construct log line based on values
-		LogValuesFunc: func(c echo.Context, v middleware.RequestLoggerValues) error {
+		LogValuesFunc: func(c *echo.Context, v middleware.RequestLoggerValues) error {
 			if v.Error == nil {
 				slog.LogAttrs(context.Background(), slog.LevelInfo, "REQUEST",
 					slog.String("method", v.Method),
@@ -45,8 +44,9 @@ func (server Server) setupLogger() {
 		},
 
 		// skip non error logs
-		Skipper: func(c echo.Context) bool {
-			return c.Response().Status >= 200 && c.Response().Status <= 299
+		Skipper: func(c *echo.Context) bool {
+			response, _ := echo.UnwrapResponse(c.Response())
+			return response.Status >= 200 && response.Status <= 299
 		},
 	}))
 }

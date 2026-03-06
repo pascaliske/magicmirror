@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/hellofresh/health-go/v5"
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"github.com/pascaliske/magicmirror/logger"
 	"github.com/pascaliske/magicmirror/version"
 	"golang.org/x/text/cases"

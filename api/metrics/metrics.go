@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"github.com/pascaliske/magicmirror/config"
 	"github.com/pascaliske/magicmirror/logger"
 	"github.com/pascaliske/magicmirror/version"
@@ -44,7 +44,7 @@ func Middleware() echo.MiddlewareFunc {
 	})
 
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
-		return func(c echo.Context) error {
+		return func(c *echo.Context) error {
 			// trigger metric updaters
 			for _, callback := range updaters {
 				callback()

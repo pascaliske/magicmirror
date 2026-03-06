@@ -6,15 +6,15 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 )
 
 type HttpMetrics struct {
-	Context echo.Context
+	Context *echo.Context
 	Start   time.Time
 }
 
-func NewHttpMetrics(c echo.Context) HttpMetrics {
+func NewHttpMetrics(c *echo.Context) HttpMetrics {
 	return HttpMetrics{
 		Context: c,
 		Start:   time.Now(),
@@ -23,7 +23,8 @@ func NewHttpMetrics(c echo.Context) HttpMetrics {
 
 func (metrics HttpMetrics) Status(err error) string {
 	// initial response status
-	status := metrics.Context.Response().Status
+	response, _ := echo.UnwrapResponse(metrics.Context.Response())
+	status := response.Status
 
 	// determine response status from middleware chain
 	if err != nil {
@@ -73,7 +74,8 @@ func (metrics HttpMetrics) RequestSize() float64 {
 }
 
 func (metrics HttpMetrics) ResponseSize() float64 {
-	return float64(metrics.Context.Response().Size)
+	response, _ := echo.UnwrapResponse(metrics.Context.Response())
+	return float64(response.Size)
 }
 
 func (metrics HttpMetrics) Labels(err error) []string {

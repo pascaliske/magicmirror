@@ -3,7 +3,7 @@ package socket
 import (
 	"github.com/fatih/color"
 	"github.com/gorilla/websocket"
-	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v5"
 	"github.com/pascaliske/magicmirror/logger"
 	"github.com/pascaliske/magicmirror/metrics"
 )
@@ -21,7 +21,7 @@ func Handler() echo.HandlerFunc {
 	// update metric
 	metrics.SocketConnections.WithLabelValues().Set(float64(len(clients)))
 
-	return func(c echo.Context) error {
+	return func(c *echo.Context) error {
 		// upgrade connection to socket
 		socket, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
 

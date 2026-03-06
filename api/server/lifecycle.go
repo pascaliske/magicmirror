@@ -12,17 +12,17 @@ import (
 	"github.com/pascaliske/magicmirror/logger"
 )
 
-func (server Server) listen(port int) {
-	logger.Info("Server is listening on %s", fmt.Sprintf(":%d", port))
+func (server *Server) listen() {
+	logger.Info("Server is listening on %s", fmt.Sprintf(":%d", server.port))
 
 	// start server
-	if err := server.router.Start(fmt.Sprintf(":%d", port)); err != nil && err != http.ErrServerClosed {
+	if err := server.http.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		logger.Fatal(err.Error())
 		os.Exit(1)
 	}
 }
 
-func (server Server) shutdown() {
+func (server *Server) shutdown() {
 	// wait for interrupt or terminate signals
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, os.Interrupt, syscall.SIGTERM)
@@ -39,7 +39,7 @@ func (server Server) shutdown() {
 	logger.Info("Gracefully shutting down server...")
 
 	// shutdown server
-	if err := server.router.Shutdown(ctx); err != nil {
+	if err := server.http.Shutdown(ctx); err != nil {
 		logger.Debug(err.Error())
 		logger.Fatal("Could not shutdown server gracefully!")
 		os.Exit(1)

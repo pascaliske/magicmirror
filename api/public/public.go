@@ -3,7 +3,6 @@ package public
 import (
 	"embed"
 	"io/fs"
-	"net/http"
 
 	"github.com/pascaliske/magicmirror/logger"
 )
@@ -11,7 +10,7 @@ import (
 //go:embed static/*
 var staticFs embed.FS
 
-func StaticFiles() http.FileSystem {
+func StaticFiles() fs.FS {
 	staticFsSubtree, err := fs.Sub(staticFs, "static")
 
 	if err != nil {
@@ -19,5 +18,5 @@ func StaticFiles() http.FileSystem {
 		return nil
 	}
 
-	return http.FS(staticFsSubtree)
+	return staticFsSubtree
 }
