@@ -1,4 +1,6 @@
 ---
+ansible_managed: Ansible managed file - {file}
+
 timezone: Europe/Berlin
 url: http://localhost:9000
 paths:
