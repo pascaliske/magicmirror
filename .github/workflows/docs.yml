@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: Build Docs
 on:
   push:
@@ -10,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # checkout
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       # setup taskfile
-      - uses: arduino/setup-task@v1
+      - uses: arduino/setup-task@c0bc642852239c2689f73f4ea6459c29405f3c52 # v3.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -22,6 +23,6 @@ jobs:
         run: task docs
 
       # deploy docs
-      - uses: mhausenblas/mkdocs-deploy-gh-pages@1.26
+      - uses: mhausenblas/mkdocs-deploy-gh-pages@a31c6b13a80e4a4fbb525eeb7a2a78253bb15fa5 # master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
